@@ -1,0 +1,1005 @@
+./bisuna BiSUNAConf.ini
+Config file: BiSUNAConf.ini
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Reprogramming device [0] with handle 1
+MMD INFO : [acl0] failed to program the device through CvP.
+MMD INFO : executing "quartus_pgm -c 1 -m jtag -o "P;reprogram_temp.sof@1""
+Info: *******************************************************************
+Info: Running Quartus Prime Programmer
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions
+    Info: and other software and tools, and its AMPP partner logic
+    Info: functions, and any output files from any of the foregoing
+    Info: (including device programming or simulation files), and any
+    Info: associated documentation or information are expressly subject
+    Info: to the terms and conditions of the Intel Program License
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details.
+    Info: Processing started: Fri Sep 27 14:37:22 2019
+Info: Command: quartus_pgm -c 1 -m jtag -o P;reprogram_temp.sof@1
+Info (213045): Using programming cable "C5P [1-8]"
+Info (213011): Using programming file reprogram_temp.sof with checksum 0x0C0EAD13 for device 5CGXFC9D6F27@1
+Info (209060): Started Programmer operation at Fri Sep 27 14:37:27 2019
+Info (209016): Configuring device index 1
+Info (209017): Device 1 contains JTAG ID code 0x02B040DD
+Info (209007): Configuration succeeded -- 1 device(s) configured
+Info (209011): Successfully performed operation(s)
+Info (209061): Ended Programmer operation at Fri Sep 27 14:37:31 2019
+Info: Quartus Prime Programmer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 487 megabytes
+    Info: Processing ended: Fri Sep 27 14:37:31 2019
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:01
+Generation: 0
+Best in generation: 0, Fitness: -128.000000
+----------------------------------------
+Generation: 1
+Best in generation: 1, Fitness: -119.000000
+----------------------------------------
+Generation: 2
+Best in generation: 2, Fitness: -122.000000
+----------------------------------------
+Generation: 3
+Best in generation: 3, Fitness: -128.000000
+----------------------------------------
+Generation: 4
+Best in generation: 4, Fitness: -102.000000
+----------------------------------------
+Generation: 5
+Best in generation: 5, Fitness: -119.000000
+----------------------------------------
+Generation: 6
+Best in generation: 6, Fitness: -91.000000
+----------------------------------------
+Generation: 7
+Best in generation: 7, Fitness: -94.000000
+----------------------------------------
+Generation: 8
+Best in generation: 8, Fitness: -92.000000
+----------------------------------------
+Generation: 9
+Best in generation: 9, Fitness: -96.000000
+----------------------------------------
+Generation: 10
+Best in generation: 10, Fitness: -107.000000
+----------------------------------------
+Generation: 11
+Best in generation: 11, Fitness: -94.000000
+----------------------------------------
+Generation: 12
+Best in generation: 12, Fitness: -106.000000
+----------------------------------------
+Generation: 13
+Best in generation: 13, Fitness: -118.000000
+----------------------------------------
+Generation: 14
+Best in generation: 14, Fitness: -112.000000
+----------------------------------------
+Generation: 15
+Best in generation: 15, Fitness: -118.000000
+----------------------------------------
+Generation: 16
+Best in generation: 16, Fitness: -116.000000
+----------------------------------------
+Generation: 17
+Best in generation: 17, Fitness: -117.000000
+----------------------------------------
+Generation: 18
+Best in generation: 18, Fitness: -118.000000
+----------------------------------------
+Generation: 19
+Best in generation: 19, Fitness: -118.000000
+----------------------------------------
+Generation: 20
+Best in generation: 20, Fitness: -119.000000
+----------------------------------------
+Generation: 21
+Best in generation: 21, Fitness: -123.000000
+----------------------------------------
+Generation: 22
+Best in generation: 22, Fitness: -125.000000
+----------------------------------------
+Generation: 23
+Best in generation: 23, Fitness: -114.000000
+----------------------------------------
+Generation: 24
+Best in generation: 24, Fitness: -119.000000
+----------------------------------------
+Generation: 25
+Best in generation: 25, Fitness: -119.000000
+----------------------------------------
+Generation: 26
+Best in generation: 26, Fitness: -116.000000
+----------------------------------------
+Generation: 27
+Best in generation: 27, Fitness: -119.000000
+----------------------------------------
+Generation: 28
+Best in generation: 28, Fitness: -118.000000
+----------------------------------------
+Generation: 29
+Best in generation: 29, Fitness: -116.000000
+----------------------------------------
+Generation: 30
+Best in generation: 30, Fitness: -121.000000
+----------------------------------------
+Generation: 31
+Best in generation: 31, Fitness: -116.000000
+----------------------------------------
+Generation: 32
+Best in generation: 32, Fitness: -117.000000
+----------------------------------------
+Generation: 33
+Best in generation: 33, Fitness: -118.000000
+----------------------------------------
+Generation: 34
+Best in generation: 34, Fitness: -117.000000
+----------------------------------------
+Generation: 35
+Best in generation: 35, Fitness: -119.000000
+----------------------------------------
+Generation: 36
+Best in generation: 36, Fitness: -117.000000
+----------------------------------------
+Generation: 37
+Best in generation: 37, Fitness: -121.000000
+----------------------------------------
+Generation: 38
+Best in generation: 38, Fitness: -119.000000
+----------------------------------------
+Generation: 39
+Best in generation: 39, Fitness: -118.000000
+----------------------------------------
+Generation: 40
+Best in generation: 40, Fitness: -121.000000
+----------------------------------------
+Generation: 41
+Best in generation: 41, Fitness: -118.000000
+----------------------------------------
+Generation: 42
+Best in generation: 42, Fitness: -119.000000
+----------------------------------------
+Generation: 43
+Best in generation: 43, Fitness: -119.000000
+----------------------------------------
+Generation: 44
+Best in generation: 44, Fitness: -121.000000
+----------------------------------------
+Generation: 45
+Best in generation: 45, Fitness: -119.000000
+----------------------------------------
+Generation: 46
+Best in generation: 46, Fitness: -119.000000
+----------------------------------------
+Generation: 47
+Best in generation: 47, Fitness: -95.000000
+----------------------------------------
+Generation: 48
+Best in generation: 48, Fitness: -90.000000
+----------------------------------------
+Generation: 49
+Best in generation: 49, Fitness: -118.000000
+----------------------------------------
+Generation: 50
+Best in generation: 50, Fitness: -119.000000
+----------------------------------------
+Generation: 51
+Best in generation: 51, Fitness: -123.000000
+----------------------------------------
+Generation: 52
+Best in generation: 52, Fitness: -119.000000
+----------------------------------------
+Generation: 53
+Best in generation: 53, Fitness: -119.000000
+----------------------------------------
+Generation: 54
+Best in generation: 54, Fitness: -119.000000
+----------------------------------------
+Generation: 55
+Best in generation: 55, Fitness: -123.000000
+----------------------------------------
+Generation: 56
+Best in generation: 56, Fitness: -115.000000
+----------------------------------------
+Generation: 57
+Best in generation: 57, Fitness: -120.000000
+----------------------------------------
+Generation: 58
+Best in generation: 58, Fitness: -117.000000
+----------------------------------------
+Generation: 59
+Best in generation: 59, Fitness: -121.000000
+----------------------------------------
+Generation: 60
+Best in generation: 60, Fitness: -119.000000
+----------------------------------------
+Generation: 61
+Best in generation: 61, Fitness: -118.000000
+----------------------------------------
+Generation: 62
+Best in generation: 62, Fitness: -123.000000
+----------------------------------------
+Generation: 63
+Best in generation: 63, Fitness: -100.000000
+----------------------------------------
+Generation: 64
+Best in generation: 64, Fitness: -98.000000
+----------------------------------------
+Generation: 65
+Best in generation: 65, Fitness: -119.000000
+----------------------------------------
+Generation: 66
+Best in generation: 66, Fitness: -95.000000
+----------------------------------------
+Generation: 67
+Best in generation: 67, Fitness: -85.000000
+----------------------------------------
+Generation: 68
+Best in generation: 68, Fitness: -118.000000
+----------------------------------------
+Generation: 69
+Best in generation: 69, Fitness: -97.000000
+----------------------------------------
+Generation: 70
+Best in generation: 70, Fitness: -85.000000
+----------------------------------------
+Generation: 71
+Best in generation: 71, Fitness: -88.000000
+----------------------------------------
+Generation: 72
+Best in generation: 72, Fitness: -95.000000
+----------------------------------------
+Generation: 73
+Best in generation: 73, Fitness: -102.000000
+----------------------------------------
+Generation: 74
+Best in generation: 74, Fitness: -119.000000
+----------------------------------------
+Generation: 75
+Best in generation: 75, Fitness: -118.000000
+----------------------------------------
+Generation: 76
+Best in generation: 76, Fitness: -118.000000
+----------------------------------------
+Generation: 77
+Best in generation: 77, Fitness: -118.000000
+----------------------------------------
+Generation: 78
+Best in generation: 78, Fitness: -115.000000
+----------------------------------------
+Generation: 79
+Best in generation: 79, Fitness: -107.000000
+----------------------------------------
+Generation: 80
+Best in generation: 80, Fitness: -116.000000
+----------------------------------------
+Generation: 81
+Best in generation: 81, Fitness: -126.000000
+----------------------------------------
+Generation: 82
+Best in generation: 82, Fitness: -112.000000
+----------------------------------------
+Generation: 83
+Best in generation: 83, Fitness: -119.000000
+----------------------------------------
+Generation: 84
+Best in generation: 84, Fitness: -113.000000
+----------------------------------------
+Generation: 85
+Best in generation: 85, Fitness: -104.000000
+----------------------------------------
+Generation: 86
+Best in generation: 86, Fitness: -119.000000
+----------------------------------------
+Generation: 87
+Best in generation: 87, Fitness: -118.000000
+----------------------------------------
+Generation: 88
+Best in generation: 88, Fitness: -112.000000
+----------------------------------------
+Generation: 89
+Best in generation: 89, Fitness: -117.000000
+----------------------------------------
+Generation: 90
+Best in generation: 90, Fitness: -117.000000
+----------------------------------------
+Generation: 91
+Best in generation: 91, Fitness: -112.000000
+----------------------------------------
+Generation: 92
+Best in generation: 92, Fitness: -108.000000
+----------------------------------------
+Generation: 93
+Best in generation: 93, Fitness: -93.000000
+----------------------------------------
+Generation: 94
+Best in generation: 94, Fitness: -120.000000
+----------------------------------------
+Generation: 95
+Best in generation: 95, Fitness: -87.000000
+----------------------------------------
+Generation: 96
+Best in generation: 96, Fitness: -114.000000
+----------------------------------------
+Generation: 97
+Best in generation: 97, Fitness: -117.000000
+----------------------------------------
+Generation: 98
+Best in generation: 98, Fitness: -100.000000
+----------------------------------------
+Generation: 99
+Best in generation: 99, Fitness: -113.000000
+----------------------------------------
+TimeDiff: 6618 secs
+Last best score: 0.000000
+
+
+*********************************************
+*********************************************
+*********************************************
+
+
+nohup: ignoring input
+Reprogramming device [0] with handle 1
+Config file: BiSUNAConfProf.ini
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+Environment: MountainCar-v0
+ ----------------------------------
+  CL_DEVICE_NAME:					c5p : HPC Reference Platform
+  CL_DEVICE_VERSION:				OpenCL 1.0 Intel(R) FPGA SDK for OpenCL(TM), Version 18.1
+  CL_DEVICE_MAX_COMPUTE_UNITS:		1
+  CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS:140153372803075
+  CL_DEVICE_MAX_WORK_ITEM_SIZES:	2147483647 / 2147483647 / 2147483647
+  CL_DEVICE_MAX_WORK_GROUP_SIZE:	2147483647
+  CL_DEVICE_MAX_MEM_ALLOC_SIZE:		1023 MByte
+  CL_DEVICE_GLOBAL_MEM_SIZE:		1024 MByte
+  CL_DEVICE_LOCAL_MEM_SIZE:			16 KByte
+  CL_DEVICE_PROFILING_TIMER_RESOLUTION:	1 ns
+ ----------------------------------
+MMD INFO : [acl0] failed to program the device through CvP.
+MMD INFO : executing "quartus_pgm -c 1 -m jtag -o "P;reprogram_temp.sof@1""
+Info: *******************************************************************
+Info: Running Quartus Prime Programmer
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions
+    Info: and other software and tools, and its AMPP partner logic
+    Info: functions, and any output files from any of the foregoing
+    Info: (including device programming or simulation files), and any
+    Info: associated documentation or information are expressly subject
+    Info: to the terms and conditions of the Intel Program License
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details.
+    Info: Processing started: Fri Sep 27 16:44:14 2019
+Info: Command: quartus_pgm -c 1 -m jtag -o P;reprogram_temp.sof@1
+Info (213045): Using programming cable "C5P [1-8]"
+Info (213011): Using programming file reprogram_temp.sof with checksum 0x0C0EAD13 for device 5CGXFC9D6F27@1
+Info (209060): Started Programmer operation at Fri Sep 27 16:44:16 2019
+Info (209016): Configuring device index 1
+Info (209017): Device 1 contains JTAG ID code 0x02B040DD
+Info (209007): Configuration succeeded -- 1 device(s) configured
+Info (209011): Successfully performed operation(s)
+Info (209061): Ended Programmer operation at Fri Sep 27 16:44:20 2019
+Info: Quartus Prime Programmer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 487 megabytes
+    Info: Processing ended: Fri Sep 27 16:44:20 2019
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:01
+ ----------------------------------
+  CL_KERNEL_WORK_GROUP_SIZE:		1
+  CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE:1
+  CL_KERNEL_LOCAL_MEM_SIZE:			5120
+  CL_KERNEL_PRIVATE_MEM_SIZE:		3726630144
+ ----------------------------------
+Generation: 0
+Best in generation: 0, Fitness: -156.000000
+Counter 200, TaskSum: 26996827369.0 (134984136.8), OutSum: 9223080.0 (46115.4)
+----------------------------------------
+Generation: 1
+Best in generation: 1, Fitness: -91.000000
+Counter 200, TaskSum: 28866382129.0 (144331910.6), OutSum: 9610709.0 (48053.5)
+----------------------------------------
+Generation: 2
+Best in generation: 2, Fitness: -141.000000
+Counter 200, TaskSum: 28845979230.0 (144229896.2), OutSum: 9692357.0 (48461.8)
+----------------------------------------
+Generation: 3
+Best in generation: 3, Fitness: -128.000000
+Counter 200, TaskSum: 27889209718.0 (139446048.6), OutSum: 9758136.0 (48790.7)
+----------------------------------------
+Generation: 4
+Best in generation: 4, Fitness: -119.000000
+Counter 200, TaskSum: 27931261846.0 (139656309.2), OutSum: 9764876.0 (48824.4)
+----------------------------------------
+Generation: 5
+Best in generation: 5, Fitness: -125.000000
+Counter 200, TaskSum: 28140913304.0 (140704566.5), OutSum: 9750275.0 (48751.4)
+----------------------------------------
+Generation: 6
+Best in generation: 6, Fitness: -124.000000
+Counter 200, TaskSum: 27701190687.0 (138505953.4), OutSum: 9765175.0 (48825.9)
+----------------------------------------
+Generation: 7
+Best in generation: 7, Fitness: -142.000000
+Counter 200, TaskSum: 30042812679.0 (150214063.4), OutSum: 9728939.0 (48644.7)
+----------------------------------------
+Generation: 8
+Best in generation: 8, Fitness: -129.000000
+Counter 200, TaskSum: 31170717198.0 (155853586.0), OutSum: 9796970.0 (48984.8)
+----------------------------------------
+Generation: 9
+Best in generation: 9, Fitness: -125.000000
+Counter 200, TaskSum: 31191911888.0 (155959559.4), OutSum: 9769701.0 (48848.5)
+----------------------------------------
+Generation: 10
+Best in generation: 10, Fitness: -112.000000
+Counter 200, TaskSum: 29686136891.0 (148430684.5), OutSum: 9804189.0 (49020.9)
+----------------------------------------
+Generation: 11
+Best in generation: 11, Fitness: -176.000000
+Counter 200, TaskSum: 30258645170.0 (151293225.8), OutSum: 9826990.0 (49134.9)
+----------------------------------------
+Generation: 12
+Best in generation: 12, Fitness: -130.000000
+Counter 200, TaskSum: 29597890013.0 (147989450.1), OutSum: 9874390.0 (49371.9)
+----------------------------------------
+Generation: 13
+Best in generation: 13, Fitness: -118.000000
+Counter 200, TaskSum: 29372074389.0 (146860371.9), OutSum: 9790016.0 (48950.1)
+----------------------------------------
+Generation: 14
+Best in generation: 14, Fitness: -88.000000
+Counter 200, TaskSum: 28016944647.0 (140084723.2), OutSum: 9907070.0 (49535.3)
+----------------------------------------
+Generation: 15
+Best in generation: 15, Fitness: -123.000000
+Counter 200, TaskSum: 29053514512.0 (145267572.6), OutSum: 9880916.0 (49404.6)
+----------------------------------------
+Generation: 16
+Best in generation: 16, Fitness: -127.000000
+Counter 200, TaskSum: 27513884572.0 (137569422.9), OutSum: 9901798.0 (49509.0)
+----------------------------------------
+Generation: 17
+Best in generation: 17, Fitness: -112.000000
+Counter 200, TaskSum: 28721759666.0 (143608798.3), OutSum: 9953986.0 (49769.9)
+----------------------------------------
+Generation: 18
+Best in generation: 18, Fitness: -107.000000
+Counter 200, TaskSum: 29105087173.0 (145525435.9), OutSum: 9917763.0 (49588.8)
+----------------------------------------
+Generation: 19
+Best in generation: 19, Fitness: -112.000000
+Counter 200, TaskSum: 28362123135.0 (141810615.7), OutSum: 9865867.0 (49329.3)
+----------------------------------------
+Generation: 20
+Best in generation: 20, Fitness: -107.000000
+Counter 200, TaskSum: 29736887949.0 (148684439.7), OutSum: 9798760.0 (48993.8)
+----------------------------------------
+Generation: 21
+Best in generation: 21, Fitness: -86.000000
+Counter 200, TaskSum: 31474373821.0 (157371869.1), OutSum: 10040471.0 (50202.4)
+----------------------------------------
+Generation: 22
+Best in generation: 22, Fitness: -120.000000
+Counter 200, TaskSum: 29474987343.0 (147374936.7), OutSum: 9902760.0 (49513.8)
+----------------------------------------
+Generation: 23
+Best in generation: 23, Fitness: -129.000000
+Counter 200, TaskSum: 31214834126.0 (156074170.6), OutSum: 10015443.0 (50077.2)
+----------------------------------------
+Generation: 24
+Best in generation: 24, Fitness: -124.000000
+Counter 200, TaskSum: 30899060800.0 (154495304.0), OutSum: 10091723.0 (50458.6)
+----------------------------------------
+Generation: 25
+Best in generation: 25, Fitness: -114.000000
+Counter 200, TaskSum: 32857735562.0 (164288677.8), OutSum: 9949120.0 (49745.6)
+----------------------------------------
+Generation: 26
+Best in generation: 26, Fitness: -103.000000
+Counter 200, TaskSum: 32545726958.0 (162728634.8), OutSum: 9952941.0 (49764.7)
+----------------------------------------
+Generation: 27
+Best in generation: 27, Fitness: -112.000000
+Counter 200, TaskSum: 30997041840.0 (154985209.2), OutSum: 9964622.0 (49823.1)
+----------------------------------------
+Generation: 28
+Best in generation: 28, Fitness: -98.000000
+Counter 200, TaskSum: 32034036506.0 (160170182.5), OutSum: 9992056.0 (49960.3)
+----------------------------------------
+Generation: 29
+Best in generation: 29, Fitness: -111.000000
+Counter 200, TaskSum: 30326257508.0 (151631287.5), OutSum: 9986845.0 (49934.2)
+----------------------------------------
+Generation: 30
+Best in generation: 30, Fitness: -87.000000
+Counter 200, TaskSum: 31390555991.0 (156952780.0), OutSum: 10208629.0 (51043.1)
+----------------------------------------
+Generation: 31
+Best in generation: 31, Fitness: -95.000000
+Counter 200, TaskSum: 30073016631.0 (150365083.2), OutSum: 9921589.0 (49607.9)
+----------------------------------------
+Generation: 32
+Best in generation: 32, Fitness: -94.000000
+Counter 200, TaskSum: 32441690843.0 (162208454.2), OutSum: 9988451.0 (49942.3)
+----------------------------------------
+Generation: 33
+Best in generation: 33, Fitness: -106.000000
+Counter 200, TaskSum: 33071256213.0 (165356281.1), OutSum: 10038454.0 (50192.3)
+----------------------------------------
+Generation: 34
+Best in generation: 34, Fitness: -105.000000
+Counter 200, TaskSum: 31566673659.0 (157833368.3), OutSum: 9941852.0 (49709.3)
+----------------------------------------
+Generation: 35
+Best in generation: 35, Fitness: -86.000000
+Counter 200, TaskSum: 30605162528.0 (153025812.6), OutSum: 9890460.0 (49452.3)
+----------------------------------------
+Generation: 36
+Best in generation: 36, Fitness: -91.000000
+Counter 200, TaskSum: 31825762834.0 (159128814.2), OutSum: 10074991.0 (50375.0)
+----------------------------------------
+Generation: 37
+Best in generation: 37, Fitness: -113.000000
+Counter 200, TaskSum: 34330489158.0 (171652445.8), OutSum: 10008970.0 (50044.8)
+----------------------------------------
+Generation: 38
+Best in generation: 38, Fitness: -157.000000
+Counter 200, TaskSum: 34553739572.0 (172768697.9), OutSum: 10067836.0 (50339.2)
+----------------------------------------
+Generation: 39
+Best in generation: 39, Fitness: -96.000000
+Counter 200, TaskSum: 37814111778.0 (189070558.9), OutSum: 10030284.0 (50151.4)
+----------------------------------------
+Generation: 40
+Best in generation: 40, Fitness: -95.000000
+Counter 200, TaskSum: 37369005143.0 (186845025.7), OutSum: 10039593.0 (50198.0)
+----------------------------------------
+Generation: 41
+Best in generation: 41, Fitness: -104.000000
+Counter 200, TaskSum: 36121653384.0 (180608266.9), OutSum: 10117303.0 (50586.5)
+----------------------------------------
+Generation: 42
+Best in generation: 42, Fitness: -95.000000
+Counter 200, TaskSum: 35288432469.0 (176442162.3), OutSum: 10078162.0 (50390.8)
+----------------------------------------
+Generation: 43
+Best in generation: 43, Fitness: -99.000000
+Counter 200, TaskSum: 36489028560.0 (182445142.8), OutSum: 10052867.0 (50264.3)
+----------------------------------------
+Generation: 44
+Best in generation: 44, Fitness: -92.000000
+Counter 200, TaskSum: 34799906029.0 (173999530.1), OutSum: 10086808.0 (50434.0)
+----------------------------------------
+Generation: 45
+Best in generation: 45, Fitness: -115.000000
+Counter 200, TaskSum: 39244473712.0 (196222368.6), OutSum: 10019052.0 (50095.3)
+----------------------------------------
+Generation: 46
+Best in generation: 46, Fitness: -95.000000
+Counter 200, TaskSum: 37661183419.0 (188305917.1), OutSum: 10058765.0 (50293.8)
+----------------------------------------
+Generation: 47
+Best in generation: 47, Fitness: -98.000000
+Counter 200, TaskSum: 36524400704.0 (182622003.5), OutSum: 10022125.0 (50110.6)
+----------------------------------------
+Generation: 48
+Best in generation: 48, Fitness: -91.000000
+Counter 200, TaskSum: 37220659226.0 (186103296.1), OutSum: 10089768.0 (50448.8)
+----------------------------------------
+Generation: 49
+Best in generation: 49, Fitness: -87.000000
+Counter 200, TaskSum: 37807110713.0 (189035553.6), OutSum: 10064167.0 (50320.8)
+----------------------------------------
+Generation: 50
+Best in generation: 50, Fitness: -115.000000
+Counter 200, TaskSum: 38474804808.0 (192374024.0), OutSum: 10209512.0 (51047.6)
+----------------------------------------
+Generation: 51
+Best in generation: 51, Fitness: -107.000000
+Counter 200, TaskSum: 38130401262.0 (190652006.3), OutSum: 10131926.0 (50659.6)
+----------------------------------------
+Generation: 52
+Best in generation: 52, Fitness: -97.000000
+Counter 200, TaskSum: 37508627137.0 (187543135.7), OutSum: 10244843.0 (51224.2)
+----------------------------------------
+Generation: 53
+Best in generation: 53, Fitness: -94.000000
+Counter 200, TaskSum: 37435986466.0 (187179932.3), OutSum: 10144204.0 (50721.0)
+----------------------------------------
+Generation: 54
+Best in generation: 54, Fitness: -109.000000
+Counter 200, TaskSum: 36595111735.0 (182975558.7), OutSum: 10011354.0 (50056.8)
+----------------------------------------
+Generation: 55
+Best in generation: 55, Fitness: -88.000000
+Counter 200, TaskSum: 39106410284.0 (195532051.4), OutSum: 10029479.0 (50147.4)
+----------------------------------------
+Generation: 56
+Best in generation: 56, Fitness: -93.000000
+Counter 200, TaskSum: 39014626559.0 (195073132.8), OutSum: 10087081.0 (50435.4)
+----------------------------------------
+Generation: 57
+Best in generation: 57, Fitness: -99.000000
+Counter 200, TaskSum: 40582826046.0 (202914130.2), OutSum: 10028161.0 (50140.8)
+----------------------------------------
+Generation: 58
+Best in generation: 58, Fitness: -86.000000
+Counter 200, TaskSum: 41865483476.0 (209327417.4), OutSum: 10030341.0 (50151.7)
+----------------------------------------
+Generation: 59
+Best in generation: 59, Fitness: -93.000000
+Counter 200, TaskSum: 40242888961.0 (201214444.8), OutSum: 10039626.0 (50198.1)
+----------------------------------------
+Generation: 60
+Best in generation: 60, Fitness: -113.000000
+Counter 200, TaskSum: 41285136146.0 (206425680.7), OutSum: 10078830.0 (50394.2)
+----------------------------------------
+Generation: 61
+Best in generation: 61, Fitness: -87.000000
+Counter 200, TaskSum: 39252616185.0 (196263080.9), OutSum: 10036758.0 (50183.8)
+----------------------------------------
+Generation: 62
+Best in generation: 62, Fitness: -87.000000
+Counter 200, TaskSum: 40664627636.0 (203323138.2), OutSum: 9945805.0 (49729.0)
+----------------------------------------
+Generation: 63
+Best in generation: 63, Fitness: -91.000000
+Counter 200, TaskSum: 39461025506.0 (197305127.5), OutSum: 9993690.0 (49968.4)
+----------------------------------------
+Generation: 64
+Best in generation: 64, Fitness: -93.000000
+Counter 200, TaskSum: 39083165424.0 (195415827.1), OutSum: 9957446.0 (49787.2)
+----------------------------------------
+Generation: 65
+Best in generation: 65, Fitness: -114.000000
+Counter 200, TaskSum: 40788405907.0 (203942029.5), OutSum: 10081785.0 (50408.9)
+----------------------------------------
+Generation: 66
+Best in generation: 66, Fitness: -99.000000
+Counter 200, TaskSum: 42530957714.0 (212654788.6), OutSum: 9878975.0 (49394.9)
+----------------------------------------
+Generation: 67
+Best in generation: 67, Fitness: -101.000000
+Counter 200, TaskSum: 42787964698.0 (213939823.5), OutSum: 9836527.0 (49182.6)
+----------------------------------------
+Generation: 68
+Best in generation: 68, Fitness: -96.000000
+Counter 200, TaskSum: 44250346412.0 (221251732.1), OutSum: 9722645.0 (48613.2)
+----------------------------------------
+Generation: 69
+Best in generation: 69, Fitness: -87.000000
+Counter 200, TaskSum: 41723004721.0 (208615023.6), OutSum: 9606371.0 (48031.9)
+----------------------------------------
+Generation: 70
+Best in generation: 70, Fitness: -92.000000
+Counter 200, TaskSum: 41271077683.0 (206355388.4), OutSum: 9525767.0 (47628.8)
+----------------------------------------
+Generation: 71
+Best in generation: 71, Fitness: -105.000000
+Counter 200, TaskSum: 41474047163.0 (207370235.8), OutSum: 9562670.0 (47813.3)
+----------------------------------------
+Generation: 72
+Best in generation: 72, Fitness: -113.000000
+Counter 200, TaskSum: 40346858192.0 (201734291.0), OutSum: 9174661.0 (45873.3)
+----------------------------------------
+Generation: 73
+Best in generation: 73, Fitness: -87.000000
+Counter 200, TaskSum: 40451558323.0 (202257791.6), OutSum: 9480064.0 (47400.3)
+----------------------------------------
+Generation: 74
+Best in generation: 74, Fitness: -112.000000
+Counter 200, TaskSum: 42170310046.0 (210851550.2), OutSum: 8867974.0 (44339.9)
+----------------------------------------
+Generation: 75
+Best in generation: 75, Fitness: -94.000000
+Counter 200, TaskSum: 41054393790.0 (205271968.9), OutSum: 9035930.0 (45179.7)
+----------------------------------------
+Generation: 76
+Best in generation: 76, Fitness: -86.000000
+Counter 200, TaskSum: 46992536464.0 (234962682.3), OutSum: 8645056.0 (43225.3)
+----------------------------------------
+Generation: 77
+Best in generation: 77, Fitness: -92.000000
+Counter 200, TaskSum: 47352227855.0 (236761139.3), OutSum: 8450909.0 (42254.5)
+----------------------------------------
+Generation: 78
+Best in generation: 78, Fitness: -116.000000
+Counter 200, TaskSum: 50155389284.0 (250776946.4), OutSum: 8683383.0 (43416.9)
+----------------------------------------
+Generation: 79
+Best in generation: 79, Fitness: -93.000000
+Counter 200, TaskSum: 48267372777.0 (241336863.9), OutSum: 8774514.0 (43872.6)
+----------------------------------------
+Generation: 80
+Best in generation: 80, Fitness: -97.000000
+Counter 200, TaskSum: 48550285440.0 (242751427.2), OutSum: 8612393.0 (43062.0)
+----------------------------------------
+Generation: 81
+Best in generation: 81, Fitness: -118.000000
+Counter 200, TaskSum: 51391365543.0 (256956827.7), OutSum: 8717622.0 (43588.1)
+----------------------------------------
+Generation: 82
+Best in generation: 82, Fitness: -102.000000
+Counter 200, TaskSum: 53172767934.0 (265863839.7), OutSum: 8867073.0 (44335.4)
+----------------------------------------
+Generation: 83
+Best in generation: 83, Fitness: -92.000000
+Counter 200, TaskSum: 52082167734.0 (260410838.7), OutSum: 8650693.0 (43253.5)
+----------------------------------------
+Generation: 84
+Best in generation: 84, Fitness: -94.000000
+Counter 200, TaskSum: 52641998586.0 (263209992.9), OutSum: 8901049.0 (44505.2)
+----------------------------------------
+Generation: 85
+Best in generation: 85, Fitness: -117.000000
+Counter 200, TaskSum: 55348651220.0 (276743256.1), OutSum: 8564988.0 (42824.9)
+----------------------------------------
+Generation: 86
+Best in generation: 86, Fitness: -120.000000
+Counter 200, TaskSum: 53036972409.0 (265184862.0), OutSum: 8598733.0 (42993.7)
+----------------------------------------
+Generation: 87
+Best in generation: 87, Fitness: -100.000000
+Counter 200, TaskSum: 55200094846.0 (276000474.2), OutSum: 8908227.0 (44541.1)
+----------------------------------------
+Generation: 88
+Best in generation: 88, Fitness: -93.000000
+Counter 200, TaskSum: 51627026048.0 (258135130.2), OutSum: 8322915.0 (41614.6)
+----------------------------------------
+Generation: 89
+Best in generation: 89, Fitness: -97.000000
+Counter 200, TaskSum: 51767192891.0 (258835964.5), OutSum: 8513057.0 (42565.3)
+----------------------------------------
+Generation: 90
+Best in generation: 90, Fitness: -118.000000
+Counter 200, TaskSum: 51000292158.0 (255001460.8), OutSum: 8730953.0 (43654.8)
+----------------------------------------
+Generation: 91
+Best in generation: 91, Fitness: -103.000000
+Counter 200, TaskSum: 47418310006.0 (237091550.0), OutSum: 8636804.0 (43184.0)
+----------------------------------------
+Generation: 92
+Best in generation: 92, Fitness: -86.000000
+Counter 200, TaskSum: 48814284066.0 (244071420.3), OutSum: 8639005.0 (43195.0)
+----------------------------------------
+Generation: 93
+Best in generation: 93, Fitness: -103.000000
+Counter 200, TaskSum: 53561306060.0 (267806530.3), OutSum: 8518874.0 (42594.4)
+----------------------------------------
+Generation: 94
+Best in generation: 94, Fitness: -91.000000
+Counter 200, TaskSum: 55435733624.0 (277178668.1), OutSum: 8655777.0 (43278.9)
+----------------------------------------
+Generation: 95
+Best in generation: 95, Fitness: -106.000000
+Counter 200, TaskSum: 52310984334.0 (261554921.7), OutSum: 8865782.0 (44328.9)
+----------------------------------------
+Generation: 96
+Best in generation: 96, Fitness: -91.000000
+Counter 200, TaskSum: 56320888675.0 (281604443.4), OutSum: 8593240.0 (42966.2)
+----------------------------------------
+Generation: 97
+Best in generation: 97, Fitness: -92.000000
+Counter 200, TaskSum: 52317359135.0 (261586795.7), OutSum: 8681339.0 (43406.7)
+----------------------------------------
+Generation: 98
+Best in generation: 98, Fitness: -114.000000
+Counter 200, TaskSum: 55320928012.0 (276604640.1), OutSum: 8633462.0 (43167.3)
+----------------------------------------
+Generation: 99
+Best in generation: 99, Fitness: -89.000000
+Counter 200, TaskSum: 53487697822.0 (267438489.1), OutSum: 9767430.0 (48837.2)
+----------------------------------------
+TimeDiff: 6625 secs
+Last best score: 0.000000
+
+****************************************
+****************************************
+****************************************

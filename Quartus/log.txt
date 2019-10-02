@@ -1,0 +1,33 @@
+nohup: ignoring input
+All input files will be grouped into one by __all_sources.cl
+aoc: Environment checks are completed successfully.
+aoc: Cached files in /var/tmp/aocl/lma792 may be used to reduce compilation time
+You are now compiling the full flow!!
+aoc: Selected target board c5p
+aoc: Running OpenCL parser....
+aoc: OpenCL parser completed successfully.
+aoc: Optimizing and doing static analysis of code...
+aoc: Linking with IP library ...
+Checking if memory usage is larger than 100%
+
+!===========================================================================
+! The report below may be inaccurate. A more comprehensive           
+! resource usage report can be found at FPGANetSt/reports/report.html    
+!===========================================================================
+
++--------------------------------------------------------------------+
+; Estimated Resource Usage Summary                                   ;
++----------------------------------------+---------------------------+
+; Resource                               + Usage                     ;
++----------------------------------------+---------------------------+
+; Logic utilization                      ;   48%                     ;
+; ALUTs                                  ;   32%                     ;
+; Dedicated logic registers              ;   19%                     ;
+; Memory blocks                          ;   32%                     ;
+; DSP blocks                             ;    0%                     ;
++----------------------------------------+---------------------------;
+aoc: First stage compilation completed successfully.
+Compiling for FPGA. This process may take a long time, please be patient.
+aoc: Hardware generation completed successfully.
+3695.54user 37.65system 35:39.72elapsed 174%CPU (0avgtext+0avgdata 5706416maxresident)k
+1165872inputs+5433984outputs (2336major+16613723minor)pagefaults 0swaps

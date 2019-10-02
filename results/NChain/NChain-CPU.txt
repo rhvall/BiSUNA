@@ -1,0 +1,941 @@
+Config file: BiSUNAConf.ini
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Generation: 0
+Best in generation: 0, Fitness: 4108.000000
+----------------------------------------
+Generation: 1
+Best in generation: 1, Fitness: 4506.000000
+----------------------------------------
+Generation: 2
+Best in generation: 2, Fitness: 4418.000000
+----------------------------------------
+Generation: 3
+Best in generation: 3, Fitness: 4230.000000
+----------------------------------------
+Generation: 4
+Best in generation: 4, Fitness: 4190.000000
+----------------------------------------
+Generation: 5
+Best in generation: 5, Fitness: 4374.000000
+----------------------------------------
+Generation: 6
+Best in generation: 6, Fitness: 4628.000000
+----------------------------------------
+Generation: 7
+Best in generation: 7, Fitness: 4426.000000
+----------------------------------------
+Generation: 8
+Best in generation: 8, Fitness: 4322.000000
+----------------------------------------
+Generation: 9
+Best in generation: 9, Fitness: 4444.000000
+----------------------------------------
+Generation: 10
+Best in generation: 10, Fitness: 4230.000000
+----------------------------------------
+Generation: 11
+Best in generation: 11, Fitness: 4250.000000
+----------------------------------------
+Generation: 12
+Best in generation: 12, Fitness: 4184.000000
+----------------------------------------
+Generation: 13
+Best in generation: 13, Fitness: 4676.000000
+----------------------------------------
+Generation: 14
+Best in generation: 14, Fitness: 4396.000000
+----------------------------------------
+Generation: 15
+Best in generation: 15, Fitness: 4204.000000
+----------------------------------------
+Generation: 16
+Best in generation: 16, Fitness: 4302.000000
+----------------------------------------
+Generation: 17
+Best in generation: 17, Fitness: 4180.000000
+----------------------------------------
+Generation: 18
+Best in generation: 18, Fitness: 4348.000000
+----------------------------------------
+Generation: 19
+Best in generation: 19, Fitness: 4210.000000
+----------------------------------------
+Generation: 20
+Best in generation: 20, Fitness: 4350.000000
+----------------------------------------
+Generation: 21
+Best in generation: 21, Fitness: 4516.000000
+----------------------------------------
+Generation: 22
+Best in generation: 22, Fitness: 4588.000000
+----------------------------------------
+Generation: 23
+Best in generation: 23, Fitness: 4488.000000
+----------------------------------------
+Generation: 24
+Best in generation: 24, Fitness: 4300.000000
+----------------------------------------
+Generation: 25
+Best in generation: 25, Fitness: 4354.000000
+----------------------------------------
+Generation: 26
+Best in generation: 26, Fitness: 4280.000000
+----------------------------------------
+Generation: 27
+Best in generation: 27, Fitness: 4480.000000
+----------------------------------------
+Generation: 28
+Best in generation: 28, Fitness: 4360.000000
+----------------------------------------
+Generation: 29
+Best in generation: 29, Fitness: 4320.000000
+----------------------------------------
+Generation: 30
+Best in generation: 30, Fitness: 4304.000000
+----------------------------------------
+Generation: 31
+Best in generation: 31, Fitness: 4554.000000
+----------------------------------------
+Generation: 32
+Best in generation: 32, Fitness: 4260.000000
+----------------------------------------
+Generation: 33
+Best in generation: 33, Fitness: 4318.000000
+----------------------------------------
+Generation: 34
+Best in generation: 34, Fitness: 4274.000000
+----------------------------------------
+Generation: 35
+Best in generation: 35, Fitness: 4266.000000
+----------------------------------------
+Generation: 36
+Best in generation: 36, Fitness: 4548.000000
+----------------------------------------
+Generation: 37
+Best in generation: 37, Fitness: 4254.000000
+----------------------------------------
+Generation: 38
+Best in generation: 38, Fitness: 4442.000000
+----------------------------------------
+Generation: 39
+Best in generation: 39, Fitness: 4250.000000
+----------------------------------------
+Generation: 40
+Best in generation: 40, Fitness: 4294.000000
+----------------------------------------
+Generation: 41
+Best in generation: 41, Fitness: 4444.000000
+----------------------------------------
+Generation: 42
+Best in generation: 42, Fitness: 4488.000000
+----------------------------------------
+Generation: 43
+Best in generation: 43, Fitness: 4692.000000
+----------------------------------------
+Generation: 44
+Best in generation: 44, Fitness: 4400.000000
+----------------------------------------
+Generation: 45
+Best in generation: 45, Fitness: 4336.000000
+----------------------------------------
+Generation: 46
+Best in generation: 46, Fitness: 4284.000000
+----------------------------------------
+Generation: 47
+Best in generation: 47, Fitness: 4324.000000
+----------------------------------------
+Generation: 48
+Best in generation: 48, Fitness: 4320.000000
+----------------------------------------
+Generation: 49
+Best in generation: 49, Fitness: 4378.000000
+----------------------------------------
+Generation: 50
+Best in generation: 50, Fitness: 4406.000000
+----------------------------------------
+Generation: 51
+Best in generation: 51, Fitness: 4158.000000
+----------------------------------------
+Generation: 52
+Best in generation: 52, Fitness: 4154.000000
+----------------------------------------
+Generation: 53
+Best in generation: 53, Fitness: 4402.000000
+----------------------------------------
+Generation: 54
+Best in generation: 54, Fitness: 4260.000000
+----------------------------------------
+Generation: 55
+Best in generation: 55, Fitness: 4460.000000
+----------------------------------------
+Generation: 56
+Best in generation: 56, Fitness: 4262.000000
+----------------------------------------
+Generation: 57
+Best in generation: 57, Fitness: 4200.000000
+----------------------------------------
+Generation: 58
+Best in generation: 58, Fitness: 4438.000000
+----------------------------------------
+Generation: 59
+Best in generation: 59, Fitness: 4444.000000
+----------------------------------------
+Generation: 60
+Best in generation: 60, Fitness: 4262.000000
+----------------------------------------
+Generation: 61
+Best in generation: 61, Fitness: 4250.000000
+----------------------------------------
+Generation: 62
+Best in generation: 62, Fitness: 4388.000000
+----------------------------------------
+Generation: 63
+Best in generation: 63, Fitness: 4318.000000
+----------------------------------------
+Generation: 64
+Best in generation: 64, Fitness: 4226.000000
+----------------------------------------
+Generation: 65
+Best in generation: 65, Fitness: 4284.000000
+----------------------------------------
+Generation: 66
+Best in generation: 66, Fitness: 4558.000000
+----------------------------------------
+Generation: 67
+Best in generation: 67, Fitness: 4286.000000
+----------------------------------------
+Generation: 68
+Best in generation: 68, Fitness: 4414.000000
+----------------------------------------
+Generation: 69
+Best in generation: 69, Fitness: 4306.000000
+----------------------------------------
+Generation: 70
+Best in generation: 70, Fitness: 4216.000000
+----------------------------------------
+Generation: 71
+Best in generation: 71, Fitness: 4422.000000
+----------------------------------------
+Generation: 72
+Best in generation: 72, Fitness: 4666.000000
+----------------------------------------
+Generation: 73
+Best in generation: 73, Fitness: 4476.000000
+----------------------------------------
+Generation: 74
+Best in generation: 74, Fitness: 4450.000000
+----------------------------------------
+Generation: 75
+Best in generation: 75, Fitness: 4460.000000
+----------------------------------------
+Generation: 76
+Best in generation: 76, Fitness: 4436.000000
+----------------------------------------
+Generation: 77
+Best in generation: 77, Fitness: 4436.000000
+----------------------------------------
+Generation: 78
+Best in generation: 78, Fitness: 4296.000000
+----------------------------------------
+Generation: 79
+Best in generation: 79, Fitness: 4366.000000
+----------------------------------------
+Generation: 80
+Best in generation: 80, Fitness: 4144.000000
+----------------------------------------
+Generation: 81
+Best in generation: 81, Fitness: 4406.000000
+----------------------------------------
+Generation: 82
+Best in generation: 82, Fitness: 4188.000000
+----------------------------------------
+Generation: 83
+Best in generation: 83, Fitness: 4406.000000
+----------------------------------------
+Generation: 84
+Best in generation: 84, Fitness: 4222.000000
+----------------------------------------
+Generation: 85
+Best in generation: 85, Fitness: 4626.000000
+----------------------------------------
+Generation: 86
+Best in generation: 86, Fitness: 4644.000000
+----------------------------------------
+Generation: 87
+Best in generation: 87, Fitness: 4388.000000
+----------------------------------------
+Generation: 88
+Best in generation: 88, Fitness: 4412.000000
+----------------------------------------
+Generation: 89
+Best in generation: 89, Fitness: 4398.000000
+----------------------------------------
+Generation: 90
+Best in generation: 90, Fitness: 4170.000000
+----------------------------------------
+Generation: 91
+Best in generation: 91, Fitness: 4140.000000
+----------------------------------------
+Generation: 92
+Best in generation: 92, Fitness: 4348.000000
+----------------------------------------
+Generation: 93
+Best in generation: 93, Fitness: 4472.000000
+----------------------------------------
+Generation: 94
+Best in generation: 94, Fitness: 4238.000000
+----------------------------------------
+Generation: 95
+Best in generation: 95, Fitness: 4524.000000
+----------------------------------------
+Generation: 96
+Best in generation: 96, Fitness: 4572.000000
+----------------------------------------
+Generation: 97
+Best in generation: 97, Fitness: 4500.000000
+----------------------------------------
+Generation: 98
+Best in generation: 98, Fitness: 4428.000000
+----------------------------------------
+Generation: 99
+Best in generation: 99, Fitness: 4248.000000
+----------------------------------------
+TimeDiff: 3188 secs
+
+****************************************
+****************************************
+****************************************
+
+Last best score: 0.000000
+Config file: BiSUNAConfProf.ini
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+Environment: NChain-v0
+ ----------------------------------
+  CL_DEVICE_NAME:					Intel(R) Gen9 HD Graphics NEO
+  CL_DEVICE_VERSION:				OpenCL 2.1 NEO
+  CL_DEVICE_MAX_COMPUTE_UNITS:		24
+  CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS:3
+  CL_DEVICE_MAX_WORK_ITEM_SIZES:	256 / 256 / 256
+  CL_DEVICE_MAX_WORK_GROUP_SIZE:	256
+  CL_DEVICE_MAX_MEM_ALLOC_SIZE:		3069 MByte
+  CL_DEVICE_GLOBAL_MEM_SIZE:		6139 MByte
+  CL_DEVICE_LOCAL_MEM_SIZE:			64 KByte
+  CL_DEVICE_PROFILING_TIMER_RESOLUTION:	83 ns
+ ----------------------------------
+ ----------------------------------
+  CL_DEVICE_NAME:					Intel(R) Core(TM) i5-7600 CPU @ 3.50GHz
+  CL_DEVICE_VERSION:				OpenCL 2.1 (Build 0)
+  CL_DEVICE_MAX_COMPUTE_UNITS:		4
+  CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS:3
+  CL_DEVICE_MAX_WORK_ITEM_SIZES:	8192 / 8192 / 8192
+  CL_DEVICE_MAX_WORK_GROUP_SIZE:	8192
+  CL_DEVICE_MAX_MEM_ALLOC_SIZE:		1918 MByte
+  CL_DEVICE_GLOBAL_MEM_SIZE:		7674 MByte
+  CL_DEVICE_LOCAL_MEM_SIZE:			32 KByte
+  CL_DEVICE_PROFILING_TIMER_RESOLUTION:	1 ns
+ ----------------------------------
+ ----------------------------------
+  CL_KERNEL_WORK_GROUP_SIZE:		8192
+  CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE:128
+  CL_KERNEL_LOCAL_MEM_SIZE:			0
+  CL_KERNEL_PRIVATE_MEM_SIZE:		256
+ ----------------------------------
+Generation: 0
+Best in generation: 0, Fitness: 3916.000000
+Counter 1000, TaskSum: 53358987.0 (53359.0), OutSum: 3338660.0 (3338.7)
+----------------------------------------
+Generation: 1
+Best in generation: 1, Fitness: 4268.000000
+Counter 1000, TaskSum: 57772059.0 (57772.1), OutSum: 3048633.0 (3048.6)
+----------------------------------------
+Generation: 2
+Best in generation: 2, Fitness: 4368.000000
+Counter 1000, TaskSum: 58961022.0 (58961.0), OutSum: 2360467.0 (2360.5)
+----------------------------------------
+Generation: 3
+Best in generation: 3, Fitness: 4180.000000
+Counter 1000, TaskSum: 71835021.0 (71835.0), OutSum: 2878462.0 (2878.5)
+----------------------------------------
+Generation: 4
+Best in generation: 4, Fitness: 4420.000000
+Counter 1000, TaskSum: 59669606.0 (59669.6), OutSum: 2449682.0 (2449.7)
+----------------------------------------
+Generation: 5
+Best in generation: 5, Fitness: 4388.000000
+Counter 1000, TaskSum: 68095887.0 (68095.9), OutSum: 2321108.0 (2321.1)
+----------------------------------------
+Generation: 6
+Best in generation: 6, Fitness: 4308.000000
+Counter 1000, TaskSum: 63918200.0 (63918.2), OutSum: 2531955.0 (2532.0)
+----------------------------------------
+Generation: 7
+Best in generation: 7, Fitness: 4206.000000
+Counter 1000, TaskSum: 65584528.0 (65584.5), OutSum: 2764173.0 (2764.2)
+----------------------------------------
+Generation: 8
+Best in generation: 8, Fitness: 4514.000000
+Counter 1000, TaskSum: 66260146.0 (66260.1), OutSum: 2882241.0 (2882.2)
+----------------------------------------
+Generation: 9
+Best in generation: 9, Fitness: 4334.000000
+Counter 1000, TaskSum: 59095410.0 (59095.4), OutSum: 2757437.0 (2757.4)
+----------------------------------------
+Generation: 10
+Best in generation: 10, Fitness: 4608.000000
+Counter 1000, TaskSum: 63039921.0 (63039.9), OutSum: 2771272.0 (2771.3)
+----------------------------------------
+Generation: 11
+Best in generation: 11, Fitness: 4240.000000
+Counter 1000, TaskSum: 61292772.0 (61292.8), OutSum: 2658899.0 (2658.9)
+----------------------------------------
+Generation: 12
+Best in generation: 12, Fitness: 4284.000000
+Counter 1000, TaskSum: 54392366.0 (54392.4), OutSum: 3018617.0 (3018.6)
+----------------------------------------
+Generation: 13
+Best in generation: 13, Fitness: 4436.000000
+Counter 1000, TaskSum: 62928070.0 (62928.1), OutSum: 2911418.0 (2911.4)
+----------------------------------------
+Generation: 14
+Best in generation: 14, Fitness: 4330.000000
+Counter 1000, TaskSum: 65987775.0 (65987.8), OutSum: 2408158.0 (2408.2)
+----------------------------------------
+Generation: 15
+Best in generation: 15, Fitness: 4378.000000
+Counter 1000, TaskSum: 59907947.0 (59907.9), OutSum: 2651352.0 (2651.4)
+----------------------------------------
+Generation: 16
+Best in generation: 16, Fitness: 4212.000000
+Counter 1000, TaskSum: 67901706.0 (67901.7), OutSum: 2292477.0 (2292.5)
+----------------------------------------
+Generation: 17
+Best in generation: 17, Fitness: 4356.000000
+Counter 1000, TaskSum: 59149801.0 (59149.8), OutSum: 1840064.0 (1840.1)
+----------------------------------------
+Generation: 18
+Best in generation: 18, Fitness: 4274.000000
+Counter 1000, TaskSum: 51124394.0 (51124.4), OutSum: 2203943.0 (2203.9)
+----------------------------------------
+Generation: 19
+Best in generation: 19, Fitness: 4664.000000
+Counter 1000, TaskSum: 57976375.0 (57976.4), OutSum: 3359905.0 (3359.9)
+----------------------------------------
+Generation: 20
+Best in generation: 20, Fitness: 4530.000000
+Counter 1000, TaskSum: 58678377.0 (58678.4), OutSum: 2542855.0 (2542.9)
+----------------------------------------
+Generation: 21
+Best in generation: 21, Fitness: 4316.000000
+Counter 1000, TaskSum: 57140689.0 (57140.7), OutSum: 2497108.0 (2497.1)
+----------------------------------------
+Generation: 22
+Best in generation: 22, Fitness: 4430.000000
+Counter 1000, TaskSum: 56227028.0 (56227.0), OutSum: 2965210.0 (2965.2)
+----------------------------------------
+Generation: 23
+Best in generation: 23, Fitness: 4392.000000
+Counter 1000, TaskSum: 57374412.0 (57374.4), OutSum: 2335503.0 (2335.5)
+----------------------------------------
+Generation: 24
+Best in generation: 24, Fitness: 4274.000000
+Counter 1000, TaskSum: 57768047.0 (57768.0), OutSum: 3188325.0 (3188.3)
+----------------------------------------
+Generation: 25
+Best in generation: 25, Fitness: 4294.000000
+Counter 1000, TaskSum: 58389365.0 (58389.4), OutSum: 2564741.0 (2564.7)
+----------------------------------------
+Generation: 26
+Best in generation: 26, Fitness: 4516.000000
+Counter 1000, TaskSum: 55231426.0 (55231.4), OutSum: 2547385.0 (2547.4)
+----------------------------------------
+Generation: 27
+Best in generation: 27, Fitness: 4178.000000
+Counter 1000, TaskSum: 54056748.0 (54056.7), OutSum: 2650784.0 (2650.8)
+----------------------------------------
+Generation: 28
+Best in generation: 28, Fitness: 4512.000000
+Counter 1000, TaskSum: 57152026.0 (57152.0), OutSum: 2334756.0 (2334.8)
+----------------------------------------
+Generation: 29
+Best in generation: 29, Fitness: 4256.000000
+Counter 1000, TaskSum: 57357938.0 (57357.9), OutSum: 1996952.0 (1997.0)
+----------------------------------------
+Generation: 30
+Best in generation: 30, Fitness: 4604.000000
+Counter 1000, TaskSum: 61891738.0 (61891.7), OutSum: 3922925.0 (3922.9)
+----------------------------------------
+Generation: 31
+Best in generation: 31, Fitness: 4214.000000
+Counter 1000, TaskSum: 63744326.0 (63744.3), OutSum: 3546675.0 (3546.7)
+----------------------------------------
+Generation: 32
+Best in generation: 32, Fitness: 4524.000000
+Counter 1000, TaskSum: 68003508.0 (68003.5), OutSum: 3215502.0 (3215.5)
+----------------------------------------
+Generation: 33
+Best in generation: 33, Fitness: 4406.000000
+Counter 1000, TaskSum: 67459258.0 (67459.3), OutSum: 2093194.0 (2093.2)
+----------------------------------------
+Generation: 34
+Best in generation: 34, Fitness: 4632.000000
+Counter 1000, TaskSum: 65949461.0 (65949.5), OutSum: 2529525.0 (2529.5)
+----------------------------------------
+Generation: 35
+Best in generation: 35, Fitness: 4368.000000
+Counter 1000, TaskSum: 64283367.0 (64283.4), OutSum: 1765041.0 (1765.0)
+----------------------------------------
+Generation: 36
+Best in generation: 36, Fitness: 4576.000000
+Counter 1000, TaskSum: 65832912.0 (65832.9), OutSum: 2997668.0 (2997.7)
+----------------------------------------
+Generation: 37
+Best in generation: 37, Fitness: 4322.000000
+Counter 1000, TaskSum: 68786023.0 (68786.0), OutSum: 2250301.0 (2250.3)
+----------------------------------------
+Generation: 38
+Best in generation: 38, Fitness: 4368.000000
+Counter 1000, TaskSum: 69768597.0 (69768.6), OutSum: 3275248.0 (3275.2)
+----------------------------------------
+Generation: 39
+Best in generation: 39, Fitness: 4590.000000
+Counter 1000, TaskSum: 71314546.0 (71314.5), OutSum: 2958737.0 (2958.7)
+----------------------------------------
+Generation: 40
+Best in generation: 40, Fitness: 4226.000000
+Counter 1000, TaskSum: 70792578.0 (70792.6), OutSum: 3380424.0 (3380.4)
+----------------------------------------
+Generation: 41
+Best in generation: 41, Fitness: 4310.000000
+Counter 1000, TaskSum: 68249764.0 (68249.8), OutSum: 2535442.0 (2535.4)
+----------------------------------------
+Generation: 42
+Best in generation: 42, Fitness: 4474.000000
+Counter 1000, TaskSum: 67790297.0 (67790.3), OutSum: 2498769.0 (2498.8)
+----------------------------------------
+Generation: 43
+Best in generation: 43, Fitness: 4292.000000
+Counter 1000, TaskSum: 68883935.0 (68883.9), OutSum: 3027381.0 (3027.4)
+----------------------------------------
+Generation: 44
+Best in generation: 44, Fitness: 4314.000000
+Counter 1000, TaskSum: 69461362.0 (69461.4), OutSum: 2843637.0 (2843.6)
+----------------------------------------
+Generation: 45
+Best in generation: 45, Fitness: 4668.000000
+Counter 1000, TaskSum: 68587962.0 (68588.0), OutSum: 2846510.0 (2846.5)
+----------------------------------------
+Generation: 46
+Best in generation: 46, Fitness: 4158.000000
+Counter 1000, TaskSum: 71441802.0 (71441.8), OutSum: 2769356.0 (2769.4)
+----------------------------------------
+Generation: 47
+Best in generation: 47, Fitness: 4280.000000
+Counter 1000, TaskSum: 79161091.0 (79161.1), OutSum: 2865480.0 (2865.5)
+----------------------------------------
+Generation: 48
+Best in generation: 48, Fitness: 4516.000000
+Counter 1000, TaskSum: 73576571.0 (73576.6), OutSum: 2566960.0 (2567.0)
+----------------------------------------
+Generation: 49
+Best in generation: 49, Fitness: 4346.000000
+Counter 1000, TaskSum: 73083817.0 (73083.8), OutSum: 3183600.0 (3183.6)
+----------------------------------------
+Generation: 50
+Best in generation: 50, Fitness: 4460.000000
+Counter 1000, TaskSum: 75974496.0 (75974.5), OutSum: 2201641.0 (2201.6)
+----------------------------------------
+Generation: 51
+Best in generation: 51, Fitness: 4402.000000
+Counter 1000, TaskSum: 78487303.0 (78487.3), OutSum: 3229891.0 (3229.9)
+----------------------------------------
+Generation: 52
+Best in generation: 52, Fitness: 4344.000000
+Counter 1000, TaskSum: 76056998.0 (76057.0), OutSum: 2756442.0 (2756.4)
+----------------------------------------
+Generation: 53
+Best in generation: 53, Fitness: 4464.000000
+Counter 1000, TaskSum: 75249941.0 (75249.9), OutSum: 2378729.0 (2378.7)
+----------------------------------------
+Generation: 54
+Best in generation: 54, Fitness: 4494.000000
+Counter 1000, TaskSum: 74227371.0 (74227.4), OutSum: 2373412.0 (2373.4)
+----------------------------------------
+Generation: 55
+Best in generation: 55, Fitness: 4396.000000
+Counter 1000, TaskSum: 72307596.0 (72307.6), OutSum: 2257596.0 (2257.6)
+----------------------------------------
+Generation: 56
+Best in generation: 56, Fitness: 4070.000000
+Counter 1000, TaskSum: 74620514.0 (74620.5), OutSum: 1944130.0 (1944.1)
+----------------------------------------
+Generation: 57
+Best in generation: 57, Fitness: 4322.000000
+Counter 1000, TaskSum: 83829931.0 (83829.9), OutSum: 3233169.0 (3233.2)
+----------------------------------------
+Generation: 58
+Best in generation: 58, Fitness: 4224.000000
+Counter 1000, TaskSum: 79323869.0 (79323.9), OutSum: 2219303.0 (2219.3)
+----------------------------------------
+Generation: 59
+Best in generation: 59, Fitness: 4274.000000
+Counter 1000, TaskSum: 70143751.0 (70143.8), OutSum: 3028273.0 (3028.3)
+----------------------------------------
+Generation: 60
+Best in generation: 60, Fitness: 4264.000000
+Counter 1000, TaskSum: 72167922.0 (72167.9), OutSum: 2885979.0 (2886.0)
+----------------------------------------
+Generation: 61
+Best in generation: 61, Fitness: 4318.000000
+Counter 1000, TaskSum: 75106495.0 (75106.5), OutSum: 2515190.0 (2515.2)
+----------------------------------------
+Generation: 62
+Best in generation: 62, Fitness: 4208.000000
+Counter 1000, TaskSum: 69336699.0 (69336.7), OutSum: 3369465.0 (3369.5)
+----------------------------------------
+Generation: 63
+Best in generation: 63, Fitness: 4272.000000
+Counter 1000, TaskSum: 74498182.0 (74498.2), OutSum: 3036321.0 (3036.3)
+----------------------------------------
+Generation: 64
+Best in generation: 64, Fitness: 4484.000000
+Counter 1000, TaskSum: 77964043.0 (77964.0), OutSum: 3242004.0 (3242.0)
+----------------------------------------
+Generation: 65
+Best in generation: 65, Fitness: 4604.000000
+Counter 1000, TaskSum: 76449115.0 (76449.1), OutSum: 2500969.0 (2501.0)
+----------------------------------------
+Generation: 66
+Best in generation: 66, Fitness: 4254.000000
+Counter 1000, TaskSum: 74471557.0 (74471.6), OutSum: 2070915.0 (2070.9)
+----------------------------------------
+Generation: 67
+Best in generation: 67, Fitness: 4108.000000
+Counter 1000, TaskSum: 76816357.0 (76816.4), OutSum: 2443578.0 (2443.6)
+----------------------------------------
+Generation: 68
+Best in generation: 68, Fitness: 4430.000000
+Counter 1000, TaskSum: 80311140.0 (80311.1), OutSum: 2448206.0 (2448.2)
+----------------------------------------
+Generation: 69
+Best in generation: 69, Fitness: 4256.000000
+Counter 1000, TaskSum: 82291664.0 (82291.7), OutSum: 3121703.0 (3121.7)
+----------------------------------------
+Generation: 70
+Best in generation: 70, Fitness: 4322.000000
+Counter 1000, TaskSum: 83784444.0 (83784.4), OutSum: 2234286.0 (2234.3)
+----------------------------------------
+Generation: 71
+Best in generation: 71, Fitness: 4522.000000
+Counter 1000, TaskSum: 82347572.0 (82347.6), OutSum: 2465224.0 (2465.2)
+----------------------------------------
+Generation: 72
+Best in generation: 72, Fitness: 4582.000000
+Counter 1000, TaskSum: 89520462.0 (89520.5), OutSum: 2222337.0 (2222.3)
+----------------------------------------
+Generation: 73
+Best in generation: 73, Fitness: 4526.000000
+Counter 1000, TaskSum: 84410230.0 (84410.2), OutSum: 2668427.0 (2668.4)
+----------------------------------------
+Generation: 74
+Best in generation: 74, Fitness: 4124.000000
+Counter 1000, TaskSum: 86138394.0 (86138.4), OutSum: 2442824.0 (2442.8)
+----------------------------------------
+Generation: 75
+Best in generation: 75, Fitness: 4258.000000
+Counter 1000, TaskSum: 87868433.0 (87868.4), OutSum: 2422312.0 (2422.3)
+----------------------------------------
+Generation: 76
+Best in generation: 76, Fitness: 4284.000000
+Counter 1000, TaskSum: 92211659.0 (92211.7), OutSum: 2844389.0 (2844.4)
+----------------------------------------
+Generation: 77
+Best in generation: 77, Fitness: 4500.000000
+Counter 1000, TaskSum: 89114700.0 (89114.7), OutSum: 2874668.0 (2874.7)
+----------------------------------------
+Generation: 78
+Best in generation: 78, Fitness: 4322.000000
+Counter 1000, TaskSum: 90343580.0 (90343.6), OutSum: 2428486.0 (2428.5)
+----------------------------------------
+Generation: 79
+Best in generation: 79, Fitness: 4296.000000
+Counter 1000, TaskSum: 88778480.0 (88778.5), OutSum: 2367475.0 (2367.5)
+----------------------------------------
+Generation: 80
+Best in generation: 80, Fitness: 4266.000000
+Counter 1000, TaskSum: 83487268.0 (83487.3), OutSum: 2643640.0 (2643.6)
+----------------------------------------
+Generation: 81
+Best in generation: 81, Fitness: 4490.000000
+Counter 1000, TaskSum: 87197453.0 (87197.5), OutSum: 2864831.0 (2864.8)
+----------------------------------------
+Generation: 82
+Best in generation: 82, Fitness: 4356.000000
+Counter 1000, TaskSum: 84589301.0 (84589.3), OutSum: 3052102.0 (3052.1)
+----------------------------------------
+Generation: 83
+Best in generation: 83, Fitness: 4282.000000
+Counter 1000, TaskSum: 90412721.0 (90412.7), OutSum: 3141231.0 (3141.2)
+----------------------------------------
+Generation: 84
+Best in generation: 84, Fitness: 4446.000000
+Counter 1000, TaskSum: 97697175.0 (97697.2), OutSum: 2764706.0 (2764.7)
+----------------------------------------
+Generation: 85
+Best in generation: 85, Fitness: 4390.000000
+Counter 1000, TaskSum: 100349630.0 (100349.6), OutSum: 2780024.0 (2780.0)
+----------------------------------------
+Generation: 86
+Best in generation: 86, Fitness: 4182.000000
+Counter 1000, TaskSum: 93119537.0 (93119.5), OutSum: 3174578.0 (3174.6)
+----------------------------------------
+Generation: 87
+Best in generation: 87, Fitness: 4280.000000
+Counter 1000, TaskSum: 91118802.0 (91118.8), OutSum: 3381413.0 (3381.4)
+----------------------------------------
+Generation: 88
+Best in generation: 88, Fitness: 4340.000000
+Counter 1000, TaskSum: 87438127.0 (87438.1), OutSum: 2586986.0 (2587.0)
+----------------------------------------
+Generation: 89
+Best in generation: 89, Fitness: 4292.000000
+Counter 1000, TaskSum: 87493077.0 (87493.1), OutSum: 1973652.0 (1973.7)
+----------------------------------------
+Generation: 90
+Best in generation: 90, Fitness: 4652.000000
+Counter 1000, TaskSum: 91889633.0 (91889.6), OutSum: 2724992.0 (2725.0)
+----------------------------------------
+Generation: 91
+Best in generation: 91, Fitness: 4372.000000
+Counter 1000, TaskSum: 99655633.0 (99655.6), OutSum: 2708264.0 (2708.3)
+----------------------------------------
+Generation: 92
+Best in generation: 92, Fitness: 4270.000000
+Counter 1000, TaskSum: 91567414.0 (91567.4), OutSum: 2964300.0 (2964.3)
+----------------------------------------
+Generation: 93
+Best in generation: 93, Fitness: 4326.000000
+Counter 1000, TaskSum: 95336959.0 (95337.0), OutSum: 2026322.0 (2026.3)
+----------------------------------------
+Generation: 94
+Best in generation: 94, Fitness: 4534.000000
+Counter 1000, TaskSum: 104324760.0 (104324.8), OutSum: 2282955.0 (2283.0)
+----------------------------------------
+Generation: 95
+Best in generation: 95, Fitness: 4346.000000
+Counter 1000, TaskSum: 102029823.0 (102029.8), OutSum: 2966815.0 (2966.8)
+----------------------------------------
+Generation: 96
+Best in generation: 96, Fitness: 4264.000000
+Counter 1000, TaskSum: 92449369.0 (92449.4), OutSum: 2182613.0 (2182.6)
+----------------------------------------
+Generation: 97
+Best in generation: 97, Fitness: 4382.000000
+Counter 1000, TaskSum: 93160372.0 (93160.4), OutSum: 2038027.0 (2038.0)
+----------------------------------------
+Generation: 98
+Best in generation: 98, Fitness: 4446.000000
+Counter 1000, TaskSum: 89275453.0 (89275.5), OutSum: 3053485.0 (3053.5)
+----------------------------------------
+Generation: 99
+Best in generation: 99, Fitness: 4436.000000
+Counter 1000, TaskSum: 91163101.0 (91163.1), OutSum: 2296633.0 (2296.6)
+----------------------------------------
+TimeDiff: 3352 secs
+Last best score: 0.000000
