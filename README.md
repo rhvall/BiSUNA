@@ -68,16 +68,16 @@ In case, running multiple gym environments with different sockets each is quite 
 (RunGymEnvs.sh)[scripts/RunGymEnvs.sh] to do something like this:
 
 ```
-Terminal 1 - scripts/RunGymEnvs.sh RoboschoolHalfCheetah-v1 100
+Terminal 1 - scripts/RunGymEnvs.sh MountainCar-v0 100
 Terminal 2 - ./bisuna resources/BiSUNAConf.ini
 
 OUTPUT:
 
 Config file: BiSUNAConf.ini
-Environment: RoboschoolHalfCheetah-v1
-Environment: RoboschoolHalfCheetah-v1
-Environment: RoboschoolHalfCheetah-v1
-Environment: RoboschoolHalfCheetah-v1
+Environment: MountainCar-v0-v1
+Environment: MountainCar-v0-v1
+Environment: MountainCar-v0-v1
+Environment: MountainCar-v0-v1
 Generation: 0
 From all threads, best was: 25.506468
 ----------------------------------------
