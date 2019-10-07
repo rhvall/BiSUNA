@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<board version="15.0" name="c5p">
+
+  <compile project="top" revision="top" qsys_file="system.qsys" generic_kernel="1">
+    <generate cmd="qsys-generate --synthesis=VERILOG system.qsys"/>
+    <synthesize cmd="quartus_sh --flow compile top -c top"/>
+    <auto_migrate platform_type="s5_net" >
+      <include fixes=""/>
+      <exclude fixes=""/>
+    </auto_migrate>
+  </compile>
+
+  <device device_model="5cgxfc9d6f27c7_dm.xml">
+    <used_resources>
+      <alms num="12128"/>
+      <ffs num="20822"/>
+      <dsps num="0"/>
+      <rams num="143"/>
+    </used_resources>
+  </device>
+
+  <!-- DDR3-800 -->
+  <!-- global_mem name="DDR" max_bandwidth="6400" interleaved_bytes="1024" config_addr="0x018" -->
+  <global_mem name="DDR" max_bandwidth="6400">
+    <interface name="board" port="kernel_mem0" type="slave" width="256" maxburst="16" address="0x00000000" size="0x40000000" latency="240"/>
+    <!-- interface name="board" port="kernel_mem0" type="slave" width="256" maxburst="16" address="0x00000000" size="0x20000000" latency="240"/ -->
+    <!-- interface name="board" port="kernel_mem1" type="slave" width="256" maxburst="16" address="0x20000000" size="0x20000000" latency="240"/ -->
+  </global_mem>
+
+
+  <host>
+    <kernel_config start="0x00000000" size="0x0100000"/>
+  </host>
+  <interfaces>
+    <interface name="board" port="kernel_cra" type="master" width="64" misc="0"/>
+    <interface name="board" port="kernel_irq" type="irq" width="1"/>
+    <interface name="board" port="acl_internal_snoop" type="streamsource" enable="SNOOPENABLE" width="31" clock="board.kernel_clk"/>
+    <kernel_clk_reset clk="board.kernel_clk" clk2x="board.kernel_clk2x" reset="board.kernel_reset"/>
+  </interfaces>
+</board>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element board
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element global_reset
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element kernel_system
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="FIFO" />
+ <parameter name="device" value="5CGXFC9D6F27C7" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="7_H6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="0" />
+ <parameter name="projectName" value="top.qpf" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface name="config_clk" internal="board.config_clk" type="clock" dir="end" />
+ <interface name="cpld_host" internal="board.cpld_host" />
+ <interface name="cpld_host_clock" internal="board.cpld_host_clock" />
+ <interface name="ddr3a" internal="board.ddr3a" type="conduit" dir="end" />
+ <interface name="ddr3a_mem_oct" internal="board.octa" type="conduit" dir="end" />
+ <interface
+   name="ddr3a_pll_ref"
+   internal="board.ddr3a_pll_ref"
+   type="clock"
+   dir="end" />
+ <interface name="ddr3b" internal="board.ddr3b" />
+ <interface name="ddr3b_mem_oct" internal="board.octb" />
+ <interface name="ddr3b_pll_ref" internal="board.ddr3b_pll_ref" />
+ <interface
+   name="global_reset"
+   internal="global_reset.in_reset"
+   type="reset"
+   dir="end" />
+ <interface
+   name="kernel_pll_refclk"
+   internal="board.kernel_pll_refclk"
+   type="clock"
+   dir="end" />
+ <interface name="kernelpll_refclk" internal="board.kernelpll_refclk" />
+ <interface name="pcie" internal="board.pcie_hip_serial" type="conduit" dir="end" />
+ <interface name="pcie_npor" internal="board.pcie_npor" type="conduit" dir="end" />
+ <interface
+   name="pcie_npor_out"
+   internal="board.pcie_npor_out"
+   type="reset"
+   dir="start" />
+ <interface name="pcie_nreset_status" internal="board.pcie_nreset_status" />
+ <interface
+   name="pcie_refclk"
+   internal="board.pcie_refclk"
+   type="clock"
+   dir="end" />
+ <interface name="qdr_oct" internal="board.qdr_oct" />
+ <interface name="qdra" internal="board.qdra" />
+ <interface name="qdrb" internal="board.qdrb" />
+ <interface name="qdrc" internal="board.qdrc" />
+ <interface name="qdrd" internal="board.qdrd" />
+ <interface name="reconfig_from_xcvr" internal="board.reconfig_from_xcvr" />
+ <interface name="reconfig_to_xcvr" internal="board.reconfig_to_xcvr" />
+ <interface name="reset" internal="board.reset" type="reset" dir="end" />
+ <module name="board" kind="board" version="1.0" enabled="1">
+  <parameter name="AUTO_CONFIG_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CONFIG_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_CONFIG_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DDR3A_PLL_REF_CLOCK_DOMAIN" value="2" />
+  <parameter name="AUTO_DDR3A_PLL_REF_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DDR3A_PLL_REF_RESET_DOMAIN" value="2" />
+  <parameter name="AUTO_DEVICE" value="5CGXFC9D6F27C7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7_H6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_KERNEL_CRA_ADDRESS_MAP" value="" />
+  <parameter name="AUTO_KERNEL_CRA_ADDRESS_WIDTH" value="AddressWidth = -1" />
+  <parameter name="AUTO_KERNEL_IRQ_INTERRUPTS_USED" value="0" />
+  <parameter name="AUTO_KERNEL_PLL_REFCLK_CLOCK_DOMAIN" value="4" />
+  <parameter name="AUTO_KERNEL_PLL_REFCLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_KERNEL_PLL_REFCLK_RESET_DOMAIN" value="4" />
+  <parameter name="AUTO_PCIE_REFCLK_CLOCK_DOMAIN" value="6" />
+  <parameter name="AUTO_PCIE_REFCLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_PCIE_REFCLK_RESET_DOMAIN" value="6" />
+  <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_board" />
+ </module>
+ <module
+   name="global_reset"
+   kind="altera_reset_bridge"
+   version="18.1"
+   enabled="1">
+  <parameter name="ACTIVE_LOW_RESET" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="NUM_RESET_OUTPUTS" value="1" />
+  <parameter name="SYNCHRONOUS_EDGES" value="none" />
+  <parameter name="USE_RESET_REQUEST" value="0" />
+ </module>
+ <module name="kernel_system" kind="kernel_system" version="1.0" enabled="1">
+  <parameter name="AUTO_CC_SNOOP_CLK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CC_SNOOP_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CC_SNOOP_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET2X_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET2X_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET2X_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_DEVICE" value="5CGXFC9D6F27C7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6_H6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_KERNEL_MEM0_ADDRESS_MAP" value="" />
+  <parameter name="AUTO_KERNEL_MEM0_ADDRESS_WIDTH" value="AddressWidth = -1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+ </module>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="board.kernel_cra"
+   end="kernel_system.kernel_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="kernel_system.kernel_mem0"
+   end="board.kernel_mem0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="board.acl_internal_snoop"
+   end="kernel_system.cc_snoop" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="board.kernel_clk"
+   end="kernel_system.cc_snoop_clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="board.kernel_clk"
+   end="kernel_system.clock_reset" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="board.kernel_clk2x"
+   end="kernel_system.clock_reset2x" />
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="board.kernel_irq"
+   end="kernel_system.kernel_irq">
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="18.1"
+   start="board.kernel_reset"
+   end="kernel_system.clock_reset_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="global_reset.out_reset"
+   end="board.global_reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="FIFO" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="0" />
+</system>

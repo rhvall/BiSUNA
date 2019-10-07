@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element FPGANetSt_system
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element acl_internal_snoop
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element avs_processFPGA_cra_cra_ring
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element clk_1x
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element clk_2x
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element clk_snoop
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element cra_root
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element kernel_cra
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element kernel_irq
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element reset
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CGXFC3B6F23C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6_H6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="0" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface
+   name="cc_snoop"
+   internal="acl_internal_snoop.in_0"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="cc_snoop_clk"
+   internal="clk_snoop.in_clk"
+   type="clock"
+   dir="end" />
+ <interface name="clock_reset" internal="clk_1x.in_clk" type="clock" dir="end" />
+ <interface name="clock_reset2x" internal="clk_2x.in_clk" type="clock" dir="end" />
+ <interface
+   name="clock_reset_reset"
+   internal="reset.in_reset"
+   type="reset"
+   dir="end" />
+ <interface name="kernel_cra" internal="kernel_cra.s0" type="avalon" dir="end" />
+ <interface
+   name="kernel_irq"
+   internal="kernel_irq.sender0_irq"
+   type="interrupt"
+   dir="end" />
+ <interface
+   name="kernel_mem0"
+   internal="FPGANetSt_system.avm_memgmem0_DDR_port_0_0_rw"
+   type="avalon"
+   dir="start" />
+ <module
+   name="FPGANetSt_system"
+   kind="FPGANetSt_system"
+   version="14.0"
+   enabled="1" />
+ <module
+   name="acl_internal_snoop"
+   kind="altera_avalon_st_adapter"
+   version="18.1"
+   enabled="1">
+  <parameter name="AUTO_DEVICE" value="5CGXFC3B6F23C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
+  <parameter name="inBitsPerSymbol" value="31" />
+  <parameter name="inChannelWidth" value="0" />
+  <parameter name="inDataWidth" value="31" />
+  <parameter name="inErrorDescriptor" value="" />
+  <parameter name="inErrorWidth" value="0" />
+  <parameter name="inMaxChannel" value="0" />
+  <parameter name="inReadyLatency" value="0" />
+  <parameter name="inUseEmptyPort" value="0" />
+  <parameter name="inUsePackets" value="0" />
+  <parameter name="inUseReady" value="1" />
+  <parameter name="inUseValid" value="1" />
+  <parameter name="outChannelWidth" value="0" />
+  <parameter name="outDataWidth" value="31" />
+  <parameter name="outErrorDescriptor" value="" />
+  <parameter name="outErrorWidth" value="0" />
+  <parameter name="outMaxChannel" value="0" />
+  <parameter name="outReadyLatency" value="0" />
+  <parameter name="outUseEmptyPort" value="0" />
+  <parameter name="outUseReady" value="1" />
+  <parameter name="outUseValid" value="1" />
+ </module>
+ <module
+   name="avs_processFPGA_cra_cra_ring"
+   kind="cra_ring_node"
+   version="1.0"
+   enabled="1">
+  <parameter name="ASYNC_RESET" value="1" />
+  <parameter name="CRA_ADDR_W" value="5" />
+  <parameter name="DATA_W" value="64" />
+  <parameter name="ID" value="0" />
+  <parameter name="ID_W" value="0" />
+  <parameter name="RING_ADDR_W" value="5" />
+  <parameter name="SYNCHRONIZE_RESET" value="0" />
+ </module>
+ <module name="clk_1x" kind="altera_clock_bridge" version="18.1" enabled="1">
+  <parameter name="DERIVED_CLOCK_RATE" value="0" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module name="clk_2x" kind="altera_clock_bridge" version="18.1" enabled="1">
+  <parameter name="DERIVED_CLOCK_RATE" value="0" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module
+   name="clk_snoop"
+   kind="altera_clock_bridge"
+   version="18.1"
+   enabled="1">
+  <parameter name="DERIVED_CLOCK_RATE" value="0" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module name="cra_root" kind="cra_ring_root" version="1.0" enabled="1">
+  <parameter name="ADDR_W" value="5" />
+  <parameter name="ASYNC_RESET" value="1" />
+  <parameter name="DATA_W" value="64" />
+  <parameter name="ID_W" value="0" />
+  <parameter name="ROM_ENABLE" value="0" />
+  <parameter name="ROM_EXT_W" value="0" />
+  <parameter name="SYNCHRONIZE_RESET" value="0" />
+ </module>
+ <module
+   name="kernel_cra"
+   kind="altera_avalon_mm_bridge"
+   version="18.1"
+   enabled="1">
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="ADDRESS_WIDTH" value="30" />
+  <parameter name="DATA_WIDTH" value="64" />
+  <parameter name="LINEWRAPBURSTS" value="0" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="MAX_PENDING_RESPONSES" value="1" />
+  <parameter name="PIPELINE_COMMAND" value="0" />
+  <parameter name="PIPELINE_RESPONSE" value="0" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="10" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="0" />
+  <parameter name="USE_RESPONSE" value="0" />
+ </module>
+ <module name="kernel_irq" kind="altera_irq_bridge" version="18.1" enabled="1">
+  <parameter name="AUTO_RECEIVER_IRQ_INTERRUPTS_USED" value="-1" />
+  <parameter name="IRQ_N" value="0" />
+  <parameter name="IRQ_WIDTH" value="1" />
+ </module>
+ <module name="reset" kind="altera_reset_bridge" version="18.1" enabled="1">
+  <parameter name="ACTIVE_LOW_RESET" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="NUM_RESET_OUTPUTS" value="1" />
+  <parameter name="SYNCHRONOUS_EDGES" value="deassert" />
+  <parameter name="USE_RESET_REQUEST" value="0" />
+ </module>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="avs_processFPGA_cra_cra_ring.cra_master"
+   end="FPGANetSt_system.avs_processFPGA_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="kernel_cra.m0"
+   end="cra_root.cra_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="clock" version="18.1" start="clk_1x.out_clk" end="reset.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_1x.out_clk"
+   end="kernel_irq.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_1x.out_clk"
+   end="kernel_cra.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_1x.out_clk"
+   end="cra_root.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_1x.out_clk"
+   end="avs_processFPGA_cra_cra_ring.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_1x.out_clk"
+   end="FPGANetSt_system.clock_reset" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_2x.out_clk"
+   end="FPGANetSt_system.clock_reset2x" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_snoop.out_clk"
+   end="acl_internal_snoop.in_clk_0" />
+ <connection
+   kind="conduit"
+   version="18.1"
+   start="cra_root.ring_out"
+   end="avs_processFPGA_cra_cra_ring.ring_in">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.1"
+   start="avs_processFPGA_cra_cra_ring.ring_out"
+   end="cra_root.ring_in">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="kernel_irq.receiver_irq"
+   end="FPGANetSt_system.kernel_irq">
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="18.1"
+   start="reset.out_reset"
+   end="kernel_irq.clk_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="reset.out_reset"
+   end="FPGANetSt_system.clock_reset_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="reset.out_reset"
+   end="acl_internal_snoop.in_rst_0" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="reset.out_reset"
+   end="kernel_cra.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="reset.out_reset"
+   end="cra_root.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="reset.out_reset"
+   end="avs_processFPGA_cra_cra_ring.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="0" />
+</system>

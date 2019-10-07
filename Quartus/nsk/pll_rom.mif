@@ -1,0 +1,16 @@
+DEPTH=256;
+WIDTH=32;
+ADDRESS_RADIX=DEC;
+DATA_RADIX=DEC;
+CONTENT BEGIN
+0 : 117549;
+1 : 9;
+2 : 1;
+3 : 6777995;
+4 : 4;
+5 : 2;
+6 : 4000;
+7 : 20;
+8 : 2;
+[9..255] : 0 ;
+END;

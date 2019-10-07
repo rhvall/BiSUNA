@@ -1,0 +1,27 @@
+OpenCL Auto Migration Report
+
+To disable auto migration compile with flag: --no-auto-migrate
+
+Alternatively, you can enable/disable individual fixes
+by adding them to the include/exclude field in board_spec.xml.
+
+----------- Platform ---------
+| Board c5p with auto migration type s5_net and 
+| board_spec version 15 has the following properties:
+|   family = STRATIX V
+|   flow = persona
+|   host = PCIe
+|   name = s5_net
+|   pgm = CvP
+|   version = 15
+------------------------------
+
+----------- Fixes To Apply ---------
+| none
+------------------------------------
+
+Post-Compile Automigration Report
+----------- Fixes To Apply ---------
+| none
+------------------------------------
+

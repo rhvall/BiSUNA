@@ -1,0 +1,50 @@
+#This RCF only needs to be used in the first compile.  CVP update compiles should not use this file.
+
+#The first constraint says "make sure that nobody uses a super-spine unless absolutely necessary"
+section weights_list {
+    SPINE_CLOCK:X*Y*S0I5-27 W 100; 
+}
+
+#For clarity, a listing of the super spines.  This matches the constraint in the weights list above.
+section resource_list "SUPER_SPINES" {
+    SPINE_CLOCK:X*Y*S0I5-27;
+}
+
+#This is a list of every possible resource a connection could use to go from any Global clock to any core
+#clock or aclr, not including spines.
+section resource_list "GLOBAL_RESOURCES" {
+    CLKBUFBLOCK_OUTPUT:*;
+    GCLK_CLUSTER_RE:*;
+    CLKBUF_CLUSTER_RE:*;
+    GLOBAL_CLOCK:*;
+    SCLK_TO_ROWCLK_BUF:*;
+    LAB_CLK:*;
+    BLK_CLK_BUF:*;
+    ROWCLKSEL_PREBUF:*;
+    ROWCLKSEL:*;
+    GLOBAL_LOCAL_SEL:*;
+    LAB_INPUT:*;
+#Note:  change this line to M10K_INPUT if using ArriaV/CycloneV parts
+    M20K_INPUT:*;
+    DSP_INPUT:*;
+}
+
+#This is the additional set of resources to get from a clock to an enable or sclr
+section resource_list "LOCAL_RESOURCES" {
+    BLK_CLK_LIM:*;
+    LOCAL_INTERCONNECT:*;
+    BLOCK_INPUT_MUX_PASSTHROUGH:*;
+    BLOCK_INPUT_MUX:*;
+    LEIMSEL:*;
+}
+                    
+#This is a constraint on the kernel clock to indicate that it must use the super spines despite the high
+#weight that we gave to them
+signal_name = system:system_inst|system_board:board|system_board_kernel_clk_gen:kernel_clk_gen|system_board_kernel_clk_gen_kernel_pll:kernel_pll|altera_pll:altera_pll_i|altera_stratixv_pll:stratixv_pll|divclk[0]~CLKENA0 {
+    branch_anywhere;
+    zero_or_more, resource_list "SUPER_SPINES" * ||
+                resource_list "GLOBAL_RESOURCES" * ||
+                resource_list "LOCAL_RESOURCES" *;
+    all_dests;
+
+}

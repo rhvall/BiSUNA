@@ -1,0 +1,1352 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.001
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 1.151
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.365
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 1.405
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.558
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.581
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.342
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'config_clk'
+Slack : 3.594
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 4.592
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.041
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'n/a'
+Slack : 7.371
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'altera_reserved_tck'
+Slack : 8.390
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : -0.027
+TNS   : -0.049
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.082
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.239
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.251
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.253
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.268
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.273
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'altera_reserved_tck'
+Slack : 0.371
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.466
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'config_clk'
+Slack : 0.526
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.157
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'n/a'
+Slack : 16.814
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 1.645
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 4.976
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 6.028
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 8.789
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 10.577
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'config_clk'
+Slack : 13.659
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 20.187
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'altera_reserved_tck'
+Slack : 38.508
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'config_clk'
+Slack : 0.475
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.671
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.679
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.797
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'altera_reserved_tck'
+Slack : 0.813
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.050
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.083
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.230
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|av_xcvr_tx_pll_inst|pll[0].pll.cmu_pll.tx_pll|clkcdr'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.416
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.489
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.519
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll3~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.541
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.618
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 0.657
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[0].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.998
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.998
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[2].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.998
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[3].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.998
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|cpulseout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkpout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 2.807
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 2.820
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.554
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|pclkout'
+Slack : 4.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'alt_cal_av_edge_detect_clk'
+Slack : 4.329
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'pcie_refclk_p'
+Slack : 5.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 6.066
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.487
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'sv_reconfig_pma_testbus_clk_0'
+Slack : 8.572
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'config_clk'
+Slack : 8.687
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'kernel_pll_refclk'
+Slack : 9.731
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'pll_ref_clk'
+Slack : 9.827
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 19.642
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 21.706
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.191
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.890
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.294
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 1.472
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.565
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.609
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.351
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'config_clk'
+Slack : 3.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 4.528
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.325
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'n/a'
+Slack : 7.941
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'altera_reserved_tck'
+Slack : 8.462
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : -0.001
+TNS   : -0.001
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.169
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.240
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.241
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.253
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.255
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.284
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'altera_reserved_tck'
+Slack : 0.345
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.489
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'config_clk'
+Slack : 0.559
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.016
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'n/a'
+Slack : 16.601
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 1.721
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 5.157
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 6.152
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 9.085
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 10.800
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'config_clk'
+Slack : 13.869
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 20.265
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'altera_reserved_tck'
+Slack : 38.675
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'config_clk'
+Slack : 0.455
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.618
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.624
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.743
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'altera_reserved_tck'
+Slack : 0.783
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.976
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.980
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.146
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|av_xcvr_tx_pll_inst|pll[0].pll.cmu_pll.tx_pll|clkcdr'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.416
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.434
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.534
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll3~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.543
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.618
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 0.657
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[0].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.999
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.999
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[2].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.999
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[3].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.999
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|cpulseout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkpout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 2.759
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 2.791
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.533
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|pclkout'
+Slack : 4.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'alt_cal_av_edge_detect_clk'
+Slack : 4.309
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'pcie_refclk_p'
+Slack : 5.000
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 6.040
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.490
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'sv_reconfig_pma_testbus_clk_0'
+Slack : 8.496
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'config_clk'
+Slack : 8.621
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'kernel_pll_refclk'
+Slack : 9.741
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'pll_ref_clk'
+Slack : 9.821
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 19.645
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 21.638
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.992
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.076
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 2.600
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 2.898
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 4.100
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 4.241
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 5.294
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 9.213
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'config_clk'
+Slack : 10.449
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 10.962
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'altera_reserved_tck'
+Slack : 11.201
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'n/a'
+Slack : 12.588
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : -0.031
+TNS   : -0.061
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : -0.014
+TNS   : -0.014
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.101
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.134
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.134
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'altera_reserved_tck'
+Slack : 0.136
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.138
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.156
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'config_clk'
+Slack : 0.162
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'n/a'
+Slack : 13.414
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 4.982
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.023
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 7.040
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 11.261
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 12.786
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'config_clk'
+Slack : 15.761
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 21.214
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'altera_reserved_tck'
+Slack : 39.665
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'config_clk'
+Slack : 0.079
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'altera_reserved_tck'
+Slack : 0.255
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.284
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.287
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.364
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.406
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.519
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.590
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|av_xcvr_tx_pll_inst|pll[0].pll.cmu_pll.tx_pll|clkcdr'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.416
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 0.657
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.775
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.874
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll3~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.892
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.987
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[0].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.996
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.996
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[2].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.996
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[3].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.996
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|cpulseout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkpout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 2.851
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 3.112
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.857
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|pclkout'
+Slack : 4.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'alt_cal_av_edge_detect_clk'
+Slack : 4.642
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'pcie_refclk_p'
+Slack : 5.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 6.372
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.488
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'config_clk'
+Slack : 8.819
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'sv_reconfig_pma_testbus_clk_0'
+Slack : 9.274
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'kernel_pll_refclk'
+Slack : 9.336
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'pll_ref_clk'
+Slack : 9.914
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 19.595
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 22.009
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.013
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.094
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 2.816
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 3.016
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 4.393
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 4.567
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 5.901
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 9.842
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'config_clk'
+Slack : 11.143
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 11.276
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'altera_reserved_tck'
+Slack : 11.379
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'n/a'
+Slack : 13.414
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : -0.037
+TNS   : -0.073
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : -0.001
+TNS   : -0.001
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.095
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'altera_reserved_tck'
+Slack : 0.106
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.120
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.120
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.126
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.142
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'config_clk'
+Slack : 0.147
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.176
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.333
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'n/a'
+Slack : 13.147
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 5.111
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 7.213
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.395
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 11.718
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 12.905
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'config_clk'
+Slack : 16.259
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 21.349
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'altera_reserved_tck'
+Slack : 39.861
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'config_clk'
+Slack : 0.082
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'altera_reserved_tck'
+Slack : 0.221
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.254
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 0.260
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.333
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.387
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.465
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.530
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|av_xcvr_tx_pll_inst|pll[0].pll.cmu_pll.tx_pll|clkcdr'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_cdr|clk90bdes'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.416
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 0.657
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.771
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll2_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.873
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll3~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.889
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.988
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[0].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.997
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.997
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[2].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.997
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[3].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkp'
+Slack : 1.997
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[0].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[1].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[2].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_rx_pcs|wys|txpmaclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pcs|ch[3].inst_av_pcs_ch|inst_av_hssi_8g_tx_pcs|wys|txpmalocalclk'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[0].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[1].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[2].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_rx_pma|rx_pmas[3].rx_pma.rx_pma_deser|clk90b'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|cpulseout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|lfclkpout'
+Slack : 2.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_cavhip.arriav_hd_altpe2_hip_top|coreclkout'
+Slack : 2.864
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|kernel_clk_gen|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 3.115
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.861
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|pcie|c5_hip_ast|altpcie_av_hip_ast_hwtcl|altpcie_av_hip_128bit_atom|g_pcie_xcvr.av_xcvr_pipe_native_hip|inst_av_xcvr_native|inst_av_pma|av_tx_pma|tx_pma_insts[1].av_tx_pma_ch_inst|tx_pma_ch.tx_cgb|pclkout'
+Slack : 4.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'alt_cal_av_edge_detect_clk'
+Slack : 4.642
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'pcie_refclk_p'
+Slack : 5.000
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6~PLL_OUTPUT_COUNTER|divclk'
+Slack : 6.374
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll6_phy~PLL_OUTPUT_COUNTER|divclk'
+Slack : 7.488
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'config_clk'
+Slack : 8.864
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'sv_reconfig_pma_testbus_clk_0'
+Slack : 9.278
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'kernel_pll_refclk'
+Slack : 9.286
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'pll_ref_clk'
+Slack : 9.919
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 19.587
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'system_inst|board|ddr3a|pll0|pll7~PLL_OUTPUT_COUNTER|divclk'
+Slack : 22.015
+TNS   : 0.000
+
+------------------------------------------------------------
+Info: see the "DDR report" for DDR timing results
+------------------------------------------------------------
+------------------------------------------------------------

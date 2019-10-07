@@ -1,0 +1,722 @@
+Compiler Command: aoc -g -board=c5p -report -v -I . -o nsk.aocx CLSupportFunctions.cl FPGANetSt.cl
+
+!===========================================================================
+! The report below may be inaccurate. A more comprehensive           
+! resource usage report can be found at FPGANetSt/reports/report.html    
+!===========================================================================
+
++--------------------------------------------------------------------+
+; Estimated Resource Usage Summary                                   ;
++----------------------------------------+---------------------------+
+; Resource                               + Usage                     ;
++----------------------------------------+---------------------------+
+; Logic utilization                      ;   48%                     ;
+; ALUTs                                  ;   32%                     ;
+; Dedicated logic registers              ;   19%                     ;
+; Memory blocks                          ;   32%                     ;
+; DSP blocks                             ;    0%                     ;
++----------------------------------------+---------------------------;
+System name: FPGANetSt
+
+2019.09.26.12:29:13 Info: Doing: <b>qsys-script --quartus-project=top --script=kernel_system.tcl --Xmx512M --XX:+UseSerialGC</b>
+2019.09.26.12:29:15 Info: set_validation_property AUTOMATIC_VALIDATION false
+2019.09.26.12:29:15 Info: add_instance clk_1x altera_clock_bridge 
+2019.09.26.12:29:16 Info: set_instance_parameter_value clk_1x EXPLICIT_CLOCK_RATE 0
+2019.09.26.12:29:16 Info: set_instance_parameter_value clk_1x NUM_CLOCK_OUTPUTS 1
+2019.09.26.12:29:16 Info: add_interface clock_reset clock sink
+2019.09.26.12:29:16 Info: set_interface_property clock_reset EXPORT_OF clk_1x.in_clk
+2019.09.26.12:29:16 Info: add_instance clk_2x altera_clock_bridge 
+2019.09.26.12:29:16 Info: set_instance_parameter_value clk_2x EXPLICIT_CLOCK_RATE 0
+2019.09.26.12:29:16 Info: set_instance_parameter_value clk_2x NUM_CLOCK_OUTPUTS 1
+2019.09.26.12:29:16 Info: add_interface clock_reset2x clock sink
+2019.09.26.12:29:16 Info: set_interface_property clock_reset2x EXPORT_OF clk_2x.in_clk
+2019.09.26.12:29:16 Info: add_instance clk_snoop altera_clock_bridge 
+2019.09.26.12:29:16 Info: set_instance_parameter_value clk_snoop EXPLICIT_CLOCK_RATE 0
+2019.09.26.12:29:16 Info: set_instance_parameter_value clk_snoop NUM_CLOCK_OUTPUTS 1
+2019.09.26.12:29:16 Info: add_interface cc_snoop_clk clock sink
+2019.09.26.12:29:16 Info: set_interface_property cc_snoop_clk EXPORT_OF clk_snoop.in_clk
+2019.09.26.12:29:16 Info: add_instance reset altera_reset_bridge 
+2019.09.26.12:29:16 Info: set_instance_parameter_value reset ACTIVE_LOW_RESET 1
+2019.09.26.12:29:16 Info: set_instance_parameter_value reset SYNCHRONOUS_EDGES deassert
+2019.09.26.12:29:16 Info: set_instance_parameter_value reset NUM_RESET_OUTPUTS 1
+2019.09.26.12:29:16 Info: add_interface clock_reset_reset reset sink
+2019.09.26.12:29:16 Info: set_interface_property clock_reset_reset EXPORT_OF reset.in_reset
+2019.09.26.12:29:16 Info: add_connection clk_1x.out_clk reset.clk
+2019.09.26.12:29:16 Info: add_instance FPGANetSt_system FPGANetSt_system 
+2019.09.26.12:29:16 Info: add_connection clk_1x.out_clk FPGANetSt_system.clock_reset
+2019.09.26.12:29:16 Info: add_connection clk_2x.out_clk FPGANetSt_system.clock_reset2x
+2019.09.26.12:29:16 Info: add_connection reset.out_reset FPGANetSt_system.clock_reset_reset
+2019.09.26.12:29:16 Info: add_interface kernel_mem0 avalon slave
+2019.09.26.12:29:16 Info: set_interface_property kernel_mem0 EXPORT_OF FPGANetSt_system.avm_memgmem0_DDR_port_0_0_rw
+2019.09.26.12:29:16 Info: add_instance kernel_irq altera_irq_bridge 
+2019.09.26.12:29:16 Info: set_instance_parameter_value kernel_irq IRQ_WIDTH 1
+2019.09.26.12:29:16 Info: set_instance_parameter_value kernel_irq IRQ_N 0
+2019.09.26.12:29:16 Info: add_interface kernel_irq irq sender
+2019.09.26.12:29:16 Info: set_interface_property kernel_irq EXPORT_OF kernel_irq.sender0_irq
+2019.09.26.12:29:16 Info: add_connection clk_1x.out_clk kernel_irq.clk
+2019.09.26.12:29:16 Info: add_connection reset.out_reset kernel_irq.clk_reset
+2019.09.26.12:29:16 Info: add_connection kernel_irq.receiver_irq FPGANetSt_system.kernel_irq
+2019.09.26.12:29:16 Info: add_instance kernel_cra altera_avalon_mm_bridge 
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra DATA_WIDTH 64
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra SYMBOL_WIDTH 8
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra ADDRESS_WIDTH 30
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra USE_AUTO_ADDRESS_WIDTH 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra ADDRESS_UNITS SYMBOLS
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra MAX_BURST_SIZE 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra MAX_PENDING_RESPONSES 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra LINEWRAPBURSTS 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra PIPELINE_COMMAND 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value kernel_cra PIPELINE_RESPONSE 0
+2019.09.26.12:29:17 Info: add_connection clk_1x.out_clk kernel_cra.clk
+2019.09.26.12:29:17 Info: add_connection reset.out_reset kernel_cra.reset
+2019.09.26.12:29:17 Info: add_interface avs_kernel_cra avalon slave
+2019.09.26.12:29:17 Info: set_interface_property kernel_cra EXPORT_OF kernel_cra.s0
+2019.09.26.12:29:17 Info: add_instance cra_root cra_ring_root 
+2019.09.26.12:29:17 Info: set_instance_parameter_value cra_root ASYNC_RESET 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value cra_root SYNCHRONIZE_RESET 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value cra_root DATA_W 64
+2019.09.26.12:29:17 Info: set_instance_parameter_value cra_root ADDR_W 5
+2019.09.26.12:29:17 Info: set_instance_parameter_value cra_root ID_W 0
+2019.09.26.12:29:17 Info: add_connection clk_1x.out_clk cra_root.clock
+2019.09.26.12:29:17 Info: add_connection reset.out_reset cra_root.reset
+2019.09.26.12:29:17 Info: add_connection kernel_cra.m0 cra_root.cra_slave
+2019.09.26.12:29:17 Info: set_connection_parameter_value kernel_cra.m0/cra_root.cra_slave baseAddress 0x0
+2019.09.26.12:29:17 Info: add_instance avs_processFPGA_cra_cra_ring cra_ring_node 
+2019.09.26.12:29:17 Info: set_instance_parameter_value avs_processFPGA_cra_cra_ring ASYNC_RESET 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value avs_processFPGA_cra_cra_ring SYNCHRONIZE_RESET 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value avs_processFPGA_cra_cra_ring DATA_W 64
+2019.09.26.12:29:17 Info: set_instance_parameter_value avs_processFPGA_cra_cra_ring RING_ADDR_W 5
+2019.09.26.12:29:17 Info: set_instance_parameter_value avs_processFPGA_cra_cra_ring CRA_ADDR_W 5
+2019.09.26.12:29:17 Info: set_instance_parameter_value avs_processFPGA_cra_cra_ring ID_W 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value avs_processFPGA_cra_cra_ring ID 0
+2019.09.26.12:29:17 Info: add_connection clk_1x.out_clk avs_processFPGA_cra_cra_ring.clock
+2019.09.26.12:29:17 Info: add_connection reset.out_reset avs_processFPGA_cra_cra_ring.reset
+2019.09.26.12:29:17 Info: add_connection cra_root.ring_out avs_processFPGA_cra_cra_ring.ring_in
+2019.09.26.12:29:17 Info: add_connection avs_processFPGA_cra_cra_ring.cra_master FPGANetSt_system.avs_processFPGA_cra
+2019.09.26.12:29:17 Info: set_connection_parameter_value avs_processFPGA_cra_cra_ring.cra_master/FPGANetSt_system.avs_processFPGA_cra baseAddress 0x0
+2019.09.26.12:29:17 Info: add_connection avs_processFPGA_cra_cra_ring.ring_out cra_root.ring_in
+2019.09.26.12:29:17 Info: add_instance acl_internal_snoop altera_avalon_st_adapter 
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inBitsPerSymbol 31
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inUsePackets 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inDataWidth 31
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inMaxChannel 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inChannelWidth 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inErrorWidth 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inErrorDescriptor 
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inUseEmptyPort 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inUseValid 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inUseReady 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop inReadyLatency 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outDataWidth 31
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outMaxChannel 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outChannelWidth 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outErrorWidth 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outErrorDescriptor 
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outUseEmptyPort 0
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outUseValid 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outUseReady 1
+2019.09.26.12:29:17 Info: set_instance_parameter_value acl_internal_snoop outReadyLatency 0
+2019.09.26.12:29:17 Info: add_connection clk_snoop.out_clk acl_internal_snoop.in_clk_0
+2019.09.26.12:29:17 Info: add_connection reset.out_reset acl_internal_snoop.in_rst_0
+2019.09.26.12:29:17 Info: add_interface cc_snoop avalon_streaming sink
+2019.09.26.12:29:17 Info: set_interface_property cc_snoop EXPORT_OF acl_internal_snoop.in_0
+2019.09.26.12:29:17 Info: save_system kernel_system.qsys
+2019.09.26.12:29:17 Info: Doing: <b>qsys-script --quartus-project=top --script=system.tcl --Xmx512M --XX:+UseSerialGC --system-file=system.qsys</b>
+2019.09.26.12:29:32 Info: set_validation_property AUTOMATIC_VALIDATION false
+2019.09.26.12:29:32 Info: add_instance kernel_system kernel_system 
+2019.09.26.12:29:32 Info: add_connection board.kernel_clk kernel_system.clock_reset
+2019.09.26.12:29:32 Info: add_connection board.kernel_clk2x kernel_system.clock_reset2x
+2019.09.26.12:29:32 Info: add_connection board.kernel_reset kernel_system.clock_reset_reset
+2019.09.26.12:29:32 Info: add_connection kernel_system.kernel_mem0 board.kernel_mem0
+2019.09.26.12:29:32 Info: add_connection board.kernel_irq kernel_system.kernel_irq
+2019.09.26.12:29:32 Info: add_connection board.kernel_cra kernel_system.kernel_cra
+2019.09.26.12:29:32 Info: add_connection board.acl_internal_snoop kernel_system.cc_snoop
+2019.09.26.12:29:32 Info: add_connection board.kernel_clk kernel_system.cc_snoop_clk
+2019.09.26.12:29:32 Info: save_system 
+2019.09.26.12:29:47 Info: Saving generation log to /home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/system_generation.rpt
+2019.09.26.12:29:47 Info: Starting: <b>Create HDL design files for synthesis</b>
+2019.09.26.12:29:47 Info: qsys-generate /home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system.qsys --synthesis=VERILOG --output-directory=/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis --family="Cyclone V" --part=5CGXFC9D6F27C7
+2019.09.26.12:29:47 Info: Loading nsk/system.qsys
+2019.09.26.12:29:47 Info: Reading input file
+2019.09.26.12:29:47 Info: Adding board [board 1.0]
+2019.09.26.12:29:49 Info: Parameterizing module board
+2019.09.26.12:29:49 Info: Adding global_reset [altera_reset_bridge 18.1]
+2019.09.26.12:29:49 Info: Parameterizing module global_reset
+2019.09.26.12:29:49 Info: Adding kernel_system [kernel_system 1.0]
+2019.09.26.12:29:49 Info: Parameterizing module kernel_system
+2019.09.26.12:29:49 Info: Building connections
+2019.09.26.12:29:49 Info: Parameterizing connections
+2019.09.26.12:29:49 Info: Validating
+2019.09.26.12:29:51 Info: Done reading input file
+2019.09.26.12:29:56 Info: system.board.alt_xcvr_reconfig_0: reconfig_from_xcvr port width is 5*46 bits
+2019.09.26.12:29:56 Info: system.board.alt_xcvr_reconfig_0: reconfig_to_xcvr port width is 5*70 bits
+2019.09.26.12:29:56 Warning: system.board.ddr3a: Timing closure may not be achievable at maximum frequency for 'Command Queue Look-Ahead Depth' value greater than 4.
+2019.09.26.12:29:56 Warning: system.board.ddr3a: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
+2019.09.26.12:29:56 Warning: system.board.ddr3a.pll_bridge: <b>pll_bridge.pll_sharing</b> cannot be both connected and exported
+2019.09.26.12:29:56 Warning: system.board.kernel_clk: The input clock frequency must be known or set by the parent if this is a subsystem.
+2019.09.26.12:29:56 Warning: system.board.kernel_clk_gen.kernel_clk: The input clock frequency must be known or set by the parent if this is a subsystem.
+2019.09.26.12:29:56 Info: system.board.kernel_clk_gen.kernel_pll: The legal reference clock frequency is 50.0 MHz..700.0 MHz
+2019.09.26.12:29:56 Warning: system.board.kernel_clk_gen.kernel_pll: Able to implement PLL - Actual settings differ from Requested settings
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_avalon_mm_bridge</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_address_span_extender</b> version <b>15.0</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_avalon_mm_bridge</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>clock_source</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_irq_bridge</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_reset_bridge</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_reset_controller</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_clock_bridge</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_reset_bridge</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_reset_bridge</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>add_instance</b>: Component <b>altera_avalon_onchip_memory2</b> version <b>13.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.kernel_interface.mem_org_mode0: <b>mem_org_mode0.mem_organization_kernel</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.acl_memory_bank_divider: <b>add_instance</b>: Component <b>clock_source</b> version <b>12.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Warning: system.board.acl_memory_bank_divider: <b>add_instance</b>: Component <b>clock_source</b> version <b>12.1</b> is not installed - loaded latest installed version <b>18.1</b> instead.  Please check for parameter mismatches 
+2019.09.26.12:29:56 Info: system.board.pcie: The application clock frequency (pld_clk) is 125 Mhz
+2019.09.26.12:29:56 Info: system.board.pcie: 5 reconfiguration interfaces are required for connection to the external reconfiguration controller
+2019.09.26.12:29:56 Info: system.board.pcie: Family: Cyclone V
+2019.09.26.12:29:56 Info: system.board.pcie: Credit allocation in the 6K bytes receive buffer:
+2019.09.26.12:29:56 Info: system.board.pcie: Posted    : header=16  data=16
+2019.09.26.12:29:56 Info: system.board.pcie: Non posted: header=16  data=0
+2019.09.26.12:29:56 Info: system.board.pcie: Completion: header=67 data=269
+2019.09.26.12:29:56 Info: system.board.pcie: TXS ADDRESS WIDTH is 32
+2019.09.26.12:29:56 Info: system.board.pll_0: The legal reference clock frequency is 5.0 MHz..700.0 MHz
+2019.09.26.12:29:56 Info: system.board.pll_0: Able to implement PLL with user settings
+2019.09.26.12:29:56 Warning: system.board.pcie.coreclkout/kernel_interface.clk: <b>kernel_interface.clk</b> requires 100000000Hz, but source has frequency of 125000000Hz
+2019.09.26.12:29:56 Warning: system.board.kernel_clk_gen.kernel_clk/memory_bank_divider_0.kernel_clk: <b>memory_bank_divider_0.kernel_clk</b> requires 100000000Hz, but source has frequency of 0Hz
+2019.09.26.12:29:56 Warning: system.board.config_clk.out_clk/kernel_clk_gen.clk: <b>kernel_clk_gen.clk</b> requires 50000000Hz, but source has frequency of 0Hz
+2019.09.26.12:29:56 Warning: system.board.alt_xcvr_reconfig_0: <b>alt_xcvr_reconfig_0.reconfig_busy</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.ddr3a: <b>ddr3a.pll_sharing</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.kernel_clk_gen: <b>kernel_clk_gen.kernel_pll_locked</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.kernel_interface: <b>kernel_interface.acl_bsp_memorg_host0x018</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.pcie: <b>pcie.hip_status</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.pcie: <b>pcie.reconfig_busy</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.pcie: <b>pcie.reconfig_clk_locked</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.pcie: <b>pcie.hip_pipe</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.pcie_reconfig_driver_0: <b>pcie_reconfig_driver_0.reconfig_busy</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.pcie_reconfig_driver_0: <b>pcie_reconfig_driver_0.hip_status_drv</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.uniphy_status_0: <b>uniphy_status_0.status_export</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:56 Warning: system.board.pcie: Interrupt sender <b>pcie.CraIrq</b> is not connected to an interrupt receiver
+2019.09.26.12:29:56 Warning: system.board.por_reset_counter: <b>por_reset_counter.s</b> must be connected to an Avalon-MM master
+2019.09.26.12:29:56 Warning: system.kernel_system.acl_internal_snoop: No adaptation is needed; a pass through bridge is inserted
+2019.09.26.12:29:56 Info: system.kernel_system.acl_internal_snoop: Inserting channel_adapter: pass_through_0
+2019.09.26.12:29:56 Warning: system.kernel_system.acl_internal_snoop.out_0: <b>acl_internal_snoop.out_0</b> must be connected to an Avalon-ST sink
+2019.09.26.12:29:56 Warning: system.board: <b>board.pcie_hip_ctrl</b> must be exported, or connected to a matching conduit.
+2019.09.26.12:29:57 Info: system: Generating <b>system</b> "<b>system</b>" for QUARTUS_SYNTH
+2019.09.26.12:30:03 Info: Interconnect is inserted between master pcie.Rxm_BAR0 and slave pipe_stage_host_ctrl.s0 because the master has address signal 32 bit wide, but the slave is 18 bit wide.
+2019.09.26.12:30:03 Info: Interconnect is inserted between master pcie.Rxm_BAR0 and slave pipe_stage_host_ctrl.s0 because the master has readdata signal 64 bit wide, but the slave is 32 bit wide.
+2019.09.26.12:30:03 Info: Interconnect is inserted between master pcie.Rxm_BAR0 and slave pipe_stage_host_ctrl.s0 because the master has writedata signal 64 bit wide, but the slave is 32 bit wide.
+2019.09.26.12:30:03 Info: Interconnect is inserted between master pcie.Rxm_BAR0 and slave pipe_stage_host_ctrl.s0 because the master has burstcount signal 7 bit wide, but the slave is 1 bit wide.
+2019.09.26.12:30:03 Info: Interconnect is inserted between master pcie.Rxm_BAR0 and slave pipe_stage_host_ctrl.s0 because the master has byteenable signal 8 bit wide, but the slave is 4 bit wide.
+2019.09.26.12:30:04 Info: Inserting clock-crossing logic between cmd_demux.src1 and cmd_mux_001.sink0
+2019.09.26.12:30:04 Info: Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux.sink1
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_dma_to_pcie.m0 and slave pcie.Txs because the master has readdata signal 256 bit wide, but the slave is 64 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_dma_to_pcie.m0 and slave pcie.Txs because the master has burstcount signal 5 bit wide, but the slave is 7 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_dma_to_pcie.m0 and slave pcie.Txs because the master has writedata signal 256 bit wide, but the slave is 64 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_dma_to_pcie.m0 and slave pcie.Txs because the master has byteenable signal 32 bit wide, but the slave is 8 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_dma_to_pcie.m0 and slave pcie.Txs because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master pipe_stage_ddr3a_dimm.m0 and slave ddr3a.avl_0 because the master has address signal 30 bit wide, but the slave is 25 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master pipe_stage_ddr3a_dimm.m0 and slave ddr3a.avl_0 because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_0.m0 and slave dma_0.csr because the master has readdata signal 32 bit wide, but the slave is 64 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_0.m0 and slave dma_0.csr because the master has writedata signal 32 bit wide, but the slave is 64 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_0.m0 and slave dma_0.csr because the master has byteenable signal 4 bit wide, but the slave is 8 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_1.m0 and slave dma_0.s_nondma because the master has readdata signal 32 bit wide, but the slave is 256 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_1.m0 and slave dma_0.s_nondma because the master has burstcount signal 1 bit wide, but the slave is 5 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_1.m0 and slave dma_0.s_nondma because the master has writedata signal 32 bit wide, but the slave is 256 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_1.m0 and slave dma_0.s_nondma because the master has address signal 16 bit wide, but the slave is 11 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_1.m0 and slave dma_0.s_nondma because the master has byteenable signal 4 bit wide, but the slave is 32 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master clock_cross_pcie_to_dma_1.m0 and slave dma_0.s_nondma because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+2019.09.26.12:30:04 Info: Interconnect is inserted between master pcie_reconfig_driver_0.reconfig_mgmt and slave alt_xcvr_reconfig_0.reconfig_mgmt because they have different clock source.
+2019.09.26.12:30:04 Info: Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+2019.09.26.12:30:04 Info: Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+2019.09.26.12:30:07 Info: board: "<b>system</b>" instantiated <b>board</b> "<b>board</b>"
+2019.09.26.12:30:07 Info: Interconnect is inserted between master kernel_cra.m0 and slave cra_root.cra_slave because the master has burstcount signal 1 bit wide, but the slave is 0 bit wide.
+2019.09.26.12:30:07 Info: Interconnect is inserted between master kernel_cra.m0 and slave cra_root.cra_slave because the master has address signal 30 bit wide, but the slave is 5 bit wide.
+2019.09.26.12:30:07 Info: Interconnect is inserted between master kernel_cra.m0 and slave cra_root.cra_slave because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+2019.09.26.12:30:07 Info: kernel_system: "<b>system</b>" instantiated <b>kernel_system</b> "<b>kernel_system</b>"
+2019.09.26.12:30:07 Info: mm_interconnect_1: "<b>system</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2019.09.26.12:30:07 Info: irq_mapper: "<b>system</b>" instantiated <b>altera_irq_mapper</b> "<b>irq_mapper</b>"
+2019.09.26.12:30:07 Info: rst_controller: "<b>system</b>" instantiated <b>altera_reset_controller</b> "<b>rst_controller</b>"
+run_tclsh_script result:2019.09.26.12:30:08 Info: 
+********************************************************************************************************************
+
+Use qsys-generate for a simpler command-line interface for generating IP.
+
+Run ip-generate with switch --remove-qsys-generate-warning to prevent this notice from appearing in subsequent runs.
+
+********************************************************************************************************************
+2019.09.26.12:30:10 Progress: Loading alt_xcvr_reconfig_soc/alt_xcvr_reconfig_cpu.qsys
+2019.09.26.12:30:10 Progress: Reading input file
+2019.09.26.12:30:10 Warning: Invalid device family name in input file: Stratix V
+2019.09.26.12:30:10 Progress: Adding clk_0 [clock_source 12.0]
+2019.09.26.12:30:11 Warning: clk_0: Used clock_source 18.1 (instead of 12.0)
+2019.09.26.12:30:11 Progress: Parameterizing module clk_0
+2019.09.26.12:30:11 Progress: Adding reconfig_cpu [altera_nios2_qsys 12.0]
+2019.09.26.12:30:11 Warning: reconfig_cpu: Used altera_nios2_qsys 16.1 (instead of 12.0)
+2019.09.26.12:30:11 Progress: Parameterizing module reconfig_cpu
+2019.09.26.12:30:11 Progress: Adding reconfig_mem [alt_xcvr_reconfig_cpu_ram_if 11.0]
+2019.09.26.12:30:11 Progress: Parameterizing module reconfig_mem
+2019.09.26.12:30:11 Progress: Adding reconfig_ctrl [alt_xcvr_reconfig_cpu_ctrl_if 11.0]
+2019.09.26.12:30:11 Progress: Parameterizing module reconfig_ctrl
+2019.09.26.12:30:11 Progress: Building connections
+2019.09.26.12:30:11 Progress: Parameterizing connections
+2019.09.26.12:30:11 Progress: Validating
+2019.09.26.12:30:11 Progress: Done reading input file
+2019.09.26.12:30:11 Warning: alt_xcvr_reconfig_cpu.reconfig_cpu: Nios II Classic cores are no longer recommended for new projects
+2019.09.26.12:30:11 Warning: alt_xcvr_reconfig_cpu.reconfig_cpu: No Debugger.  You will not be able to download or debug programs
+2019.09.26.12:30:11 Info: alt_xcvr_reconfig_cpu: Generating alt_xcvr_reconfig_cpu "alt_xcvr_reconfig_cpu" for QUARTUS_SYNTH
+2019.09.26.12:30:12 Info: reconfig_cpu: Starting RTL generation for module 'alt_xcvr_reconfig_cpu_reconfig_cpu'
+2019.09.26.12:30:12 Info: reconfig_cpu:   Generation command is [exec /opt/intel/intelFPGA/18.1/quartus/linux64/eperlcmd -I /opt/intel/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2 -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2 -- /opt/intel/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=alt_xcvr_reconfig_cpu_reconfig_cpu --dir=/tmp/alt8165_3757989880029734386.dir/0002_reconfig_cpu_gen/ --quartus_bindir=/opt/intel/intelFPGA/18.1/quartus/linux64 --verilog --config=/tmp/alt8165_3757989880029734386.dir/0002_reconfig_cpu_gen//alt_xcvr_reconfig_cpu_reconfig_cpu_processor_configuration.pl  --do_build_sim=0  ]
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*) Starting Nios II generation
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Checking for plaintext license.
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Couldn't query license setup in Quartus directory /opt/intel/intelFPGA/18.1/quartus/linux64
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Plaintext license not found.
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   No license required to generate encrypted Nios II/e.
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Elaborating CPU configuration settings
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Creating all objects for CPU
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Generating RTL from CPU objects
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:13 (*)   Creating plain-text RTL
+2019.09.26.12:30:14 Info: reconfig_cpu: # 2019.09.26 12:30:14 (*) Done Nios II generation
+2019.09.26.12:30:14 Info: reconfig_cpu: Done RTL generation for module 'alt_xcvr_reconfig_cpu_reconfig_cpu'
+2019.09.26.12:30:14 Info: reconfig_cpu: "alt_xcvr_reconfig_cpu" instantiated altera_nios2_qsys "reconfig_cpu"
+2019.09.26.12:30:14 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:14 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:14 Info: mm_interconnect_0: "alt_xcvr_reconfig_cpu" instantiated altera_mm_interconnect "mm_interconnect_0"
+2019.09.26.12:30:14 Info: irq_mapper: "alt_xcvr_reconfig_cpu" instantiated altera_irq_mapper "irq_mapper"
+2019.09.26.12:30:14 Info: rst_controller: "alt_xcvr_reconfig_cpu" instantiated altera_reset_controller "rst_controller"
+2019.09.26.12:30:14 Info: reconfig_cpu_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "reconfig_cpu_data_master_translator"
+2019.09.26.12:30:14 Info: reconfig_mem_mem_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "reconfig_mem_mem_translator"
+2019.09.26.12:30:14 Info: reconfig_cpu_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "reconfig_cpu_data_master_agent"
+2019.09.26.12:30:14 Info: reconfig_mem_mem_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "reconfig_mem_mem_agent"
+2019.09.26.12:30:14 Info: reconfig_mem_mem_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "reconfig_mem_mem_agent_rsp_fifo"
+2019.09.26.12:30:14 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+2019.09.26.12:30:14 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+2019.09.26.12:30:14 Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+2019.09.26.12:30:14 Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+2019.09.26.12:30:14 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+2019.09.26.12:30:14 Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+2019.09.26.12:30:14 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+2019.09.26.12:30:14 Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
+2019.09.26.12:30:14 Info: Reusing file /tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_arbitrator.sv
+2019.09.26.12:30:14 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+2019.09.26.12:30:14 Info: Reusing file /tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_arbitrator.sv
+2019.09.26.12:30:14 Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+2019.09.26.12:30:14 Info: Reusing file /tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_arbitrator.sv
+2019.09.26.12:30:14 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+2019.09.26.12:30:14 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_cpu: Done "alt_xcvr_reconfig_cpu" with 22 modules, 29 files
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_xcvr_functions.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/altera_xcvr_functions.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_h.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_xcvr_h.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_resync.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_resync.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_h.sv SYSTEM_VERILOG PATH .//alt_xcvr_reconfig_h.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig.sv SYSTEM_VERILOG PATH .//alt_xcvr_reconfig.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cal_seq.sv SYSTEM_VERILOG PATH .//alt_xcvr_reconfig_cal_seq.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xreconf_cif.sv SYSTEM_VERILOG PATH .//alt_xreconf_cif.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xreconf_uif.sv SYSTEM_VERILOG PATH .//alt_xreconf_uif.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xreconf_basic_acq.sv SYSTEM_VERILOG PATH .//alt_xreconf_basic_acq.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_analog.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_analog/alt_xcvr_reconfig_analog.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_analog_av.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_analog/alt_xcvr_reconfig_analog_av.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xreconf_analog_datactrl_av.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_analog/alt_xreconf_analog_datactrl_av.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xreconf_analog_rmw_av.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_analog/alt_xreconf_analog_rmw_av.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xreconf_analog_ctrlsm.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_analog/alt_xreconf_analog_ctrlsm.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_offset_cancellation.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_offset_cancellation/alt_xcvr_reconfig_offset_cancellation.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_offset_cancellation_av.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_offset_cancellation/alt_xcvr_reconfig_offset_cancellation_av.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_eyemon.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_eyemon/alt_xcvr_reconfig_eyemon.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_dfe.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_dfe/alt_xcvr_reconfig_dfe.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_adce.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_adce/alt_xcvr_reconfig_adce.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_dcd.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_dcd/alt_xcvr_reconfig_dcd.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_dcd_av.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_dcd/alt_xcvr_reconfig_dcd_av.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_dcd_cal_av.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_dcd/alt_xcvr_reconfig_dcd_cal_av.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_dcd_control_av.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_dcd/alt_xcvr_reconfig_dcd_control_av.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_mif.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_mif/alt_xcvr_reconfig_mif.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_reconfig_mif.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_mif/av_xcvr_reconfig_mif.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_reconfig_mif_ctrl.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_mif/av_xcvr_reconfig_mif_ctrl.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_reconfig_mif_avmm.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_mif/av_xcvr_reconfig_mif_avmm.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_pll.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_pll/alt_xcvr_reconfig_pll.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_reconfig_pll.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_pll/av_xcvr_reconfig_pll.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_reconfig_pll_ctrl.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_pll/av_xcvr_reconfig_pll_ctrl.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_soc.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_soc/alt_xcvr_reconfig_soc.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_ram.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_soc/alt_xcvr_reconfig_cpu_ram.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_ram.hex OTHER PATH ../alt_xcvr_reconfig_soc/software/alt_xcvr_reconfig_av/mem_init/alt_xcvr_reconfig_cpu_ram.hex
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_direct.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_direct/alt_xcvr_reconfig_direct.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_arbiter_acq.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/alt_arbiter_acq.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_basic.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/alt_xcvr_reconfig_basic.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xrbasic_l2p_addr.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/av_xrbasic_l2p_addr.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xrbasic_l2p_ch.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/av_xrbasic_l2p_ch.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xrbasic_l2p_rom.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/av_xrbasic_l2p_rom.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xrbasic_lif_csr.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/av_xrbasic_lif_csr.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xrbasic_lif.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/av_xrbasic_lif.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_reconfig_basic.sv SYSTEM_VERILOG PATH ../alt_xcvr_reconfig_basic/av_xcvr_reconfig_basic.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_xcvr_reconfig.sdc OTHER PATH .//av_xcvr_reconfig.sdc
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_arbiter.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_arbiter.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_m2s.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_m2s.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_wait_generate.v VERILOG PATH ../../altera_xcvr_generic/ctrl/altera_wait_generate.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_csr_selector.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_csr_selector.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./sv_reconfig_bundle_to_basic.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/sv/sv_reconfig_bundle_to_basic.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_reconfig_bundle_to_basic.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_reconfig_bundle_to_basic.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./av_reconfig_bundle_to_xcvr.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_reconfig_bundle_to_xcvr.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/alt_xcvr_reconfig_cpu.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_reconfig_cpu_rf_ram_b.mif OTHER PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_reconfig_cpu_rf_ram_b.mif
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_reconfig_cpu_rf_ram_a.mif OTHER PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_reconfig_cpu_rf_ram_a.mif
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_reconfig_cpu.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_reconfig_cpu.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_reconfig_cpu_test_bench.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_reconfig_cpu_test_bench.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_irq_mapper.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_irq_mapper.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_reset_controller.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_reset_controller.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_reset_synchronizer.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_reset_synchronizer.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_reset_controller.sdc OTHER PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_reset_controller.sdc
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_merlin_master_translator.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_master_translator.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_merlin_slave_translator.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_slave_translator.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_merlin_master_agent.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_master_agent.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_merlin_slave_agent.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_slave_agent.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_merlin_burst_uncompressor.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_burst_uncompressor.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_avalon_sc_fifo.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_avalon_sc_fifo.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_router.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_router.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_router_001.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_router_001.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_router_002.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_router_002.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_router_003.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_router_003.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_demux.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_demux.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_demux_001.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_demux_001.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_mux.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_mux.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./altera_merlin_arbitrator.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/altera_merlin_arbitrator.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_mux_001.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_cmd_mux_001.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_rsp_mux.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_rsp_mux.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_rsp_mux_001.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_rsp_mux_001.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_avalon_st_adapter.v VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_avalon_st_adapter.v
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: add_fileset_file ./alt_xcvr_reconfig_cpu_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv SYSTEM_VERILOG PATH ../../../../../../../../tmp/alt8165_6282746836676627422.dir/0005_alt_xcvr_reconfig_0_gen/QUARTUS_SYNTH/submodules/alt_xcvr_reconfig_cpu_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv
+2019.09.26.12:30:14 Info: alt_xcvr_reconfig_0: "<b>board</b>" instantiated <b>alt_xcvr_reconfig</b> "<b>alt_xcvr_reconfig_0</b>"
+2019.09.26.12:30:14 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_reset_controller.v</b>
+2019.09.26.12:30:14 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_reset_synchronizer.v</b>
+2019.09.26.12:30:14 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_reset_controller.sdc</b>
+2019.09.26.12:30:14 Info: clock_cross_dma_to_pcie: "<b>board</b>" instantiated <b>altera_avalon_mm_clock_crossing_bridge</b> "<b>clock_cross_dma_to_pcie</b>"
+2019.09.26.12:30:15 Info: ddr3a: "<b>board</b>" instantiated <b>altera_mem_if_ddr3_emif</b> "<b>ddr3a</b>"
+2019.09.26.12:30:15 Info: dma_0: "<b>board</b>" instantiated <b>acl_dma</b> "<b>dma_0</b>"
+2019.09.26.12:30:15 Info: Inserting clock-crossing logic between cmd_demux.src2 and cmd_mux_002.sink0
+2019.09.26.12:30:15 Info: Inserting clock-crossing logic between rsp_demux_002.src0 and rsp_mux.sink2
+2019.09.26.12:30:16 Info: kernel_clk_gen: "<b>board</b>" instantiated <b>acl_kernel_clk</b> "<b>kernel_clk_gen</b>"
+2019.09.26.12:30:16 Info: Interconnect is inserted between master address_span_extender_0.expanded_master and slave kernel_cra.s0 because they have different clock source.
+2019.09.26.12:30:16 Info: Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+2019.09.26.12:30:16 Info: Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+2019.09.26.12:30:17 Info: kernel_interface: "<b>board</b>" instantiated <b>kernel_interface</b> "<b>kernel_interface</b>"
+2019.09.26.12:30:17 Info: memory_bank_divider_0: "<b>board</b>" instantiated <b>acl_memory_bank_divider</b> "<b>memory_bank_divider_0</b>"
+2019.09.26.12:30:17 Info: no_reset_for_uniphy: "<b>board</b>" instantiated <b>no_reset</b> "<b>no_reset_for_uniphy</b>"
+2019.09.26.12:30:17 Info: onchip_ram: Starting RTL generation for module 'system_board_onchip_ram'
+2019.09.26.12:30:17 Info: onchip_ram:   Generation command is [exec /opt/intel/intelFPGA/18.1/quartus/linux64/perl/bin/perl -I /opt/intel/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_board_onchip_ram --dir=/tmp/alt8165_6282746836676627422.dir/0007_onchip_ram_gen/ --quartus_dir=/opt/intel/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8165_6282746836676627422.dir/0007_onchip_ram_gen//system_board_onchip_ram_component_configuration.pl  --do_build_sim=0  ]
+2019.09.26.12:30:17 Info: onchip_ram: Done RTL generation for module 'system_board_onchip_ram'
+2019.09.26.12:30:17 Info: onchip_ram: "<b>board</b>" instantiated <b>altera_avalon_onchip_memory2</b> "<b>onchip_ram</b>"
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./altera_xcvr_functions.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/altera_xcvr_functions.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./sv_reconfig_bundle_to_xcvr.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/sv/sv_reconfig_bundle_to_xcvr.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./sv_reconfig_bundle_to_ip.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/sv/sv_reconfig_bundle_to_ip.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./sv_reconfig_bundle_merger.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/sv/sv_reconfig_bundle_merger.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_h.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_xcvr_h.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_avmm_csr.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_xcvr_avmm_csr.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_tx_pma_ch.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_tx_pma_ch.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_tx_pma.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_tx_pma.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_rx_pma.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_rx_pma.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_pma.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_pma.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_pcs_ch.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_pcs_ch.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_pcs.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_pcs.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_avmm.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_xcvr_avmm.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_native.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_xcvr_native.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_plls.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_xcvr_plls.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_data_adapter.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_xcvr_data_adapter.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_reconfig_bundle_to_basic.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_reconfig_bundle_to_basic.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_reconfig_bundle_to_xcvr.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/av_reconfig_bundle_to_xcvr.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_8g_rx_pcs_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_8g_rx_pcs_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_8g_tx_pcs_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_8g_tx_pcs_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_common_pcs_pma_interface_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_common_pcs_pma_interface_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_common_pld_pcs_interface_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_common_pld_pcs_interface_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_pipe_gen1_2_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_pipe_gen1_2_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_rx_pcs_pma_interface_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_rx_pcs_pma_interface_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_rx_pld_pcs_interface_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_rx_pld_pcs_interface_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_tx_pcs_pma_interface_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_tx_pcs_pma_interface_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_hssi_tx_pld_pcs_interface_rbc.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/av/rbc/av_hssi_tx_pld_pcs_interface_rbc.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_reset_ctrl_lego.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_reset_ctrl_lego.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_reset_ctrl_tgx_cdrauto.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_reset_ctrl_tgx_cdrauto.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_xcvr_resync.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_resync.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_xcvr_csr_common_h.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_csr_common_h.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_xcvr_csr_common.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_csr_common.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_xcvr_csr_pcs8g_h.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_csr_pcs8g_h.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_xcvr_csr_pcs8g.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_csr_pcs8g.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_xcvr_csr_selector.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_csr_selector.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./alt_xcvr_mgmt2dec.sv SYSTEM_VERILOG PATH ../../altera_xcvr_generic/ctrl/alt_xcvr_mgmt2dec.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./altera_wait_generate.v VERILOG PATH ../../altera_xcvr_generic/ctrl/altera_wait_generate.v
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_emsip_adapter.sv SYSTEM_VERILOG PATH ../../altera_pcie_pipe/av/av_xcvr_emsip_adapter.sv
+2019.09.26.12:30:17 Info: pcie: add_fileset_file ./av_xcvr_pipe_native_hip.sv SYSTEM_VERILOG PATH ../../altera_pcie_pipe/av/av_xcvr_pipe_native_hip.sv
+2019.09.26.12:30:17 Info: pcie: "<b>board</b>" instantiated <b>altera_pcie_cv_hip_avmm</b> "<b>pcie</b>"
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_xcvr_functions.sv</b>
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/av_xcvr_h.sv</b>
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/av_reconfig_bundle_to_basic.sv</b>
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/av_reconfig_bundle_to_xcvr.sv</b>
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/alt_xcvr_resync.sv</b>
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/alt_xcvr_csr_selector.sv</b>
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_wait_generate.v</b>
+2019.09.26.12:30:17 Warning: Overwriting different file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/plain_files.txt</b>
+2019.09.26.12:30:17 Info: pcie_reconfig_driver_0: "<b>board</b>" instantiated <b>altera_pcie_reconfig_driver</b> "<b>pcie_reconfig_driver_0</b>"
+2019.09.26.12:30:17 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/alt_xcvr_reconfig_h.sv</b>
+2019.09.26.12:30:17 Info: pipe_stage_ddr3a_dimm: "<b>board</b>" instantiated <b>altera_avalon_mm_bridge</b> "<b>pipe_stage_ddr3a_dimm</b>"
+2019.09.26.12:30:17 Info: pll_0: "<b>board</b>" instantiated <b>altera_pll</b> "<b>pll_0</b>"
+2019.09.26.12:30:17 Info: por_reset_counter: "<b>board</b>" instantiated <b>sw_reset</b> "<b>por_reset_counter</b>"
+2019.09.26.12:30:17 Info: uniphy_status_0: "<b>board</b>" instantiated <b>uniphy_status</b> "<b>uniphy_status_0</b>"
+2019.09.26.12:30:17 Info: version_id_0: "<b>board</b>" instantiated <b>version_id</b> "<b>version_id_0</b>"
+2019.09.26.12:30:17 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:17 Info: mm_interconnect_0: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"
+2019.09.26.12:30:17 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:17 Info: mm_interconnect_1: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2019.09.26.12:30:17 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:17 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:17 Info: mm_interconnect_2: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_2</b>"
+2019.09.26.12:30:18 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: mm_interconnect_3: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_3</b>"
+2019.09.26.12:30:18 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:18 Info: mm_interconnect_4: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_4</b>"
+2019.09.26.12:30:18 Info: mm_interconnect_5: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_5</b>"
+2019.09.26.12:30:19 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:19 Info: mm_interconnect_6: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_6</b>"
+2019.09.26.12:30:19 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:19 Info: mm_interconnect_7: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_7</b>"
+2019.09.26.12:30:19 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:19 Info: mm_interconnect_8: "<b>board</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_8</b>"
+2019.09.26.12:30:19 Info: irq_mapper: "<b>board</b>" instantiated <b>altera_irq_mapper</b> "<b>irq_mapper</b>"
+2019.09.26.12:30:19 Info: irq_synchronizer: "<b>board</b>" instantiated <b>altera_irq_clock_crosser</b> "<b>irq_synchronizer</b>"
+2019.09.26.12:30:19 Info: FPGANetSt_system: "<b>kernel_system</b>" instantiated <b>FPGANetSt_system</b> "<b>FPGANetSt_system</b>"
+2019.09.26.12:30:20 Info: acl_internal_snoop: "<b>kernel_system</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>acl_internal_snoop</b>"
+2019.09.26.12:30:20 Info: avs_processFPGA_cra_cra_ring: "<b>kernel_system</b>" instantiated <b>cra_ring_node</b> "<b>avs_processFPGA_cra_cra_ring</b>"
+2019.09.26.12:30:20 Info: cra_root: "<b>kernel_system</b>" instantiated <b>cra_ring_root</b> "<b>cra_root</b>"
+2019.09.26.12:30:20 Info: kernel_irq: "<b>kernel_system</b>" instantiated <b>altera_irq_bridge</b> "<b>kernel_irq</b>"
+2019.09.26.12:30:20 Info: mm_interconnect_1: "<b>kernel_system</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2019.09.26.12:30:20 Info: kernel_system_kernel_mem0_translator: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_master_translator</b> "<b>kernel_system_kernel_mem0_translator</b>"
+2019.09.26.12:30:20 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_master_translator.sv</b>
+2019.09.26.12:30:20 Info: board_kernel_mem0_translator: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_slave_translator</b> "<b>board_kernel_mem0_translator</b>"
+2019.09.26.12:30:20 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_slave_translator.sv</b>
+2019.09.26.12:30:20 Info: pll0: "<b>ddr3a</b>" instantiated <b>altera_mem_if_ddr3_pll</b> "<b>pll0</b>"
+2019.09.26.12:30:20 Info: p0: Generating clock pair generator
+2019.09.26.12:30:20 Info: p0: Generating system_board_ddr3a_p0_altdqdqs
+2019.09.26.12:30:24 Info: p0: 
+2019.09.26.12:30:24 Info: p0: *****************************
+2019.09.26.12:30:24 Info: p0: 
+2019.09.26.12:30:24 Info: p0: Remember to run the system_board_ddr3a_p0_pin_assignments.tcl
+2019.09.26.12:30:24 Info: p0: script after running Synthesis and before Fitting.
+2019.09.26.12:30:24 Info: p0: 
+2019.09.26.12:30:24 Info: p0: *****************************
+2019.09.26.12:30:24 Info: p0: 
+2019.09.26.12:30:24 Info: p0: "<b>ddr3a</b>" instantiated <b>altera_mem_if_ddr3_hard_phy_core</b> "<b>p0</b>"
+2019.09.26.12:30:30 Info: s0: Generating Qsys sequencer system
+2019.09.26.12:30:36 Info: s0: QSYS sequencer system generated successfully
+2019.09.26.12:30:41 Info: s0: "<b>ddr3a</b>" instantiated <b>altera_mem_if_ddr3_qseq</b> "<b>s0</b>"
+2019.09.26.12:30:41 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_slave_agent.sv</b>
+2019.09.26.12:30:41 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_mm_bridge.v</b>
+2019.09.26.12:30:41 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:41 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_master_agent.sv</b>
+2019.09.26.12:30:41 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_burst_uncompressor.sv</b>
+2019.09.26.12:30:41 Info: dmaster: "<b>ddr3a</b>" instantiated <b>altera_jtag_avalon_master</b> "<b>dmaster</b>"
+2019.09.26.12:30:41 Info: c0: "<b>ddr3a</b>" instantiated <b>altera_mem_if_ddr3_hard_memory_controller</b> "<b>c0</b>"
+2019.09.26.12:30:41 Info: oct0: "<b>ddr3a</b>" instantiated <b>altera_mem_if_oct</b> "<b>oct0</b>"
+2019.09.26.12:30:41 Info: dll0: "<b>ddr3a</b>" instantiated <b>altera_mem_if_dll</b> "<b>dll0</b>"
+2019.09.26.12:30:41 Info: mm_interconnect_1: "<b>ddr3a</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2019.09.26.12:30:41 Info: dma: "<b>dma_0</b>" instantiated <b>acl_dma_core</b> "<b>dma</b>"
+2019.09.26.12:30:41 Info: address_span_extender_0: "<b>dma_0</b>" instantiated <b>altera_address_span_extender</b> "<b>address_span_extender_0</b>"
+2019.09.26.12:30:41 Info: mm_interconnect_0: "<b>dma_0</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"
+2019.09.26.12:30:41 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:41 Info: mm_interconnect_1: "<b>dma_0</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2019.09.26.12:30:41 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:41 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:41 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: mm_interconnect_2: "<b>dma_0</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_2</b>"
+2019.09.26.12:30:42 Info: kernel_pll: "<b>kernel_clk_gen</b>" instantiated <b>altera_pll</b> "<b>kernel_pll</b>"
+2019.09.26.12:30:42 Warning: quartus_synth: A Duplicate file was overwritten with path: altera_pll_reconfig_top.v
+2019.09.26.12:30:42 Info: pll_reconfig_0: "<b>kernel_clk_gen</b>" instantiated <b>altera_pll_reconfig</b> "<b>pll_reconfig_0</b>"
+2019.09.26.12:30:42 Info: counter: "<b>kernel_clk_gen</b>" instantiated <b>acl_timer</b> "<b>counter</b>"
+2019.09.26.12:30:42 Info: global_routing_kernel_clk: "<b>kernel_clk_gen</b>" instantiated <b>global_routing_clk</b> "<b>global_routing_kernel_clk</b>"
+2019.09.26.12:30:42 Info: pll_lock_avs_0: "<b>kernel_clk_gen</b>" instantiated <b>pll_lock_avs</b> "<b>pll_lock_avs_0</b>"
+2019.09.26.12:30:42 Info: pll_rom: Starting RTL generation for module 'system_board_kernel_clk_gen_pll_rom'
+2019.09.26.12:30:42 Info: pll_rom:   Generation command is [exec /opt/intel/intelFPGA/18.1/quartus/linux64/perl/bin/perl -I /opt/intel/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_board_kernel_clk_gen_pll_rom --dir=/tmp/alt8165_6282746836676627422.dir/0029_pll_rom_gen/ --quartus_dir=/opt/intel/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8165_6282746836676627422.dir/0029_pll_rom_gen//system_board_kernel_clk_gen_pll_rom_component_configuration.pl  --do_build_sim=0  ]
+2019.09.26.12:30:42 Info: pll_rom: Done RTL generation for module 'system_board_kernel_clk_gen_pll_rom'
+2019.09.26.12:30:42 Info: pll_rom: "<b>kernel_clk_gen</b>" instantiated <b>altera_avalon_onchip_memory2</b> "<b>pll_rom</b>"
+2019.09.26.12:30:42 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: mm_interconnect_0: "<b>kernel_clk_gen</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"
+2019.09.26.12:30:42 Info: mem_org_mode0: "<b>kernel_interface</b>" instantiated <b>mem_org_mode</b> "<b>mem_org_mode0</b>"
+2019.09.26.12:30:42 Info: sys_description_rom: Starting RTL generation for module 'system_board_kernel_interface_sys_description_rom'
+2019.09.26.12:30:42 Info: sys_description_rom:   Generation command is [exec /opt/intel/intelFPGA/18.1/quartus/linux64/perl/bin/perl -I /opt/intel/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intel/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /opt/intel/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_board_kernel_interface_sys_description_rom --dir=/tmp/alt8165_6282746836676627422.dir/0030_sys_description_rom_gen/ --quartus_dir=/opt/intel/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8165_6282746836676627422.dir/0030_sys_description_rom_gen//system_board_kernel_interface_sys_description_rom_component_configuration.pl  --do_build_sim=0  ]
+2019.09.26.12:30:42 Info: sys_description_rom: Done RTL generation for module 'system_board_kernel_interface_sys_description_rom'
+2019.09.26.12:30:42 Info: sys_description_rom: "<b>kernel_interface</b>" instantiated <b>altera_avalon_onchip_memory2</b> "<b>sys_description_rom</b>"
+2019.09.26.12:30:42 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:42 Info: mm_interconnect_0: "<b>kernel_interface</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"
+2019.09.26.12:30:43 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:43 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:43 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:43 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:43 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:43 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+2019.09.26.12:30:43 Info: mm_interconnect_1: "<b>kernel_interface</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2019.09.26.12:30:44 Info: acl_snoop_adapter_0: "<b>memory_bank_divider_0</b>" instantiated <b>acl_snoop_adapter</b> "<b>acl_snoop_adapter_0</b>"
+2019.09.26.12:30:44 Info: pcie_Rxm_BAR0_agent: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_master_agent</b> "<b>pcie_Rxm_BAR0_agent</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_master_agent.sv</b>
+2019.09.26.12:30:44 Info: pipe_stage_host_ctrl_s0_agent: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_slave_agent</b> "<b>pipe_stage_host_ctrl_s0_agent</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_slave_agent.sv</b>
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_burst_uncompressor.sv</b>
+2019.09.26.12:30:44 Info: pipe_stage_host_ctrl_s0_agent_rsp_fifo: "<b>mm_interconnect_0</b>" instantiated <b>altera_avalon_sc_fifo</b> "<b>pipe_stage_host_ctrl_s0_agent_rsp_fifo</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_sc_fifo.v</b>
+2019.09.26.12:30:44 Info: router: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:44 Info: router_001: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:44 Info: pipe_stage_host_ctrl_s0_burst_adapter: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_burst_adapter</b> "<b>pipe_stage_host_ctrl_s0_burst_adapter</b>"
+2019.09.26.12:30:44 Info: cmd_demux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:44 Info: cmd_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: rsp_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: pipe_stage_host_ctrl_s0_rsp_width_adapter: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_width_adapter</b> "<b>pipe_stage_host_ctrl_s0_rsp_width_adapter</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_address_alignment.sv</b>
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_burst_uncompressor.sv</b>
+2019.09.26.12:30:44 Info: avalon_st_adapter: "<b>mm_interconnect_0</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>avalon_st_adapter</b>"
+2019.09.26.12:30:44 Info: router: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:44 Info: router_002: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router_002</b>"
+2019.09.26.12:30:44 Info: cmd_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:44 Info: cmd_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: rsp_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:44 Info: rsp_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: avalon_st_adapter: "<b>mm_interconnect_1</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>avalon_st_adapter</b>"
+2019.09.26.12:30:44 Info: router: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:44 Info: router_001: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:44 Info: dma_0_m_limiter: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_traffic_limiter</b> "<b>dma_0_m_limiter</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_traffic_limiter.sv</b>
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_reorder_memory.sv</b>
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_sc_fifo.v</b>
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_st_pipeline_base.v</b>
+2019.09.26.12:30:44 Info: cmd_demux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:44 Info: cmd_mux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: rsp_demux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:44 Info: rsp_mux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: limiter_pipeline: "<b>mm_interconnect_2</b>" instantiated <b>altera_avalon_st_pipeline_stage</b> "<b>limiter_pipeline</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_st_pipeline_stage.sv</b>
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_st_pipeline_base.v</b>
+2019.09.26.12:30:44 Info: router: "<b>mm_interconnect_3</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:44 Info: router_001: "<b>mm_interconnect_3</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:44 Info: cmd_demux: "<b>mm_interconnect_3</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:44 Info: cmd_mux: "<b>mm_interconnect_3</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: rsp_demux: "<b>mm_interconnect_3</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:44 Info: rsp_demux_001: "<b>mm_interconnect_3</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux_001</b>"
+2019.09.26.12:30:44 Info: rsp_mux: "<b>mm_interconnect_3</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: crosser: "<b>mm_interconnect_3</b>" instantiated <b>altera_avalon_st_handshake_clock_crosser</b> "<b>crosser</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_st_pipeline_base.v</b>
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_std_synchronizer_nocut.v</b>
+2019.09.26.12:30:44 Info: router: "<b>mm_interconnect_4</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:44 Info: router_001: "<b>mm_interconnect_4</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:44 Info: cmd_demux: "<b>mm_interconnect_4</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:44 Info: cmd_mux: "<b>mm_interconnect_4</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:44 Info: rsp_mux: "<b>mm_interconnect_4</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:44 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:45 Info: avalon_st_adapter: "<b>mm_interconnect_4</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>avalon_st_adapter</b>"
+2019.09.26.12:30:45 Info: router: "<b>mm_interconnect_6</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:45 Info: router_001: "<b>mm_interconnect_6</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:45 Info: cmd_demux: "<b>mm_interconnect_6</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:45 Info: cmd_mux: "<b>mm_interconnect_6</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:45 Info: rsp_mux: "<b>mm_interconnect_6</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:45 Info: router: "<b>mm_interconnect_7</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:45 Info: router_001: "<b>mm_interconnect_7</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:45 Info: cmd_demux: "<b>mm_interconnect_7</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:45 Info: cmd_mux: "<b>mm_interconnect_7</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:45 Info: rsp_mux: "<b>mm_interconnect_7</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:45 Info: router: "<b>mm_interconnect_8</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:45 Info: router_001: "<b>mm_interconnect_8</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:45 Info: cmd_demux: "<b>mm_interconnect_8</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:45 Info: cmd_mux: "<b>mm_interconnect_8</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:45 Info: rsp_demux: "<b>mm_interconnect_8</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:45 Info: rsp_mux: "<b>mm_interconnect_8</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:45 Info: pass_through_0: "<b>acl_internal_snoop</b>" instantiated <b>channel_adapter</b> "<b>pass_through_0</b>"
+2019.09.26.12:30:45 Info: jtag_phy_embedded_in_jtag_master: "<b>dmaster</b>" instantiated <b>altera_jtag_dc_streaming</b> "<b>jtag_phy_embedded_in_jtag_master</b>"
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_st_clock_crosser.v</b>
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_std_synchronizer_nocut.v</b>
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_st_pipeline_base.v</b>
+2019.09.26.12:30:45 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_st_pipeline_stage.sv</b>
+2019.09.26.12:30:45 Info: timing_adt: "<b>dmaster</b>" instantiated <b>timing_adapter</b> "<b>timing_adt</b>"
+2019.09.26.12:30:45 Info: b2p: "<b>dmaster</b>" instantiated <b>altera_avalon_st_bytes_to_packets</b> "<b>b2p</b>"
+2019.09.26.12:30:45 Info: p2b: "<b>dmaster</b>" instantiated <b>altera_avalon_st_packets_to_bytes</b> "<b>p2b</b>"
+2019.09.26.12:30:45 Info: transacto: "<b>dmaster</b>" instantiated <b>altera_avalon_packets_to_master</b> "<b>transacto</b>"
+2019.09.26.12:30:45 Info: b2p_adapter: "<b>dmaster</b>" instantiated <b>channel_adapter</b> "<b>b2p_adapter</b>"
+2019.09.26.12:30:45 Info: p2b_adapter: "<b>dmaster</b>" instantiated <b>channel_adapter</b> "<b>p2b_adapter</b>"
+2019.09.26.12:30:45 Info: modular_sgdma_dispatcher_0: "<b>dma</b>" instantiated <b>modular_sgdma_dispatcher</b> "<b>modular_sgdma_dispatcher_0</b>"
+2019.09.26.12:30:46 Info: dma_read_master: "<b>dma</b>" instantiated <b>dma_read_master</b> "<b>dma_read_master</b>"
+2019.09.26.12:30:48 Info: dma_write_master: "<b>dma</b>" instantiated <b>dma_write_master</b> "<b>dma_write_master</b>"
+2019.09.26.12:30:48 Info: mm_interconnect_0: "<b>dma</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"
+2019.09.26.12:30:48 Info: mm_interconnect_1: "<b>dma</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2019.09.26.12:30:48 Info: router: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:48 Info: router_003: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router_003</b>"
+2019.09.26.12:30:48 Info: cmd_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:48 Info: cmd_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: rsp_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:48 Info: rsp_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: router: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:48 Info: router_001: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:48 Info: router_002: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_router</b> "<b>router_002</b>"
+2019.09.26.12:30:48 Info: router_003: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_router</b> "<b>router_003</b>"
+2019.09.26.12:30:48 Info: cmd_demux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:48 Info: cmd_mux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: rsp_demux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:48 Info: rsp_mux: "<b>mm_interconnect_2</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: router: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:48 Info: router_001: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:48 Info: cmd_demux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:48 Info: cmd_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: rsp_demux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:48 Info: rsp_demux_002: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux_002</b>"
+2019.09.26.12:30:48 Info: rsp_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: async_fifo: "<b>mm_interconnect_0</b>" instantiated <b>altera_avalon_dc_fifo</b> "<b>async_fifo</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_dc_fifo.v</b>
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v</b>
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_std_synchronizer_nocut.v</b>
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_avalon_dc_fifo.sdc</b>
+2019.09.26.12:30:48 Info: router: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:48 Info: router_001: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:48 Info: cmd_demux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:48 Info: cmd_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: rsp_demux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:48 Info: rsp_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: router: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2019.09.26.12:30:48 Info: router_001: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router_001</b>"
+2019.09.26.12:30:48 Info: router_005: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router_005</b>"
+2019.09.26.12:30:48 Info: cmd_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2019.09.26.12:30:48 Info: cmd_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: rsp_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2019.09.26.12:30:48 Info: rsp_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2019.09.26.12:30:48 Info: Reusing file <b>/home/lma792/bisunaopencl/src/OCL/Kernels/nsk/system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2019.09.26.12:30:48 Info: error_adapter_0: "<b>avalon_st_adapter</b>" instantiated <b>error_adapter</b> "<b>error_adapter_0</b>"
+2019.09.26.12:30:48 Info: error_adapter_0: "<b>avalon_st_adapter</b>" instantiated <b>error_adapter</b> "<b>error_adapter_0</b>"
+2019.09.26.12:30:48 Info: error_adapter_0: "<b>avalon_st_adapter</b>" instantiated <b>error_adapter</b> "<b>error_adapter_0</b>"
+2019.09.26.12:30:48 Info: system: Done "<b>system</b>" with 173 modules, 2505 files
+2019.09.26.12:30:49 Info: qsys-generate succeeded.
+2019.09.26.12:30:49 Info: Finished: <b>Create HDL design files for synthesis</b>

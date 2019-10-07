@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<board name="c5p" vfabric="0" big_endian="0">
+	 <global_mem_config name="DDR" mode="burst-interleaved"/> 
+	<kernel name="processFPGA" csr_addr="0" csr_size="256" work_group_invariant="0" vector_lanes="1" >
+		<work_group size_x="1" size_y="1" size_z="1" max_size="1"/>
+			<argument index="0" type="2" category="1" size="8" >
+			</argument>
+			<argument index="1" type="2" category="1" size="8" >
+			</argument>
+			<argument index="2" type="2" category="1" size="8" >
+			</argument>
+			<argument index="3" type="2" category="1" size="8" >
+			</argument>
+			<argument index="4" type="2" category="1" size="8" >
+			</argument>
+			<argument index="5" type="1" category="1" size="4" >
+				<local_mem_pointer addrspace_id="6" size="16384"/>
+			</argument>
+			<argument index="6" type="1" category="1" size="4" >
+				<local_mem_pointer addrspace_id="7" size="16384"/>
+			</argument>
+			<argument index="7" type="1" category="1" size="4" >
+				<local_mem_pointer addrspace_id="5" size="16384"/>
+			</argument>
+			<argument index="8" type="1" category="1" size="4" >
+				<local_mem_pointer addrspace_id="8" size="16384"/>
+			</argument>
+		<local_memory id="5" local_demand="0"/>
+		<local_memory id="6" local_demand="0"/>
+		<local_memory id="7" local_demand="0"/>
+		<local_memory id="8" local_demand="0"/>
+		<local_memory id="9" local_demand="256"/>
+		<local_memory id="10" local_demand="256"/>
+		<local_memory id="11" local_demand="1024"/>
+		<local_memory id="12" local_demand="512"/>
+		<local_memory id="13" local_demand="512"/>
+	</kernel>
+</board>
