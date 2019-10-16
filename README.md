@@ -90,6 +90,8 @@ Generation: 1
 
 Below are shown three screenshots of the resource utilization when BiSUNA was compiled for the Cyclone V:
 
-[FPGA Fitter](resources/utilization/FPGA-Fitter.png)
-[FPGA Maximum Frequency](resources/utilization/FPGA-FMax.png)
-[FPGA Power Dissipation](resources/utilization/FPGA-Power.png)
+![FPGA Fitter](resources/utilization/FPGA-Fitter.png)
+
+![FPGA Maximum Frequency](resources/utilization/FPGA-FMax.png)
+
+![FPGA Power Dissipation](resources/utilization/FPGA-Power.png)
