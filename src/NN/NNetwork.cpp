@@ -25,95 +25,11 @@
 
 #include "NNetwork.hpp"
 #include <thread>
-#include <ctime>
-#include <algorithm>
-#include <stdio.h>
-#include <sstream>
-#include <string>
-#include "NNetworkModule.hpp"
-#include "RLAgent/UnifiedNeuralModel.hpp"
 #include "RandomUtils.hpp"
-////////////// Environments
-#include "Environments/Mountain_Car.hpp"
-#include "Environments/Single_Cart_Pole.hpp"
-#include "Environments/Double_Cart_Pole.hpp"
-#include "Environments/Function_Approximation.hpp"
-#include "Environments/GymEnv.hpp"
-#include "Environments/Multiplexer.hpp"
-////////////////////////////
-
-#include "Configuration/PConfig.hpp"
+#include "Environments/ReinforcementEnvironment.hpp"
+#include "Environments/SymmetricEncryption.hpp"
 #include "NN/NNetworkExtra.hpp"
-///////////////////////////
-#include "OCL/OpenCLUtils.hpp"
-#include "OCL/OCLBridge.hpp"
 #include "OCL/OCLContainer.hpp"
-
-Reinforcement_Environment *createEnvFromStr(const ushortT &envID, const PCEnvironmentSupported &env, const string &envConf)
-{
-    const char *eCC = envConf.c_str();
-    switch (env) {
-        case PCEMountainCar: return new Mountain_Car(envID, eCC);
-        case PCEDoubleCartPole: return new Double_Cart_Pole(envID, eCC); // TODO!! Check again, max SUNA 829, this was 125. Most likely Primers
-        case PCEFunctionApproximation: return new Function_Approximation(envID, eCC); // TODO!! Check again, BiSUNA -11274, this -3868. SUNA -4047, this -16625
-        
-        // Each gym environment must be executed before this code is executed, matching the same
-        // number of gyms with the number of threads. In python, it would execute something like:
-        // python3 gym-uds-server.py 'MountainCar-v0' 'unix:///tmp/gym-uds-socket1'
-        // where 1 means the thread id assgined to that environment.
-        case PCEGymEnv: return new GymEnv(envID, eCC);
-        case PCEMultiplexer: return new Multiplexer(envID, eCC); // SUNA: -755 (gen 182), this stuck at -832 (gen 278)
-        case PCESingleCartPole: return new Single_Cart_Pole(envID, eCC); // TODO!! Check again, solved BiSUNA (10000), here was longer.
-        default:
-            printf("Environment %s not supported.\n", eCC);
-            exit(1);
-            break;
-    }
-}
-
-void checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent)
-{
-    ushortT everyNGens = pConf->saveEveryNGenerations();
-    bool saveToFile = pConf->saveToFile();
-    bool shouldSave = agent->config.unmGeneration % everyNGens == 0;
-    if (saveToFile && shouldSave) {
-        string bisunaName = pConf->bisunaFile();
-        string timeStamped = NNExFunction::appendTimeStamp(bisunaName);
-        NNExFunction::writeBiSUNAModel(agent, timeStamped.c_str());
-    }
-}
-
-UnifiedNeuralModel configureModel(ushortT obserrvations, ushortT actions, PConfig *pConf)
-{
-    ushortT population = pConf->populationSize();
-    
-    UNMConfig conf = UNMConfig(obserrvations, actions, population, pConf->stepMutations());
-    UnifiedNeuralModel agent = UnifiedNeuralModel(pConf->initialMutations(), conf);
-
-    // This function will load a SUNA structured file into the first cell un the UNM
-    if (pConf->loadFromFile()) {
-        NNExFunction::readBiSUNAModel(pConf->bisunaFile().c_str(), &agent);
-    }
-    
-    return agent;
-}
-
-vector<Reinforcement_Environment *> environmentVector(const ushortT numEnv, PConfig *pConf)
-{
-    const PCEnvironmentSupported envName = pConf->environmentName();
-    const string envConf = pConf->environmentConf();
-    int obs = 0;
-    int act = 0;
-    vector<Reinforcement_Environment *> envs;
-    
-    for (ushort i = 0; i < numEnv; i++) {
-        Reinforcement_Environment *env = createEnvFromStr(i, envName, envConf);
-        env->start(obs, act);
-        envs.push_back(env);
-    }
-    
-    return envs;
-}
 
 float NNFunction::mainBiSUNA(const char *config)
 {
@@ -122,11 +38,18 @@ float NNFunction::mainBiSUNA(const char *config)
     printf("Config file: %s \n", config);
     
 #ifdef DEBUG
-    // This helps to keep consistency across execution and testing
-    // setting the seed to an specific value.
-    ushortT rndSeed = pConf->randomSeed();
-    RandomUtils::changeRandomSeed(rndSeed);
-#endif
+    if (pConf->enableDebugging()) {
+        // This helps to keep consistency across execution and testing
+        // setting the seed to an specific value.
+        ushortT rndSeed = pConf->randomSeed();
+        RandomUtils::changeRandomSeed(rndSeed);
+        
+    }
+#endif // DEBUG
+    
+    if (pConf->environmentName() == PCESymmetricEncryption) {
+        return SymEncFunctions::symEncNetwork(pConf);
+    }
     
     switch (pConf->exeType()) {
         case PCGThread:
@@ -139,7 +62,7 @@ float NNFunction::mainBiSUNA(const char *config)
     }
 }
 
-float executeOCL(vector<Reinforcement_Environment *>env, const ushort &episodesPerAgent, UnifiedNeuralModel *unm, OCLContainer *cont, bool profiling, bool singleTask = false)
+float executeOCL(vector<ReinforcementEnvironment *>env, const ushort &episodesPerAgent, UnifiedNeuralModel *unm, OCLContainer *cont, bool profiling, bool singleTask = false)
 {
     vector<float> reward(env.size());
     transform(env.begin(), env.end(), reward.begin(), [](auto *e){ return e->step(NULL); } );
@@ -175,7 +98,7 @@ float executeOCL(vector<Reinforcement_Environment *>env, const ushort &episodesP
             ParameterType *ref = (ParameterType *)cont->inRef;
             ref[i] = env[obsIdx]->observation[obsCounter];
             obsCounter++;
-            if (obsCounter >= env[obsIdx]->number_of_observation_vars) {
+            if (obsCounter >= env[obsIdx]->observationVars) {
                 obsIdx++;
                 obsCounter = 0;
             }
@@ -198,7 +121,7 @@ float executeOCL(vector<Reinforcement_Environment *>env, const ushort &episodesP
         shouldContinue = false;
         for (ushort i = 0; i < env.size(); i++ && shouldContinue == false) {
             int trial = env[i]->trial;
-            int maxStps = env[i]->MAX_STEPS;
+            int maxStps = env[i]->maxSteps;
             auto envCnt = envCounter[i];
             // Only when all environments have reached a max number of steps or the trial moved on, it is
             // when this flag will be set to false.
@@ -246,11 +169,11 @@ float NNFunction::mainOCLNNetwork(PConfig *pConf)
     bool profiling = pConf->oclProfiling();
     cl_device_type oclDevice = pConf->deviceType();
     bool isSingleTask = pConf->singleTask();
-    vector<Reinforcement_Environment *> envs = environmentVector(population, pConf);
-    int numberObsVars = envs[0]->number_of_observation_vars;
-    int numberActionVars = envs[0]->number_of_action_vars;
+    vector<ReinforcementEnvironment *> envs = RLFunctions::environmentVector(population, pConf);
+    int numberObsVars = envs[0]->observationVars;
+    int numberActionVars = envs[0]->actionVars;
     
-    UnifiedNeuralModel unm = configureModel(numberObsVars, numberActionVars, pConf);
+    UnifiedNeuralModel unm = UNMFunctions::configureModel(numberObsVars, numberActionVars, pConf);
     void *inputVec = NULL;
     posix_memalign(&inputVec, DMA_ALIGNMENT, numberObsVars * population * sizeof(ParameterType));
     string krnName = pConf->kernelName();
@@ -261,7 +184,7 @@ float NNFunction::mainOCLNNetwork(PConfig *pConf)
         executeOCL(envs, episodesPerAgent, &unm, cont, profiling, isSingleTask);
         UNMFunctions::spectrumDiversityEvolve(&unm);
         cont->reallocateUNM(&unm);
-        checkSaveGen(pConf, &unm);
+        UNMFunctions::checkSaveGen(pConf, &unm);
         printf("----------------------------------------\n");
     }
     
@@ -269,7 +192,7 @@ float NNFunction::mainOCLNNetwork(PConfig *pConf)
         NNExFunction::writeBiSUNAModel(&unm, pConf->bisunaFile().c_str());
     }
     
-    for_each(envs.begin(), envs.end(), [](Reinforcement_Environment *env){
+    for_each(envs.begin(), envs.end(), [](ReinforcementEnvironment *env){
         delete env;
     });
     
@@ -287,18 +210,18 @@ float NNFunction::mainThreadedNNetwork(PConfig *pConf)
     ushortT numThreads = pConf->threadNumber();
     ushortT cellsPerThread = population / numThreads;
     
-    vector<Reinforcement_Environment *> envs = environmentVector(numThreads, pConf);
-    int numberObsVars = envs[0]->number_of_observation_vars;
-    int numberActionVars = envs[0]->number_of_action_vars;
+    vector<ReinforcementEnvironment *> envs = RLFunctions::environmentVector(numThreads, pConf);
+    int numberObsVars = envs[0]->observationVars;
+    int numberActionVars = envs[0]->actionVars;
     
-    UnifiedNeuralModel agent = configureModel(numberObsVars, numberActionVars, pConf);
+    UnifiedNeuralModel agent = UNMFunctions::configureModel(numberObsVars, numberActionVars, pConf);
     
     vector<float> rewards(numThreads);
     
     auto trFunc = [&agent, &envs, &numberObsVars, &episodesPerAgent]
         (ushortT thrID, ushortT start, ushortT end, float *bestReward) {
 //        printf("Thread: % i, Start: %i, End: %i\n", thrID, start, end);
-            Reinforcement_Environment *env = envs[thrID];
+            ReinforcementEnvironment *env = envs[thrID];
             float reward = env->step(NULL);
             int stepCounter = 0;
             int i = env->trial;
@@ -308,7 +231,7 @@ float NNFunction::mainThreadedNNetwork(PConfig *pConf)
                 float accumReward = reward;
                 UNMCell *cell = agent.cells[current];
                 
-                while(env->trial == i && stepCounter < env->MAX_STEPS) {
+                while(env->trial == i && stepCounter < env->maxSteps) {
                     vector<ParameterType> obs(env->observation, env->observation + numberObsVars);
                     vector<ParameterType> action = UNMFunctions::step(reward, obs, cell);
                     reward = env->step(action.data()); 
@@ -361,7 +284,7 @@ float NNFunction::mainThreadedNNetwork(PConfig *pConf)
         sort(rewards.rbegin(), rewards.rend());
         printf("From all threads, best was: %f\n", rewards[0]);
         
-        checkSaveGen(pConf, &agent);
+        UNMFunctions::checkSaveGen(pConf, &agent);
         
         UNMFunctions::spectrumDiversityEvolve(&agent);
         
@@ -372,7 +295,7 @@ float NNFunction::mainThreadedNNetwork(PConfig *pConf)
         NNExFunction::writeBiSUNAModel(&agent, pConf->bisunaFile().c_str());
     }
     
-    for_each(envs.begin(), envs.end(), [](Reinforcement_Environment *env){
+    for_each(envs.begin(), envs.end(), [](ReinforcementEnvironment *env){
         delete env;
     });
     

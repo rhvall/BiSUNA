@@ -285,7 +285,7 @@ void UNMFunctions::modifyCellModule(const ushortT netID, const ushortT stepMut, 
     };
 }
 
-void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NNoveltyMap &nmap, vector<UNMCell *> &cells)
+void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NNoveltyMap &nmap, vector<UNMCell *> &cells, vector<ushortT> *prevID)
 {
     ushortT cellsSize = cells.size();
 
@@ -302,7 +302,7 @@ void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NN
         
         ushortT nID = nmapCell->netMod->nParams.networkID;
         
-        if (nID > nmap.popSize && cells[i]->netMod->nParams.networkID != nID) {
+        if (cells[i]->netMod->nParams.networkID != nID) {
             UNMCell *ptr = cells[i];
             cells[i] = cells[nID];
             cells[nID] = ptr;
@@ -312,6 +312,11 @@ void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NN
         // agent, it needs to reset the fitness value
         cells[i]->cellFitness = 0;
         cells[i]->cellStep = 0;
+        
+        if (prevID != NULL) {
+            prevID->push_back(nID);
+        }
+        
         cells[i]->netMod->nParams.networkID = i;
         NNSFunction::resetState(cells[i]->netSt);
     }
@@ -393,3 +398,38 @@ void UNMFunctions::loadAgent(const char *filename, UnifiedNeuralModel *model)
     vector<ulongT> specs(model->config.unmMapSize, w);
     model->nmap = NNoveltyMap(specs);
 }
+
+void UNMFunctions::checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix)
+{
+    ushortT everyNGens = pConf->saveEveryNGenerations();
+    bool saveToFile = pConf->saveToFile();
+    bool shouldSave = agent->config.unmGeneration % everyNGens == 0;
+    if (saveToFile && shouldSave) {
+        string bisunaName = pConf->bisunaFile();
+        if (prefix != NULL) {
+            bisunaName.insert(0, prefix);
+        }
+        string timeStamped = NNExFunction::appendTimeStamp(bisunaName);
+        NNExFunction::writeBiSUNAModel(agent, timeStamped.c_str());
+    }
+}
+
+UnifiedNeuralModel UNMFunctions::configureModel(ushortT obserrvations, ushortT actions, PConfig *pConf, const char *prefix)
+{
+    ushortT population = pConf->populationSize();
+    
+    UNMConfig conf = UNMConfig(obserrvations, actions, population, pConf->stepMutations());
+    UnifiedNeuralModel agent = UnifiedNeuralModel(pConf->initialMutations(), conf);
+
+    // This function will load a SUNA structured file into the first cell un the UNM
+    if (pConf->loadFromFile()) {
+        string fileName = pConf->bisunaFile();
+        if (prefix != NULL) {
+            fileName.insert(0, prefix);
+        }
+        NNExFunction::readBiSUNAModel(fileName.c_str(), &agent);
+    }
+    
+    return agent;
+}
+
