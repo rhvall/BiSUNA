@@ -1,5 +1,5 @@
 //
-//  Single_Cart_Pole.cpp
+//  SingleCartPole.cpp
 //  BiSUNAOpenCL
 //
 
@@ -20,7 +20,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#include "Single_Cart_Pole.hpp"
+#include "SingleCartPole.hpp"
 #include "Discretizer.h"
 #include "Parameters.hpp"
 #include "RandomUtils.hpp"
@@ -30,25 +30,25 @@
 #define MAX_SINGLE_POLE_STEPS 10000
 #define RANDOM_START false
 
-Single_Cart_Pole::Single_Cart_Pole(ushortT eID, const char *fileName):
-    Reinforcement_Environment(eID, fileName)
+SingleCartPole::SingleCartPole(ushortT eID, const char *fileName):
+    ReinforcementEnvironment(eID, fileName)
 {
 	trial = -1;	//the first trial will be zero, because restart() is called making it increment
-	MAX_STEPS = MAX_SINGLE_POLE_STEPS;
+	maxSteps = MAX_SINGLE_POLE_STEPS;
 }
 
-Single_Cart_Pole::~Single_Cart_Pole()
+SingleCartPole::~SingleCartPole()
 {
 }
 
-void Single_Cart_Pole::start(int &number_of_observation_vars, int &number_of_action_vars)
+void SingleCartPole::start(int &numObsVars, int &numActionVars)
 {
-	number_of_observation_vars = 4;
-	this->number_of_observation_vars = 4;
-	observation = (ParameterType *)malloc(number_of_observation_vars * sizeof(ParameterType));
+	numObsVars = 4;
+	this->observationVars = 4;
+	observation = (ParameterType *)malloc(numObsVars * sizeof(ParameterType));
 
-	number_of_action_vars = 2;
-	this->number_of_action_vars = 2;
+	numActionVars = 2;
+	this->actionVars = 2;
 
 	restart();
 }
@@ -58,15 +58,15 @@ void Single_Cart_Pole::start(int &number_of_observation_vars, int &number_of_act
 //     This simulator uses normalized, continous inputs instead of
 //    discretizing the input space.
 /*----------------------------------------------------------------------
-  NOW cart_pole takes a continuous action from the spectrum (-10,10) and the
+  NOW cartPole takes a continuous action from the spectrum (-10,10) and the
   current values of the four state variables and updates their values by estimating the state
  TAU seconds later.
   
-  Originally, cart_pole took an action (0 or 1)
+  Originally, cartPole took an action (0 or 1)
 ----------------------------------------------------------------------*/
-void Single_Cart_Pole::cart_pole(float force, float *x, float *x_dot, float *theta, float *theta_dot)
+void SingleCartPole::cartPole(float force, float *x, float *xDot, float *theta, float *thetaDot)
 {
-  float xacc,thetaacc,costheta,sintheta,temp;
+  float xacc, thetaacc, costheta, sintheta, temp;
   
   const float GRAVITY = 9.81;
   const float MASSCART = 1.0;
@@ -91,7 +91,7 @@ void Single_Cart_Pole::cart_pole(float force, float *x, float *x_dot, float *the
   costheta = cos(*theta);
   sintheta = sin(*theta);
   
-  temp = (force + POLEMASS_LENGTH * *theta_dot * *theta_dot * sintheta)
+  temp = (force + POLEMASS_LENGTH * *thetaDot * *thetaDot * sintheta)
     / TOTAL_MASS;
   
   thetaacc = (GRAVITY * sintheta - costheta * temp)
@@ -102,13 +102,13 @@ void Single_Cart_Pole::cart_pole(float force, float *x, float *x_dot, float *the
   
   /*** Update the four state variables, using Euler's method. ***/
   
-  (*x) += TAU * (*x_dot);
-  (*x_dot) += TAU * xacc;
-  (*theta) += TAU * (*theta_dot);
-  (*theta_dot) += TAU * thetaacc;
+  (*x) += TAU * (*xDot);
+  (*xDot) += TAU * xacc;
+  (*theta) += TAU * (*thetaDot);
+  (*thetaDot) += TAU * thetaacc;
 }
 
-float Single_Cart_Pole::step(ParameterType *action)
+float SingleCartPole::step(ParameterType *action)
 {
 	// initial reward
 	if (action == NULL)
@@ -135,17 +135,17 @@ float Single_Cart_Pole::step(ParameterType *action)
 	}
 
 	//--- Apply action to the simulated cart-pole ---
-	cart_pole(force, &x, &x_dot, &theta, &theta_dot);
+	cartPole(force, &x, &xDot, &theta, &thetaDot);
 	
 	//copy the state to the agents' observable variables
 	obs[0] = x;
 	//observation[0] = (x + 2.4) / 4.8;
-	obs[1] = x_dot;
-	//observation[1] = (x_dot + .75) / 1.5;
+	obs[1] = xDot;
+	//observation[1] = (xDot + .75) / 1.5;
 	obs[2] = theta;
 	//observation[2] = (theta + TWELVE_DEGREES) / .41;
-	obs[3] = theta_dot;
-	//observation[3] = (theta_dot + 1.0) / 2.0;
+	obs[3] = thetaDot;
+	//observation[3] = (thetaDot + 1.0) / 2.0;
     
     
 #ifdef CONTINUOUS_PARAM
@@ -172,17 +172,17 @@ float Single_Cart_Pole::step(ParameterType *action)
 	//return 1/(x*x + theta*theta + 0.001);
 }
 
-float Single_Cart_Pole::restart()
+float SingleCartPole::restart()
 {
 	trial++;
-    x_dot = 0;
-    theta_dot = 0;
+    xDot = 0;
+    thetaDot = 0;
     
 	if (RANDOM_START) {
         x = RandomUtils::randomFloat(-1.4, 1.4);
-		//x_dot = random->uniform(-1, 1);
+		//xDot = random->uniform(-1, 1);
 		theta = RandomUtils::randomFloat(-0.1, 0.1);
-		//theta_dot = random->uniform(-1.5, 1.5);
+		//thetaDot = random->uniform(-1.5, 1.5);
 	}
 	else {
 		x = 0;
@@ -193,23 +193,23 @@ float Single_Cart_Pole::restart()
     //copy the state to the agents' observable variables
     observation[0] = x;
     //observation[0] = (x + 2.4) / 4.8;
-    observation[1] = x_dot;
-    //observation[1] = (x_dot + .75) / 1.5;
+    observation[1] = xDot;
+    //observation[1] = (xDot + .75) / 1.5;
     observation[2] = theta;
     //observation[2] = (theta + TWELVE_DEGREES) / .41;
-    observation[3] = theta_dot;
-    //observation[3] = (theta_dot + 1.0) / 2.0;
+    observation[3] = thetaDot;
+    //observation[3] = (thetaDot + 1.0) / 2.0;
 #else
     observation[0] = transformToPT(x * 100);
-    observation[1] = transformToPT(x_dot * 100);
+    observation[1] = transformToPT(xDot * 100);
     observation[2] = transformToPT(theta * 100);
-    observation[3] = transformToPT(theta_dot * 100);
+    observation[3] = transformToPT(thetaDot * 100);
 #endif
     
 	return 1;
 	//return 1/(x*x + theta*theta + 0.001);
 }
 
-void Single_Cart_Pole::print()
+void SingleCartPole::print()
 {
 }

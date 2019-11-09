@@ -1,5 +1,5 @@
 //
-//  Function_Approximation.cpp
+//  FunctionApproximation.cpp
 //  BiSUNAOpenCL
 //
 
@@ -20,16 +20,16 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#include "Function_Approximation.hpp"
+#include "FunctionApproximation.hpp"
 #include "RandomUtils.hpp"
 #include "Parameters.hpp"
 #include "Discretizer.h"
 
-Function_Approximation::Function_Approximation(ushortT eID, const char *fileName):
-    Reinforcement_Environment(eID, fileName)
+FunctionApproximation::FunctionApproximation(ushortT eID, const char *fileName):
+    ReinforcementEnvironment(eID, fileName)
 {
     trial = -1;
-    evaluations_per_episode = (uintT) ini.GetInteger("FunctionApproximation", "EvaluationsPerEpisode", 1000);;
+    evaluationsPerEpisode = (uintT) ini.GetInteger("FunctionApproximation", "EvaluationsPerEpisode", 1000);;
     verbose = ini.GetBoolean("FunctionApproximation", "Verbose", false);;
     numberFunctionAppx = (uintT)ini.GetInteger("FunctionApproximation", "NumberOfFunctionApproximation", 2);
     isMutilpleRandom = ini.GetBoolean("FunctionApproximation", "MultipleRandomFunctionApproximation", false);
@@ -37,38 +37,38 @@ Function_Approximation::Function_Approximation(ushortT eID, const char *fileName
     isSequential = ini.GetBoolean("FunctionApproximation", "Sequential", true);
     
     if (isSequential) {
-        MAX_STEPS = evaluations_per_episode*100;
+        maxSteps = evaluationsPerEpisode*100;
     }
     else {
-        MAX_STEPS = evaluations_per_episode;
+        maxSteps = evaluationsPerEpisode;
     }
 
 	//force a random selection between the possible functionn, see restart()
     
     if (isMutilpleRandom) {
-        solved_counter = numberFunctionAppx;
-        problem_index = RandomUtils::randomPositive(numberFunctionAppx - 1);
+        solvedCounter = numberFunctionAppx;
+        problemIndex = RandomUtils::randomPositive(numberFunctionAppx - 1);
     }
 }
 
-Function_Approximation::~Function_Approximation()
+FunctionApproximation::~FunctionApproximation()
 {
 }
 
-void Function_Approximation::start(int &number_of_observation_vars, int &number_of_action_vars)
+void FunctionApproximation::start(int &numObsVars, int &numActionVars)
 {
     if (isSupervised) {
-        number_of_observation_vars = 2;
+        numObsVars = 2;
     }
     else {
-        number_of_observation_vars = 1;
+        numObsVars = 1;
     }
     
-	this->number_of_observation_vars = number_of_observation_vars;
-	observation = (ParameterType *)malloc(number_of_observation_vars * sizeof(ParameterType));
+	this->observationVars = numObsVars;
+	observation = (ParameterType *)malloc(numObsVars * sizeof(ParameterType));
 
-	number_of_action_vars = 1;
-	this->number_of_action_vars = number_of_action_vars;
+	numActionVars = 1;
+	this->actionVars = numActionVars;
 
 	// Initialize state of Car
 	restart();
@@ -77,7 +77,7 @@ void Function_Approximation::start(int &number_of_observation_vars, int &number_
     }
 }
 
-float Function_Approximation::step(ParameterType *action)
+float FunctionApproximation::step(ParameterType *action)
 {
 	// initial reward
 	if (action == NULL)
@@ -98,7 +98,7 @@ float Function_Approximation::step(ParameterType *action)
 #endif
     
     if (isMutilpleRandom) {
-        switch(problem_index)
+        switch(problemIndex)
         {
             case 0:
             {
@@ -147,7 +147,7 @@ float Function_Approximation::step(ParameterType *action)
         }
         */
         //observation[1] = result;
-        observation[1] = (ParameterType)problem_index;
+        observation[1] = (ParameterType)problemIndex;
     } 
 	//printf ("reward %f\n",reward);
 		
@@ -168,12 +168,12 @@ float Function_Approximation::step(ParameterType *action)
 	return reward;
 }
 
-void Function_Approximation::print()
+void FunctionApproximation::print()
 {
 	//printf ("Equation x*1.43 + 1.69, %f velocity %f\n",observation[0]);
 }
 
-float Function_Approximation::restart()
+float FunctionApproximation::restart()
 {
 	trial++;
 	evaluation = 0;
@@ -189,31 +189,31 @@ float Function_Approximation::restart()
 	//printf ("%f %f \n",observation[0],observation[1]);
 		
     if (isMutilpleRandom) {
-        solved_counter++;
-        if (solved_counter >= numberFunctionAppx)
+        solvedCounter++;
+        if (solvedCounter >= numberFunctionAppx)
         {
             //since all problems were already tested, start again from a different initial problem
-            problem_index = RandomUtils::randomPositive(numberFunctionAppx - 1);
-            solved_counter = 0;
+            problemIndex = RandomUtils::randomPositive(numberFunctionAppx - 1);
+            solvedCounter = 0;
         }
         else
         {
             //go to a different problem
-            problem_index++;
+            problemIndex++;
 
-            if (problem_index >= numberFunctionAppx)
+            if (problemIndex >= numberFunctionAppx)
             {
-                problem_index = 0;
+                problemIndex = 0;
             }
         }
         
-        observation[1] = (ParameterType)problem_index;
+        observation[1] = (ParameterType)problemIndex;
     }
 
 	return 0;
 }
 
-ParameterType Function_Approximation::obsValue(float val) {
+ParameterType FunctionApproximation::obsValue(float val) {
 #ifdef CONTINUOUS_PARAM
     return val;
 #else

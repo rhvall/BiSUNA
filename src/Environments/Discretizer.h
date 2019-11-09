@@ -59,7 +59,7 @@ inline unsigned short int transformToPT(float val, float minBound = -1, float ma
 
     float v = abs(round(MID_WEIGHT + (MID_WEIGHT * val) / maxBound));
 // TODO!! For some reason to be explored, using HALF_WEIGHT in some environments
-// helps to reach a solution faster (ex. Mountain_Car or Function_Approximation)
+// helps to reach a solution faster (ex. MountainCar or FunctionApproximation)
 //     float v = abs(round(HALF_WEIGHT + (HALF_WEIGHT * val) / maxBound));
     
     return static_cast<ParameterType>(v);

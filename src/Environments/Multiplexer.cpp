@@ -26,19 +26,19 @@
 #include "Parameters.hpp"
 
 Multiplexer::Multiplexer(ushortT eID, const char *fileName):
-    Reinforcement_Environment(eID, fileName)
+    ReinforcementEnvironment(eID, fileName)
 {
-    int address_bits = 0;
-    int data_bits = 0;
+    int addressBits = 0;
+    int dataBits = 0;
 	trial = -1;
 	
-	this->address_bits = address_bits;
-	this->data_bits = data_bits;
+	this->addressBits = addressBits;
+	this->dataBits = dataBits;
 
 	//check for out of bound addresses
-	int addressable_bits = (int) pow(2,address_bits);
-	if(addressable_bits != data_bits) {
-		//printf("ERROR: address bits can address more bits than available on the data_bits\n");
+	int addressableBits = (int) pow(2,addressBits);
+	if(addressableBits != dataBits) {
+		//printf("ERROR: address bits can address more bits than available on the dataBits\n");
 		printf("ERROR: incompatible address bits and data bits\n");
 		exit(1);
 	}
@@ -46,29 +46,29 @@ Multiplexer::Multiplexer(ushortT eID, const char *fileName):
 	//allocate all and set all combinations of inputs
 	unsigned int iterator = 0;
 	unsigned int one = 1;
-	all_combinations = (int)pow(2, data_bits + address_bits);
-	input_data = (char **)malloc(all_combinations * sizeof(char *));
-	for(int i = 0; i < all_combinations; ++i)
+	allCombinations = (int)pow(2, dataBits + addressBits);
+	inputData = (char **)malloc(allCombinations * sizeof(char *));
+	for(int i = 0; i < allCombinations; ++i)
 	{
-		input_data[i] = (char *)calloc(data_bits + address_bits,sizeof(char));
-		for(int j = 0; j < (data_bits + address_bits); ++j)
+		inputData[i] = (char *)calloc(dataBits + addressBits,sizeof(char));
+		for(int j = 0; j < (dataBits + addressBits); ++j)
 		{
 			unsigned int select_bit = one << j;
 			char value = (iterator & select_bit) >> j;
-			input_data[i][j] = value;
+			inputData[i][j] = value;
 		}
 			
 		iterator++;
 	}
 
 	//allocate a temporary address for use in the evaluation step
-	//tmp_address=(char *)calloc(address_bits,sizeof(char));
+	//tmp_address=(char *)calloc(addressBits,sizeof(char));
 
 	//max steps is just an arbitrary very big number
 	//just to make sure the episode will not stop before it should
-	MAX_STEPS = all_combinations * 100;
+	maxSteps = allCombinations * 100;
 
-	//printf("all combinations %d\n",all_combinations);
+	//printf("all combinations %d\n",allCombinations);
 }
 
 Multiplexer::~Multiplexer()
@@ -76,14 +76,14 @@ Multiplexer::~Multiplexer()
 	//free(tmp_address);
 }
 
-void Multiplexer::start(int &number_of_observation_vars, int &number_of_action_vars)
+void Multiplexer::start(int &numObsVars, int &numActionVars)
 {
-	number_of_observation_vars = address_bits + data_bits;
-	this->number_of_observation_vars = number_of_observation_vars;
-	observation = (ParameterType *)malloc(number_of_observation_vars * sizeof(ParameterType));
+	numObsVars = addressBits + dataBits;
+	this->observationVars = numObsVars;
+	observation = (ParameterType *)malloc(numObsVars * sizeof(ParameterType));
 
-	number_of_action_vars = 1;
-	this->number_of_action_vars = number_of_action_vars;
+	numActionVars = 1;
+	this->actionVars = numActionVars;
 
 	// Initialize
 	restart();
@@ -101,7 +101,7 @@ float Multiplexer::step(ParameterType *action)
 
 	float reward = 0.0;
 
-	ParameterType correct_output = getCorrectOutput();
+	ParameterType correctOutput = getCorrectOutput();
 
 	//debug
 	//printf("correct %f\n\n",correct_result);
@@ -126,7 +126,7 @@ float Multiplexer::step(ParameterType *action)
 	
 	//calculate squared error
 	//notice that mean squared error MSE = 1/n (\sum (y - correct_y)^2)
-	float error = (discrete_output - correct_output);
+	float error = (discrete_output - correctOutput);
 	//since the output is binary the squared_error must be either 0 or 1
     float squared_error = error * error;
 
@@ -135,19 +135,19 @@ float Multiplexer::step(ParameterType *action)
 	//--------------------- Update Values and Check for End of Trial ------------------------
 	
 	//next step will be a different combination of inputs
-	current_combination++;
+	currentCombination++;
 	
 	//check if all combinations were already tested
-	if(current_combination >= all_combinations)
+	if(currentCombination >= allCombinations)
 	{
 		restart();
 		return reward;
 	}
 	
 	//set observation to current combination of inputs
-	for(int j = 0; j < (data_bits + address_bits); ++j)
+	for(int j = 0; j < (dataBits + addressBits); ++j)
 	{
-		observation[j] = (ParameterType) input_data[current_combination][j];
+		observation[j] = (ParameterType) inputData[currentCombination][j];
 	}
 
 	return reward;
@@ -157,18 +157,18 @@ bool Multiplexer::set(int feature)
 {
 	switch(feature)
 	{
-		case NORMALIZED_OBSERVATION:
+		case NormalizedObservation:
 		{
 			//it is a binary problem {0,1} so the observation range is always in the normalized range [-1,1]
-			normalized_observation = true;
+			normalizedObservation = true;
 			return true;
 		}
 		break;
-		case NORMALIZED_ACTION:
+		case NormalizedAction:
 		{
 			//it is a binary problem {0,1} so the action range is always in the normalized range [0,1]
 			//in fact, to avoid problems with the simmetry of the actions for sensitive agents, the threshold is set at 0.5, so 0.51 is 1 and 0.49 is 0.
-			normalized_action = true;
+			normalizedAction = true;
 			return true;
 		}
 		break;
@@ -182,11 +182,11 @@ bool Multiplexer::set(int feature)
 //print all combinations of input data
 void Multiplexer::print()
 {
-	for(int i = 0; i < all_combinations; ++i)
+	for(int i = 0; i < allCombinations; ++i)
 	{
-		for(int j = 0; j < (data_bits + address_bits); ++j)
+		for(int j = 0; j < (dataBits + addressBits); ++j)
 		{
-			printf("%d ",input_data[i][j]);
+			printf("%d ",inputData[i][j]);
 		}
 		printf("\n");
 	}
@@ -195,16 +195,16 @@ void Multiplexer::print()
 //for all arrays, swap its position with a random selected array
 void Multiplexer::shuffle()
 {
-	for(int i = 0; i < all_combinations; ++i)
+	for(int i = 0; i < allCombinations; ++i)
 	{
-        int random_index = RandomUtils::randomPositive(all_combinations - 1);
+        int random_index = RandomUtils::randomPositive(allCombinations - 1);
 		
 		//swap values between random_index and this one
-		for(int j = 0; j < (data_bits + address_bits); ++j)
+		for(int j = 0; j < (dataBits + addressBits); ++j)
 		{
-			char tmp = input_data[i][j];
-			input_data[i][j]= input_data[random_index][j];
-			input_data[random_index][j]= tmp;
+			char tmp = inputData[i][j];
+			inputData[i][j]= inputData[random_index][j];
+			inputData[random_index][j]= tmp;
 		}
 	}
 }
@@ -213,21 +213,21 @@ void Multiplexer::shuffle()
 ParameterType Multiplexer::getCorrectOutput()
 {
 	unsigned int address = 0;
-	for(int j = data_bits; j < data_bits + address_bits; ++j)
+	for(int j = dataBits; j < dataBits + addressBits; ++j)
 	{
-		//tmp_address[j-data_bits]= observation[j];
+		//tmp_address[j-dataBits]= observation[j];
 		char value = (char) observation[j];
-		address |= value << (j - data_bits);
+		address |= value << (j - dataBits);
 	}
 
 	/*
 	 * debug
-	for(int j = 0; j < data_bits;++j)
+	for(int j = 0; j < dataBits;++j)
 	{
 		printf("%f ",observation[j]);
 	}
 	printf(" | ");
-	for(int j = data_bits; j < data_bits + address_bits; ++j)
+	for(int j = dataBits; j < dataBits + addressBits; ++j)
 	{
 		printf("%f ",observation[j]);
 	}
@@ -246,12 +246,12 @@ float Multiplexer::restart()
 	shuffle();
 
 	//reset current combination counter
-	current_combination = 0;
+	currentCombination = 0;
 
 	//set observation to current combination of inputs
-	for (int j = 0; j < (data_bits + address_bits); ++j)
+	for (int j = 0; j < (dataBits + addressBits); ++j)
 	{
-		observation[j] = (ParameterType) input_data[current_combination][j];
+		observation[j] = (ParameterType) inputData[currentCombination][j];
 	}
 
 	return 0;

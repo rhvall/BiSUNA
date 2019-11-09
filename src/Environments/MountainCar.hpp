@@ -1,5 +1,5 @@
 //
-//  GymEnv.h
+//  MountainCar.h
 //  BiSUNA
 //
 //  Created by R on 12/4/19.
@@ -23,36 +23,40 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#ifndef GYMENV_H
-#define GYMENV_H
+#ifndef MountainCar_hpp
+#define MountainCar_hpp
 
-#include "Reinforcement_Environment.h"
-#include "Environments/gym-uds/gym-uds.h"
-#include "Environments/gym-uds/gym-uds.pb.h"
-   
-class GymEnv : public Reinforcement_Environment
+#include "ReinforcementEnvironment.hpp"
+
+class MountainCar : public ReinforcementEnvironment
 {
-public:
-		GymEnv(ushortT eID, const char *fileName);
-		~GymEnv();
+	public:
+		MountainCar(ushortT eID, const char *fileName);
+		~MountainCar();
 		
-		//Reinforcement Problem API
-		void start(int &number_of_observation_vars, int &number_of_action_vars);
+    // Global variables:
+		float mcarPosition, mcarVelocity;
+		int lastChange;
+		bool normalizedObservation;
+		bool normalizedAction;
+	
+		float mcarMinPosition;
+		float mcarMaxPosition;
+		float mcarMaxVelocity;            // the negative of this in the minimum velocity
+		float mcarGoalPosition;
+			
+        uintT mcarTrialsToChange;
+        float modMaxVel;
+        bool changesMaxVelocity;
+        bool isNoisyCar;
+        bool isContinuous;
+		bool originalValue;
+			
+		void start(int &numObsVars, int& numActionVars);
 		float step(ParameterType *action);
 		float restart();
 		void print();
-        bool didFinish;
-private:
-        gym_uds::EnvironmentClient *envG;
-        std::string gymID;
-        int envIDIdx;
-        void copyObservation(gym_uds::observation_t obs);
-        void copyObsMoutainCarV0(gym_uds::observation_t obs);
-        gym_uds::action_t transformAction(ParameterType *action);
-        void copyObsDiscreteTuple(gym_uds::observation_t obs);
-        gym_uds::action_t transformActionDiscreteTuple(ParameterType *action);
-        void verifyBounds(gym_uds::action_t &act);
-        int findEnvIndex(const char **env, const char *name);
+		bool set(int feature);
 };
 
 #endif

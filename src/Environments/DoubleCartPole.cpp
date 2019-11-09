@@ -1,5 +1,5 @@
 //
-//  Double_Cart_Pole.cpp
+//  DoubleCartPole.cpp
 //  BiSUNAOpenCL
 //
 
@@ -20,7 +20,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#include "Double_Cart_Pole.hpp"
+#include "DoubleCartPole.hpp"
 #include "Parameters.hpp"
 #include "Discretizer.h"
 
@@ -29,43 +29,43 @@
 #define NON_MARKOV_DOUBLE_POLE
 
 
-Double_Cart_Pole::Double_Cart_Pole(ushortT eID, const char *fileName):
-    Reinforcement_Environment(eID, fileName)
+DoubleCartPole::DoubleCartPole(ushortT eID, const char *fileName):
+    ReinforcementEnvironment(eID, fileName)
 {
-	MAX_STEPS = MAX_DOUBLE_POLE_STEPS;
+	maxSteps = MAX_DOUBLE_POLE_STEPS;
 	trial = -1;	//the first trial will be zero, because restart() is called making it increment
-    normalized_observation = false;
-    normalized_action = false;
+    normalizedObservation = false;
+    normalizedAction = false;
 }
 
-Double_Cart_Pole::~Double_Cart_Pole()
+DoubleCartPole::~DoubleCartPole()
 {
 }
 
-void Double_Cart_Pole::start(int &number_of_observation_vars, int &number_of_action_vars)
+void DoubleCartPole::start(int &numObsVars, int &numActionVars)
 {
 #ifdef NON_MARKOV_DOUBLE_POLE
 	//printf("non markov\n");
-	number_of_observation_vars = 3;
-	this->number_of_observation_vars = 3;
+	numObsVars = 3;
+	this->observationVars = 3;
 #else
-	number_of_observation_vars = 6;
-	this->number_of_observation_vars = 6;
+	numObsVars = 6;
+	this->observationVars = 6;
 #endif
     
-	observation = (ParameterType *) malloc(number_of_observation_vars * sizeof(ParameterType));
-	number_of_action_vars = 1;
-	this->number_of_action_vars = 1;
+	observation = (ParameterType *) malloc(numObsVars * sizeof(ParameterType));
+	numActionVars = 1;
+	this->actionVars = 1;
 
 	restart();
 }
 
-void Double_Cart_Pole::double_cart_pole(float action, float *st, float *derivs)
+void DoubleCartPole::dcpIteration(float action, float *st, float *derivs)
 {
     float force,costheta_1,costheta_2,sintheta_1,sintheta_2,
           gsintheta_1,gsintheta_2,temp_1,temp_2,ml_1,ml_2,fi_1,fi_2,mi_1,mi_2;
 
-	if(normalized_action)
+	if(normalizedAction)
 	{
 	    force = (action - 0.5) * FORCE_MAG * 2.0;
 	}
@@ -110,7 +110,7 @@ void Double_Cart_Pole::double_cart_pole(float action, float *st, float *derivs)
                   / LENGTH_2;
 }
 
-void Double_Cart_Pole::rk4(float f, float y[], float dydx[], float yout[])
+void DoubleCartPole::rk4(float f, float y[], float dydx[], float yout[])
 {
 	int i;
 
@@ -121,7 +121,7 @@ void Double_Cart_Pole::rk4(float f, float y[], float dydx[], float yout[])
 	
     for (i = 0; i <= 5; i++) yt[i] = y[i] + hh * dydx[i];
 	
-    double_cart_pole(f, yt, dyt);
+    dcpIteration(f, yt, dyt);
 	
     dyt[0] = yt[1];
 	dyt[2] = yt[3];
@@ -129,7 +129,7 @@ void Double_Cart_Pole::rk4(float f, float y[], float dydx[], float yout[])
 	
     for (i = 0; i <= 5; i++) yt[i] = y[i] + hh * dyt[i];
 	
-    double_cart_pole(f,yt,dym);
+    dcpIteration(f,yt,dym);
 	
     dym[0] = yt[1];
 	dym[2] = yt[3];
@@ -140,7 +140,7 @@ void Double_Cart_Pole::rk4(float f, float y[], float dydx[], float yout[])
 		dym[i] += dyt[i];
 	}
     
-	double_cart_pole(f, yt, dyt);
+	dcpIteration(f, yt, dyt);
 	
     dyt[0] = yt[1];
 	dyt[2] = yt[3];
@@ -150,7 +150,7 @@ void Double_Cart_Pole::rk4(float f, float y[], float dydx[], float yout[])
 		yout[i] = y[i] + h6 * (dydx[i] + dyt[i] + 2.0 * dym[i]);
 }
 
-float Double_Cart_Pole::step(ParameterType *action)
+float DoubleCartPole::step(ParameterType *action)
 {
     const float failureAngle = thirty_six_degrees;
     float dydx[6];
@@ -183,12 +183,12 @@ float Double_Cart_Pole::step(ParameterType *action)
 		dydx[2] = state[3];
 		dydx[4] = state[5];
 		 
-        double_cart_pole(act, state, dydx);
+        dcpIteration(act, state, dydx);
 		rk4(act, state, dydx, state);
 	}
 	
 #ifdef NON_MARKOV_DOUBLE_POLE
-	if(normalized_observation)
+	if(normalizedObservation)
 	{
 		//copy the state to the agents' observable variables
 		obs[0] = state[0] / 4.8;
@@ -204,7 +204,7 @@ float Double_Cart_Pole::step(ParameterType *action)
 
 	}
 #else
-	if(normalized_observation)
+	if(normalizedObservation)
 	{
 		obs[0] = state[0] / 4.8;
 		obs[1] = state[1] / 2.0;
@@ -216,7 +216,7 @@ float Double_Cart_Pole::step(ParameterType *action)
 	else
 	{
 		//copy the state to the agents' observable variables
-		for(int i = 0; i < number_of_observation_vars; ++i)
+		for(int i = 0; i < observationVars; ++i)
 		{
 			obs[i] = state[i];
 		}
@@ -241,19 +241,19 @@ float Double_Cart_Pole::step(ParameterType *action)
 	// return 1 / (x * x + theta * theta + 0.001);
 }
 
-bool Double_Cart_Pole::set(int feature)
+bool DoubleCartPole::set(int feature)
 {
 	switch(feature)
 	{
-		case NORMALIZED_OBSERVATION:
+		case NormalizedObservation:
 		{
-			normalized_observation = true;
+			normalizedObservation = true;
 			return true;
 		}
 		break;
-		case NORMALIZED_ACTION:
+		case NormalizedAction:
 		{
-			normalized_action = true;
+			normalizedAction = true;
 			return true;
 		}
 		break;
@@ -264,7 +264,7 @@ bool Double_Cart_Pole::set(int feature)
 	}
 }
 
-float Double_Cart_Pole::restart()
+float DoubleCartPole::restart()
 {
 	trial++;
     float obs[6];
@@ -272,9 +272,9 @@ float Double_Cart_Pole::restart()
 //    if(RANDOM_START)
 //    {
 //        x = random->uniform(-2.4, 2.4);
-//        x_dot = random->uniform(-1, 1);
+//        xDot = random->uniform(-1, 1);
 //        theta = random->uniform(-0.2, 0.2);
-//        theta_dot = random->uniform(-1.5, 1.5);
+//        thetaDot = random->uniform(-1.5, 1.5);
 //    }
 //    else
     {
@@ -283,7 +283,7 @@ float Double_Cart_Pole::restart()
 	}
 
 #ifdef NON_MARKOV_DOUBLE_POLE
-	if(normalized_observation)
+	if(normalizedObservation)
 	{
 		//copy the state to the agents' observable variables
 		obs[0] = state[0] / 4.8;
@@ -299,7 +299,7 @@ float Double_Cart_Pole::restart()
 
 	}
 #else
-	if(normalized_observation)
+	if(normalizedObservation)
 	{
 		obs[0] = state[0] / 4.8;
 		obs[1] = state[1] / 2.0;
@@ -311,7 +311,7 @@ float Double_Cart_Pole::restart()
 	else
 	{
 		//copy the state to the agents' observable variables
-		for(int i = 0; i < number_of_observation_vars; ++i)
+		for(int i = 0; i < observationVars; ++i)
 		{
 			obs[i] = state[i];
 		}
@@ -324,13 +324,13 @@ float Double_Cart_Pole::restart()
 	// return 1 / (x * x + theta * theta + 0.001);
 }
 
-void Double_Cart_Pole::print()
+void DoubleCartPole::print()
 {
 }
 
-void Double_Cart_Pole::copyToObservation(float *obs)
+void DoubleCartPole::copyToObservation(float *obs)
 {
-    for(int i = 0; i < number_of_observation_vars; ++i)
+    for(int i = 0; i < observationVars; ++i)
     {
 #ifdef CONTINUOUS_PARAM
         observation[i] = obs[i];

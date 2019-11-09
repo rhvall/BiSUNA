@@ -1,5 +1,5 @@
 //
-//  Reinforcement_Environment.h
+//  ReinforcementEnvironment.hpp
 //  BiSUNAOpenCL
 //
 //  Created by RHVT on 22/7/19.
@@ -23,37 +23,44 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#ifndef REINFORCEMENT_ENVIRONMENT_H
-#define REINFORCEMENT_ENVIRONMENT_H
+#ifndef ReinforcementEnvironment_hpp
+#define ReinforcementEnvironment_hpp
 
 #include "Configuration/PConfig.hpp"
 
 //features (in fact, they are restrictions to the reinforcement problem)
-//	NORMALIZED_OBSERVATION - Observation real values must be in the [-1,1] range
-//	NORMALIZED_ACTION - Action real values are supposed to be in the [0,1] range
-enum {
-    NORMALIZED_OBSERVATION,
-    NORMALIZED_ACTION
+//	NormalizedObservation - Observation real values must be in the [-1,1] range
+//	NormalizedAction - Action real values are supposed to be in the [0,1] range
+enum NomalizedValues {
+    NormalizedObservation,
+    NormalizedAction
 };
 
-struct Reinforcement_Environment
+struct ReinforcementEnvironment
 {
-    Reinforcement_Environment(ushortT eID, const char *fileName);
-    virtual ~Reinforcement_Environment();
+    ReinforcementEnvironment(ushortT eID, const char *fileName);
+    virtual ~ReinforcementEnvironment();
     
     ParameterType *observation;
-    int number_of_observation_vars;
-    int number_of_action_vars;
+    int observationVars;
+    int actionVars;
     int trial;
-    int MAX_STEPS;
+    int maxSteps;
     
     ushortT envID;
     INIReader ini;
     
-    virtual void start(int &number_of_observation_vars, int &number_of_action_vars) = 0;
+    virtual void start(int &numObsVars, int &numActionVars) = 0;
     virtual float step(ParameterType *action) = 0;
     virtual float restart() = 0;
     virtual void print() { };
     virtual bool set(int feature) { return false; }; //see enum above for the acceptable features
 };
+
+struct RLFunctions
+{
+    static ReinforcementEnvironment *createEnvFromStr(const ushortT &envID, const PCEnvironmentSupported &env, const string &envConf);
+    static vector<ReinforcementEnvironment *> environmentVector(const ushortT numEnv, PConfig *pConf);
+};
+
 #endif

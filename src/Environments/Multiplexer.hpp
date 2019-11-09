@@ -20,34 +20,34 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#ifndef MULTIPLEXER
-#define MULTIPLEXER
+#ifndef Multiplexer_hpp
+#define Multiplexer_hpp
 
-#include "Reinforcement_Environment.h"
+#include "ReinforcementEnvironment.hpp"
 
-class Multiplexer : public Reinforcement_Environment
+class Multiplexer : public ReinforcementEnvironment
 {
 	public:
 		Multiplexer(ushortT eID, const char *fileName);
 		~Multiplexer();
 		
-		int current_combination;
-		int all_combinations;
-		char **input_data;
-		int address_bits;
-		int data_bits;
-		bool normalized_observation;
-		bool normalized_action;
+		int currentCombination;
+		int allCombinations;
+		char **inputData;
+		int addressBits;
+		int dataBits;
+		bool normalizedObservation;
+		bool normalizedAction;
 
 		void shuffle();
 		ParameterType getCorrectOutput();
 	
 		//API
-		void start(int &number_of_observation_vars, int &number_of_action_vars);
+		void start(int &numObsVars, int &numActionVars);
 		float step(ParameterType *action);
 		float restart();
 		void print();
 		bool set(int feature);
 };
 
-#endif
+#endif // Multiplexer_hpp

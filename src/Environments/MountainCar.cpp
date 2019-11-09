@@ -23,35 +23,35 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#include "Mountain_Car.hpp"
+#include "MountainCar.hpp"
 #include "Discretizer.h"
 #include "RandomUtils.hpp"
 
-Mountain_Car::Mountain_Car(ushortT eID, const char *fileName):
-    Reinforcement_Environment(eID, fileName)
+MountainCar::MountainCar(ushortT eID, const char *fileName):
+    ReinforcementEnvironment(eID, fileName)
 {
 	trial = -1;
-	last_change = -1;
-	MAX_STEPS = (uintT)ini.GetInteger("MountainCar", "MaxSteps", 1000);
-	mcar_min_position = ini.GetReal("MountainCar", "MinPosition", -1.2);
-	mcar_max_position = ini.GetReal("MountainCar", "MaxPosition", 0.6);
-	mcar_max_velocity = ini.GetReal("MountainCar", "MaxVelocity", 0.07);
-    mcar_goal_position = ini.GetReal("MountainCar", "GoalPosition", 0.6);
+	lastChange = -1;
+	maxSteps = (uintT)ini.GetInteger("MountainCar", "MaxSteps", 1000);
+	mcarMinPosition = ini.GetReal("MountainCar", "MinPosition", -1.2);
+	mcarMaxPosition = ini.GetReal("MountainCar", "MaxPosition", 0.6);
+	mcarMaxVelocity = ini.GetReal("MountainCar", "MaxVelocity", 0.07);
+    mcarGoalPosition = ini.GetReal("MountainCar", "GoalPosition", 0.6);
     mcarTrialsToChange = (uintT) ini.GetInteger("MountainCar", "TrialsToChange", 1);
 	modMaxVel = ini.GetReal("MountainCar", "ModifiedMaxVelocity", 0.04);
     changesMaxVelocity = ini.GetBoolean("MountainCar", "ModifiedMaxVelocity", false);
     isNoisyCar = ini.GetBoolean("MountainCar", "NoisyEnvironment", false);
     isContinuous = ini.GetBoolean("MountainCar", "ContinuousMountainCar", true);
-	mcar_velocity = 0.0;
+	mcarVelocity = 0.0;
 		
-	original_value = true;
+	originalValue = true;
      	
-	normalized_observation = false;
-    normalized_action = false;
+	normalizedObservation = false;
+    normalizedAction = false;
     observation = NULL;
 }
 
-Mountain_Car::~Mountain_Car()
+MountainCar::~MountainCar()
 {
     if (observation != NULL) {
         free(observation);
@@ -59,26 +59,26 @@ Mountain_Car::~Mountain_Car()
     }
 }
 
-void Mountain_Car::start(int &number_of_observation_vars, int &number_of_action_vars)
+void MountainCar::start(int &numObsVars, int &numActionVars)
 {
-    number_of_observation_vars = 2;
-    this->number_of_observation_vars = 2;
+    numObsVars = 2;
+    this->observationVars = 2;
     
-	observation = (ParameterType *)malloc(number_of_observation_vars * sizeof(ParameterType));
+	observation = (ParameterType *)malloc(numObsVars * sizeof(ParameterType));
 
-#ifdef CONTINUOUS_MOUNTAIN_CAR
-    number_of_action_vars = 1;
+#ifdef CONTINUOUS_MountainCar
+    numActionVars = 1;
 #else
-	number_of_action_vars = 3;
+	numActionVars = 3;
 #endif
     
-	this->number_of_action_vars = number_of_action_vars;
+	this->actionVars = numActionVars;
 
 	// Initialize state of Car
 	restart();
 }
 
-float Mountain_Car::step(ParameterType *action)
+float MountainCar::step(ParameterType *action)
 {
 	// initial reward
 	if (action == NULL) {
@@ -95,7 +95,7 @@ float Mountain_Car::step(ParameterType *action)
         float act = transformFromPT(action[0], 0, 1);
     #endif
         
-        if (normalized_action) {
+        if (normalizedAction) {
             //supposing that the action's range is [0,1]:
             a = (act - 0.5) * 2.0;
         }
@@ -112,7 +112,7 @@ float Mountain_Car::step(ParameterType *action)
         }
 
         // Take action a, update state of car
-        mcar_velocity += a * 0.001 + cos(3.0 * mcar_position) * (-0.0025);
+        mcarVelocity += a * 0.001 + cos(3.0 * mcarPosition) * (-0.0025);
     }
     else {
         //Discrete Action Mountain Cart
@@ -126,7 +126,7 @@ float Mountain_Car::step(ParameterType *action)
         float act2 = transformFromPT(action[2], 0, 1);
     #endif
         
-        //For discrete actions, the range of the action is of no concern (i.e., normalized_action does not play a role)
+        //For discrete actions, the range of the action is of no concern (i.e., normalizedAction does not play a role)
         
         if (act0 > act1 && act0 > act2) {
             a = 0.0;
@@ -139,58 +139,58 @@ float Mountain_Car::step(ParameterType *action)
         }
 
         // Take action a, update state of car
-        mcar_velocity += (a - 1.0) * 0.001 + cos(3.0 * mcar_position) * (-0.0025);
+        mcarVelocity += (a - 1.0) * 0.001 + cos(3.0 * mcarPosition) * (-0.0025);
     }
 	
 
 	//limit the car's velocity
-	if (mcar_velocity > mcar_max_velocity) {
-		mcar_velocity = mcar_max_velocity;
+	if (mcarVelocity > mcarMaxVelocity) {
+		mcarVelocity = mcarMaxVelocity;
 	}
-	if (mcar_velocity < -mcar_max_velocity) {
-		mcar_velocity = -mcar_max_velocity;
+	if (mcarVelocity < -mcarMaxVelocity) {
+		mcarVelocity = -mcarMaxVelocity;
 	}
 	
-	mcar_position += mcar_velocity;
+	mcarPosition += mcarVelocity;
 	
 	//limit the car's position
-	if (mcar_position > mcar_max_position) mcar_position = mcar_max_position;
-	if (mcar_position < mcar_min_position) mcar_position = mcar_min_position;
+	if (mcarPosition > mcarMaxPosition) mcarPosition = mcarMaxPosition;
+	if (mcarPosition < mcarMinPosition) mcarPosition = mcarMinPosition;
 
 	//stop the car, if it hits the min_position
-	if (mcar_position == mcar_min_position && mcar_velocity < 0) mcar_velocity = 0;
+	if (mcarPosition == mcarMinPosition && mcarVelocity < 0) mcarVelocity = 0;
     
-    float obs[number_of_observation_vars];
+    float obs[observationVars];
 
     if (isNoisyCar) {
         float gauss0 = RandomUtils::randomNormal(0, 0.06);
         float gauss1 = RandomUtils::randomNormal(0, 0.009);
     
-        if (normalized_observation) {
+        if (normalizedObservation) {
             //the maximum and minimum position differ, therefore I use the absolute biggest value which is the minimum
             //notice that the noise is ignored in the normalization, therefore, it may go beyond the expected range [-1,1]
-            obs[0] = (mcar_position + gauss0) / fabs(mcar_min_position);
-            obs[1] = (mcar_velocity + gauss1) / mcar_max_velocity;
+            obs[0] = (mcarPosition + gauss0) / fabs(mcarMinPosition);
+            obs[1] = (mcarVelocity + gauss1) / mcarMaxVelocity;
         }
         else {
-            obs[0] = mcar_position + gauss0;
-            obs[1] = mcar_velocity + gauss1;
+            obs[0] = mcarPosition + gauss0;
+            obs[1] = mcarVelocity + gauss1;
         }
     }
     else {
-        if (normalized_observation) {
+        if (normalizedObservation) {
             //the maximum and minimum position differ, therefore I use the absolute biggest value which is the minimum
-            obs[0] = mcar_position / fabs(mcar_min_position);
-            obs[1] = mcar_velocity / mcar_max_velocity;
+            obs[0] = mcarPosition / fabs(mcarMinPosition);
+            obs[1] = mcarVelocity / mcarMaxVelocity;
         }
         else {
-            obs[0] = mcar_position;
-            obs[1] = mcar_velocity;
+            obs[0] = mcarPosition;
+            obs[1] = mcarVelocity;
         }
     }
 
 	// Is Car within goal region?
-	if (mcar_position >= mcar_goal_position) {
+	if (mcarPosition >= mcarGoalPosition) {
 		restart();
 		return 0;
 	}
@@ -206,66 +206,66 @@ float Mountain_Car::step(ParameterType *action)
 	return -1;
 }
 
-void Mountain_Car::print()
+void MountainCar::print()
 {
-	printf("position %f velocity %f\n",mcar_position, mcar_velocity);
+	printf("position %f velocity %f\n",mcarPosition, mcarVelocity);
 }
 
-float Mountain_Car::restart()
+float MountainCar::restart()
 {
 	trial++;
 
     if (changesMaxVelocity) {
-        if (trial % mcarTrialsToChange == 0 && trial != last_change)
+        if (trial % mcarTrialsToChange == 0 && trial != lastChange)
         {
-            last_change = trial;
+            lastChange = trial;
 
-            if (original_value == true) {
-                mcar_max_velocity = modMaxVel;
-                original_value = false;
+            if (originalValue == true) {
+                mcarMaxVelocity = modMaxVel;
+                originalValue = false;
                 //printf("changing to modified\n");
             }
             else {
-                mcar_max_velocity = ini.GetReal("MountainCar", "MaxVelocity", 0.07);
-                original_value = true;
+                mcarMaxVelocity = ini.GetReal("MountainCar", "MaxVelocity", 0.07);
+                originalValue = true;
                 //printf("changing to original\n");
             }
         }
     }
-	//printf("%d %f\n",trial, mcar_max_velocity);	
+	//printf("%d %f\n",trial, mcarMaxVelocity);
 
 	// Initialize state of Car
-	mcar_position = -0.5;
-	mcar_velocity = 0.0;
+	mcarPosition = -0.5;
+	mcarVelocity = 0.0;
     
-    float obs[number_of_observation_vars];
+    float obs[observationVars];
 	
     if (isNoisyCar) {
         float gauss0 = RandomUtils::randomNormal(0, 0.06);
         float gauss1 = RandomUtils::randomNormal(0, 0.009);
         
-        if (normalized_observation) {
+        if (normalizedObservation) {
             //the maximum and minimum position differ, therefore I use the absolute biggest value which is the minimum
             //notice that the noise is ignored in the normalization, therefore, it may go beyond the expected range [-1,1]
-            obs[0] = (mcar_position + gauss0) / fabs(mcar_min_position);
-            obs[1] = (mcar_velocity + gauss1) / mcar_max_velocity;
+            obs[0] = (mcarPosition + gauss0) / fabs(mcarMinPosition);
+            obs[1] = (mcarVelocity + gauss1) / mcarMaxVelocity;
         }
         else
         {
-            obs[0] = mcar_position + gauss0;
-            obs[1] = mcar_velocity + gauss1;
+            obs[0] = mcarPosition + gauss0;
+            obs[1] = mcarVelocity + gauss1;
         }
     }
     else {
-        if (normalized_observation) {
+        if (normalizedObservation) {
             //the maximum and minimum position differ, therefore I use the absolute biggest value which is the minimum
-            obs[0] = mcar_position / fabs(mcar_min_position);
-            obs[1] = mcar_velocity / mcar_max_velocity;
+            obs[0] = mcarPosition / fabs(mcarMinPosition);
+            obs[1] = mcarVelocity / mcarMaxVelocity;
         }
         else {
-            obs[0] = mcar_position;
-            obs[1] = mcar_velocity;
-            //observation[2] = mcar_max_velocity;
+            obs[0] = mcarPosition;
+            obs[1] = mcarVelocity;
+            //observation[2] = mcarMaxVelocity;
         }
     }
     
@@ -280,17 +280,17 @@ float Mountain_Car::restart()
 	return -1;
 }
 
-bool Mountain_Car::set(int feature)
+bool MountainCar::set(int feature)
 {
 	switch(feature)
 	{
-		case NORMALIZED_OBSERVATION: {
-			normalized_observation = true;
+		case NormalizedObservation: {
+			normalizedObservation = true;
 			return true;
 		}
 		break;
-		case NORMALIZED_ACTION: {
-			normalized_action = true;
+		case NormalizedAction: {
+			normalizedAction = true;
 			return true;
 		}
 		break;

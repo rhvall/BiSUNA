@@ -1,5 +1,5 @@
 //
-//  Function_Approximation.hpp
+//  SingleCartPole.hpp
 //  BiSUNAOpenCL
 //
 
@@ -20,35 +20,29 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#ifndef FUNCTION_APPROXIMATION
-#define FUNCTION_APPROXIMATION
+#ifndef SingleCartPole_hpp
+#define SingleCartPole_hpp
 
-#include "Reinforcement_Environment.h"
+#include "ReinforcementEnvironment.hpp"
 
-class Function_Approximation : public Reinforcement_Environment
+#define FORCE_MAG 10.0
+   
+class SingleCartPole : public ReinforcementEnvironment
 {
-
 	public:
-		Function_Approximation(ushortT eID, const char *fileName);
-		~Function_Approximation();
-		
-		uint problem_index;
-		uint solved_counter;
 
-        bool isSequential;
-        bool isSupervised;
-        bool isMutilpleRandom;
-        uintT numberFunctionAppx;
-        // Global variables:
-		int evaluations_per_episode;
-		int evaluation;
-		bool verbose;
-	
-		void start(int &number_of_observation_vars, int &number_of_action_vars);
+		SingleCartPole(ushortT eID, const char *fileName);
+		~SingleCartPole();
+    
+		void start(int &numObsVars, int &numActionVars);
 		float step(ParameterType *action);
 		float restart();
 		void print();
-        ParameterType obsValue(float val);
+	
+		//auxiliary functions
+        void cartPole(float force, float *x, float *xDot, float *theta, float *thetaDot);
+
+		float x, xDot, theta, thetaDot;
 };
 
-#endif
+#endif // SingleCartPole_hpp
