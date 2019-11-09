@@ -101,10 +101,10 @@ PCGExecutionVal PConfig::exeType()
     return PCGExecutionVal(isPos.second);
 }
 
-ushortT PConfig::generations()
+uintT PConfig::generations()
 {
     auto defaultValue = PCDefaultValues::PCDVGeneral::generations;
-    return ini.GetInteger(PCSectionStr[PCSGeneral], PCGeneralStr[PCGGenerations], defaultValue);
+    return (uintT)ini.GetInteger(PCSectionStr[PCSGeneral], PCGeneralStr[PCGGenerations], defaultValue);
 }
 
 //-------------- Population ------------
@@ -197,7 +197,7 @@ const char *PCEnvironmentStr[] = {"EpisodesPerAgent", "BiSUNAFile", "LoadFromFil
 };
 
 const char *PCEnvironmentNames[] = {"MountainCar", "DoubleCartPole", "FunctionApproximation",
-    "GymEnv", "Multiplexer", "SingleCartPole"
+    "GymEnv", "Multiplexer", "SingleCartPole", "SymmetricEncryption"
 };
 
 ushortT PConfig::episodesPerAgent()
@@ -265,22 +265,26 @@ const char *PCOpenCLStr[] = {"KernelFolder", "KernelName", "SingleTask", "Device
 
 string PConfig::kernelFolder()
 {
-    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelFolder], "OCL/Kernels/");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::kernelFolder;
+    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelFolder], defaultValue);
 }
 
 string PConfig::kernelName()
 {
-    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelName], "process");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::kernelName;
+    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelName], defaultValue);
 }
 
 bool PConfig::singleTask()
 {
-    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOSingleTask], false);
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::singleTask;
+    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOSingleTask], defaultValue);
 }
 
 uintT PConfig::deviceType()
 {
-    string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCODeviceType], "CPU");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::deviceType;
+    string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCODeviceType], defaultValue);
     
     if (dt.compare("CPU") == 0) {
         return 2;
@@ -299,13 +303,15 @@ uintT PConfig::deviceType()
 
 vector<string> PConfig::oclFiles()
 {
-    const string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLFiles], "nsk.aocx");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::oclFiles;
+    const string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLFiles], defaultValue);
     return split(dt, ',');
 }
 
 bool PConfig::oclProfiling()
 {
-    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLProfiling], false);
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::oclProfiling;
+    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLProfiling], defaultValue);
 }
 
 //-------------- Thread ------------
@@ -474,7 +480,7 @@ void PConfig::discardConfiguration()
 pair<bool, ushortT> findElem(const char *toFind, const ushortT elemsSize, const char *elems[])
 {
     ushortT pos = 0;
-    for (; pos < elemsSize; pos++ ) {
+    for (; pos < elemsSize; pos++) {
         auto res = strcmp(toFind, elems[pos]);
         if (res == 0) {
             return {true, pos};

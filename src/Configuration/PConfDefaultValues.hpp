@@ -65,7 +65,12 @@ struct PCDefaultValues
     
     struct PCDVOpenCL
     {
-        
+        static constexpr const char kernelFolder[] = "OCL/Kernels/";
+        static constexpr const char kernelName[] = "process";
+        static constexpr const bool singleTask = false;
+        static constexpr const char deviceType[] = "CPU";
+        static constexpr const char oclFiles[] = "nsk.aocx";
+        static constexpr const bool oclProfiling = false;
     };
     
     struct PCDVThread

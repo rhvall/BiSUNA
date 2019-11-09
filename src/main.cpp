@@ -42,6 +42,5 @@ int main (int argc, const char * argv[])
     printf("Last best score: %f\n", result);
         
     return 0;
-    // runThreads();
 }
 

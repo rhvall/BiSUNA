@@ -41,6 +41,7 @@ enum PCEnvironmentSupported: ushortT {
     PCEGymEnv,
     PCEMultiplexer,
     PCESingleCartPole,
+    PCESymmetricEncryption,
     PCEnvironmentSupportedNumber
 };
 
@@ -63,7 +64,7 @@ struct PConfig
 //considered to be "-1"
     ushortT outIndex();
     PCGExecutionVal exeType();
-    ushortT generations();
+    uintT generations();
 // PCPopulation
     ushortT initialMutations();
     ushortT stepMutations();
