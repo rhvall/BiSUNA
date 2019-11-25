@@ -38,7 +38,14 @@ struct SymmetricEncryption: public ReinforcementEnvironment
     
     ParameterVector payload;
     ParameterVector symEncKey;
-    uintT adversarialAdvantage;
+    uintT maxAdversarialAdvantage; // Up to how many generations the adversary can evolve 
+    
+    // Maximum reward that a configuration is expected to have, this helps to know when
+    // to stop executing the environment
+    int maxExpectedReward;
+    
+    // Number of generations it should remain in Max Expected Reward to finalize the environment
+    uintT numGensMaxER;
     
     void start(int &numObsVars, int &numActionVars);
     float step(ParameterType *action);

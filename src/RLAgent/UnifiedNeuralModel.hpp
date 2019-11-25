@@ -99,7 +99,7 @@ struct UNMFunctions
     static void spectrumDiversityEvolve(UnifiedNeuralModel *model);
     static void endCellEpisode(const float reward, const ushortT maxEpisodes, UNMCell *cell);
     static void loadAgent(const char *filename, UnifiedNeuralModel *model);
-    static void checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix = NULL);
+    static void checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix = NULL, bool encourageSave = false);
     static UnifiedNeuralModel configureModel(ushortT obserrvations, ushortT actions, PConfig *pConf, const char *prefix = NULL);
 };
 

@@ -399,16 +399,21 @@ void UNMFunctions::loadAgent(const char *filename, UnifiedNeuralModel *model)
     model->nmap = NNoveltyMap(specs);
 }
 
-void UNMFunctions::checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix)
+void UNMFunctions::checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix, bool encourageSave)
 {
     ushortT everyNGens = pConf->saveEveryNGenerations();
     bool saveToFile = pConf->saveToFile();
-    bool shouldSave = agent->config.unmGeneration % everyNGens == 0;
+    bool saveByGens = agent->config.unmGeneration % everyNGens == 0 ;
+    bool shouldSave = encourageSave || saveByGens;
     if (saveToFile && shouldSave) {
         string bisunaName = pConf->bisunaFile();
+        size_t indexPoint = bisunaName.find_last_of(".");
+        string genTag = "Gen" + to_string(agent->config.unmGeneration) + "Time";
+        bisunaName.insert(indexPoint, genTag);
         if (prefix != NULL) {
             bisunaName.insert(0, prefix);
         }
+        
         string timeStamped = NNExFunction::appendTimeStamp(bisunaName);
         NNExFunction::writeBiSUNAModel(agent, timeStamped.c_str());
     }

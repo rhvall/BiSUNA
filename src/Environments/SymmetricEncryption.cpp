@@ -38,11 +38,15 @@ SymmetricEncryption::SymmetricEncryption(ushortT eID, const char *fileName):
     maxSteps = (uintT)ini.GetInteger("SymmetricEncryption", "MaxSteps", 500);
     int keySize = (uintT)ini.GetInteger("SymmetricEncryption", "KeySize", 9);
     int payloadSize = (uintT)ini.GetInteger("SymmetricEncryption", "PayloadSize", 9);
-    adversarialAdvantage = (uintT)ini.GetInteger("SymmetricEncryption", "AdversarialAdvantage", 9);
+    maxAdversarialAdvantage = (uintT)ini.GetInteger("SymmetricEncryption", "MaximumAdversarialAdvantage", 1000);
+    
+    maxExpectedReward = (int)ini.GetInteger("SymmetricEncryption", "MaxExpectedReward", 100);
+    numGensMaxER = (uintT)ini.GetInteger("SymmetricEncryption", "NumGensMaxExpectedReward", 1);
     // observation var is multiplied by two to allocate space for the
     // key, which is feed to every step and replaced every restart
     observationVars = payloadSize + keySize;
     actionVars = payloadSize;
+    
     // payload replaces the "observation" pointer with a vector
     payload = ParameterVector(payloadSize);
     symEncKey = ParameterVector(keySize);
@@ -125,7 +129,7 @@ int SymmetricEncryption::distanceInputOutput(ParameterVector input, ParameterVec
 /// SymEncFunctions
 //////////////////////////////////////////////////////////////////////
 
-void symEncFunc(ushortT thrID, ushortT start, ushortT end, float *bestReward,
+void symEncFunc(ushortT thrID, ushortT start, ushortT end, pair<float, ushortT> *bestReward,
             UnifiedNeuralModel *alices, UnifiedNeuralModel *bobs, vector<SymmetricEncryption *> *envs)
 {
 //    printf("Thread: % i, Start: %i, End: %i\n", thrID, start, end);
@@ -138,6 +142,7 @@ void symEncFunc(ushortT thrID, ushortT start, ushortT end, float *bestReward,
     int halfMaxSteps = env->maxSteps / 2;
     ushortT current = start;
     float bestSoFar = EXTREME_NEGATIVE_REWARD;
+    ushortT bestIndex = current;
     while (current <= end) {
         float accumReward = reward;
         UNMCell *aliceCell = alices->cells[current];
@@ -156,6 +161,7 @@ void symEncFunc(ushortT thrID, ushortT start, ushortT end, float *bestReward,
         
         if (accumReward > bestSoFar) {
             bestSoFar = accumReward;
+            bestIndex = current;
 //                    printf("Thread %i best update, agent: %i, Gen: %i, Fitness: %f\n",
 //                           thrID, current, agent.config.unmGeneration, bestSoFar);
         }
@@ -170,10 +176,11 @@ void symEncFunc(ushortT thrID, ushortT start, ushortT end, float *bestReward,
     }
 
 //            printf("Thread %i best: %f\n", thrID, bestSoFar);
-    *bestReward = bestSoFar;
+    bestReward->first = bestSoFar;
+    bestReward->second = bestIndex;
 }
 
-void adversarialFunc(ushortT thrID, ushortT start, ushortT end, float *bestReward,
+void adversarialFunc(ushortT thrID, ushortT start, ushortT end, pair<float, ushortT> *bestReward,
             UnifiedNeuralModel *alices, UnifiedNeuralModel *eves, vector<SymmetricEncryption *> *envs)
 {
 //    printf("Thread: % i, Start: %i, End: %i\n", thrID, start, end);
@@ -183,14 +190,16 @@ void adversarialFunc(ushortT thrID, ushortT start, ushortT end, float *bestRewar
     int i = env->trial;
     ushortT current = start;
     float bestSoFar = EXTREME_NEGATIVE_REWARD;
+    ushortT bestIndex = current;
+    UNMCell *bestAlice = alices->cells[bestReward->second];
+    
     while (current <= end) {
         float accumReward = reward;
-        UNMCell *aliceCell = alices->cells[current];
         UNMCell *eveCell = eves->cells[current];
         
         while(env->trial == i && stepCounter < env->maxSteps) {
             ParameterVector alicePayload = env->keyedPayload(env->payload);
-            ParameterVector actionAlice = UNMFunctions::step(0, alicePayload, aliceCell);
+            ParameterVector actionAlice = UNMFunctions::step(0, alicePayload, bestAlice);
             ParameterVector actionEve = UNMFunctions::step(reward, actionAlice, eveCell);
             reward = env->step(actionEve);
             accumReward += reward;
@@ -200,11 +209,12 @@ void adversarialFunc(ushortT thrID, ushortT start, ushortT end, float *bestRewar
         
         if (accumReward > bestSoFar) {
             bestSoFar = accumReward;
+            bestIndex = current;
 //                    printf("Thread %i best update, agent: %i, Gen: %i, Fitness: %f\n",
 //                           thrID, current, agent.config.unmGeneration, bestSoFar);
         }
         
-        UNMFunctions::endCellEpisode(0, 1, aliceCell);
+        UNMFunctions::endCellEpisode(0, 1, bestAlice);
         UNMFunctions::endCellEpisode(reward, 1, eveCell);
         
         reward = env->restart();
@@ -214,7 +224,8 @@ void adversarialFunc(ushortT thrID, ushortT start, ushortT end, float *bestRewar
     }
 
 //            printf("Thread %i best: %f\n", thrID, bestSoFar);
-    *bestReward = bestSoFar;
+    bestReward->first = bestSoFar;
+    bestReward->second = bestIndex;
 }
 
 float SymEncFunctions::symEncNetwork(PConfig *pConf)
@@ -226,9 +237,11 @@ float SymEncFunctions::symEncNetwork(PConfig *pConf)
     
     vector<SymmetricEncryption *> envs = symEncVector(numThreads, pConf);
     
-    uintT eveAdvantage = envs[0]->adversarialAdvantage;
+    uintT maxEveAdvantage = envs[0]->maxAdversarialAdvantage;
     int numberObsVars = envs[0]->observationVars;
     int numberActionVars = envs[0]->actionVars;
+    int maxExpectedReward = envs[0]->maxExpectedReward;
+    int numGensMaxER = envs[0]->numGensMaxER;
     
     const char *alicesPrefix = "alices";
     const char *bobsPrefix = "bobs";
@@ -241,21 +254,41 @@ float SymEncFunctions::symEncNetwork(PConfig *pConf)
     // Adversarial
     UnifiedNeuralModel eves = UNMFunctions::configureModel(numberActionVars, numberActionVars, pConf, evesPrefix);
     
-    vector<float> rewards(numThreads);
+    vector<pair<float, ushortT>> rewardIDPair(numThreads);
     bool evolveBob = false;
-    bool executeAdversary = false;
-    uintT currentGen = 0;
-    uintT genAdversarial = 0;
-    const char *bobStr = "Bob (Decrypt)";
-    const char *aliceStr = "Alice (Encrypt)";
-    const char *eveStr = "Eve (Adversary)";
+    bool evolveAB = true; // Use this flag to signal that Alice or Bob should be evolved
+    bool executeAdversary = false; // Use this flag to signal that the adversary should execute and evolve
+    bool finishExecution = false; // When maxExpectedReward and numGensMaxER match, this will be set to true.
     
-    while (currentGen < generations) {
+    // Flags to know if Alice or Bob have reached a maximum expected reward
+    bool didAliceMaxER = 0;
+    bool didBobMaxER = 0;
+    
+    // Flag to make sure Alice and Bob ran before Eve is going to analyze the cyphertext
+    bool didAliceExecute = false;
+    
+    // Helps to keep track of the last Alice best reward ID, specially when running the adversarial, because this
+    // is used to identify which agent is going to be "analyzed" by the eves population
+    ushortT lastBestID = 0;
+    
+    // In order to fill numGensMaxER requirement, we need to count how many generations the maxExpectedReward has
+    // been set to true.
+    uintT generationCounter = 0;
+    uintT currentGen = 0;
+    uintT totalGens = generations;
+    uintT genAdversarial = 1;
+    const char *bobStr = "Bob-Decrypt";
+    const char *aliceStr = "Alice-Encrypt";
+    const char *eveStr = "Eve-Adversary";
+    
+    while (currentGen < totalGens && finishExecution == false) {
         const char *toEvolve = evolveBob ? bobStr : aliceStr;
         const char *whoPlays = executeAdversary ? eveStr : toEvolve;
         auto thFunc = executeAdversary ? adversarialFunc : symEncFunc;
         
-        printf("Generation: %i of %i; adversarial: %i; Calculating: %s\n", currentGen, generations, genAdversarial, whoPlays);
+        printf("Execution: %i of %i (Alice Gen: %i, Bob Gen: %i); Adversarial: %i of %i (Gen: %i); Calculating: %s\n",
+           currentGen, totalGens, alices.config.unmGeneration, bobs.config.unmGeneration, genAdversarial,
+               maxEveAdvantage, eves.config.unmGeneration, whoPlays);
         
         vector<thread> trds;
         
@@ -265,45 +298,130 @@ float SymEncFunctions::symEncNetwork(PConfig *pConf)
                         i,
                         i * cellsPerThread,
                         i * cellsPerThread + cellsPerThread - 1,
-                        &(rewards[i]),
+                        &(rewardIDPair[i]),
                         &alices,
                         executeAdversary ? &eves : &bobs,
-                        &envs
-                        ));
+                        &envs));
         }
         
         for_each(trds.begin(), trds.end(), [](thread &t){
             t.join();
         });
         
-        sort(rewards.rbegin(), rewards.rend());
-        printf("From all threads, best was: %f\n", rewards[0]);
+        auto sortByFst = [](pair<float, ushortT> a, pair<float, ushortT> b){
+            return a.first > b.first;
+        };
         
-        if (executeAdversary == false) {
+        sort(rewardIDPair.rbegin(), rewardIDPair.rend(), sortByFst);
+        float bestReward = rewardIDPair[0].first;
+        printf("From all threads, best was: %f\n", bestReward);
+        bool isRewardGreater = bestReward >= maxExpectedReward;
+
+        if (evolveAB == true) {
             if (evolveBob == false) {
                 SymEncFunctions::spectrumEvolve(&alices, &bobs);
                 UNMFunctions::checkSaveGen(pConf, &alices, alicesPrefix);
+                didAliceMaxER = isRewardGreater;
                 evolveBob = true;
             } else {
                 SymEncFunctions::spectrumEvolve(&bobs, &alices);
                 UNMFunctions::checkSaveGen(pConf, &bobs, bobsPrefix);
                 evolveBob = false;
                 currentGen++;
-                executeAdversary = eveAdvantage > 0;
+                didBobMaxER = isRewardGreater;
+                generationCounter = didAliceMaxER && didBobMaxER ? generationCounter + 1 : 0;
+                // Switch to adversary mode when both sides have been able to reach a
+                // reward equal or greater than expected.
                 printf("----------------------------------------\n");
             }
-        }
-        else {
+            
+            if (generationCounter >= numGensMaxER) {
+                evolveAB = !(didAliceMaxER && didBobMaxER);
+                continue;
+            }
+        } else if (executeAdversary == true) {
             UNMFunctions::spectrumDiversityEvolve(&eves);
             UNMFunctions::checkSaveGen(pConf, &eves, evesPrefix);
             genAdversarial++;
+            // This flags signals if eve was able to decrypt A-B communication, when that happens,
+            // it forces both agents to continue evolving its communication
+            bool didEveDecrypt = isRewardGreater;
+            rewardIDPair[0].first = 0;
+            rewardIDPair[0].second = lastBestID;
+            
+            if (didEveDecrypt == true) {
+                
+                UNMFunctions::checkSaveGen(pConf, &eves, evesPrefix, true);
+                
+                // In case Eve was able to decrypt A&B cyphertext, they are punished and forced
+                // to continue evolving.
+                alices.cells[lastBestID]->cellFitness -= 1000;
+                bobs.cells[lastBestID]->cellFitness -= 1000;
+                didAliceMaxER = false; 
+                didBobMaxER = false;
+                didEveDecrypt = false;
+                evolveAB = true;
+                executeAdversary = false;
+                generationCounter = 0;
+                genAdversarial = 1;
+            }
         }
         
-        if (genAdversarial > eveAdvantage) {
-            genAdversarial = 0;
+        if (genAdversarial > maxEveAdvantage) {
+            genAdversarial = 1;
             executeAdversary = false;
-            printf("----------------------------------------\n");
+            evolveBob = false;
+            evolveAB = generationCounter < numGensMaxER;
+            printf("****************************************\n");
         }
+        
+        if (evolveAB == false && executeAdversary == false) {
+            // It could happen that sometimes, when A&B are tested again, their best reward is not
+            // the max ER, then it is neccessary to continue evolving.
+            if (bestReward < maxExpectedReward) {
+                generationCounter = 0;
+                evolveAB = true;
+                continue;
+            }
+            
+            // It is possible to only reliably get the best after both A&B have evolved and they are tested
+            // once again without modifying their positions, which is the one used by eves to analyze
+            lastBestID = rewardIDPair[0].second;
+            
+            if (didAliceExecute == false) {
+                didAliceExecute = true;
+                evolveBob = true;
+                continue;
+            }
+            
+            if (maxEveAdvantage > 0) {
+                executeAdversary = true;
+                didAliceMaxER = false;
+                didBobMaxER = false;
+                
+                UNMFunctions::checkSaveGen(pConf, &alices, alicesPrefix, true);
+                UNMFunctions::checkSaveGen(pConf, &bobs, bobsPrefix, true);
+                printf("Alice #%i, will be used by the adversary with reward of: %f\n", lastBestID, bestReward);
+                printf("||||||||||||||||||||||||||||||||||||||||\n");
+            } else {
+                printf("No adversarial advantage, continue evolving Alice and Bob\n");
+                printf("****************************************\n");
+                evolveAB = true;
+            }
+            
+            didAliceExecute = false;
+            evolveBob = false;
+            // We need to skip all other conditionals to switch context and execute eve from the next iteration
+        }
+        
+        // This boolean confirms that, after a number of generations with max
+        // expected reward, agents are still getting the expected values.
+        bool isGenCounterGreater = generationCounter >= (numGensMaxER + 1);
+        
+        // End execution, even if it has not reached the maximum generation number, when
+        // reward is greater than expected and this value has been obtained continuously
+        // for multiple generations.
+        finishExecution = isRewardGreater && isGenCounterGreater;
     }
     
     if (pConf->saveToFile()) {
@@ -320,7 +438,7 @@ float SymEncFunctions::symEncNetwork(PConfig *pConf)
         delete env;
     });
     
-    return rewards[0];
+    return rewardIDPair[0].first;
 }
 
 vector<SymmetricEncryption *> SymEncFunctions::symEncVector(const ushortT numEnv, PConfig *pConf)
@@ -354,7 +472,7 @@ void SymEncFunctions::spectrumEvolve(UnifiedNeuralModel *activeModel, UnifiedNeu
     for (int i = 0; i < lst.size(); i++) {
         ushortT correlated = lst[i];
         
-         if (correlated == i) {
+        if (correlated == i) {
             continue;
         }
         
@@ -373,6 +491,10 @@ void SymEncFunctions::spectrumEvolve(UnifiedNeuralModel *activeModel, UnifiedNeu
         // should be nullified, however, the values will remain
         // stored in the nmap
         str.ptr = NULL;
+    }
+    
+    for (UNMCell *cell : passiveModel->cells) {
+        cell->cellFitness = 0;
     }
     
     conf.unmGeneration++;
