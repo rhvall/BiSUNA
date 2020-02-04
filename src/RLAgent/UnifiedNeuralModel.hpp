@@ -96,11 +96,11 @@ struct UNMFunctions
     static void modifyCellModule(const ushortT netID, const ushortT stepMut, const NNetworkModule *mod, UNMCell *cell);
     static void noveltyMapParents(const vector<UNMCell *> &agents, NNoveltyMap *nmap);
     static void noveltyPopulationModification(const ushortT stepMut, const NNoveltyMap &nmap, vector<UNMCell *> &cells, vector<ushortT> *prevID = NULL);
-    static void spectrumDiversityEvolve(UnifiedNeuralModel *model);
+    static void spectrumDiversityEvolve(UnifiedNeuralModel *model, vector<ushortT> *lst = NULL);
     static void endCellEpisode(const float reward, const ushortT maxEpisodes, UNMCell *cell);
     static void loadAgent(const char *filename, UnifiedNeuralModel *model);
     static void checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix = NULL, bool encourageSave = false);
-    static UnifiedNeuralModel configureModel(ushortT obserrvations, ushortT actions, PConfig *pConf, const char *prefix = NULL);
+    static UnifiedNeuralModel configureModel(ushortT observations, ushortT actions, PConfig *pConf, const char *prefix = NULL);
 };
 
 #endif /* UnifiedNeuralModel_hpp */

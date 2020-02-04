@@ -337,14 +337,18 @@ void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NN
     }
 }
 
-void UNMFunctions::spectrumDiversityEvolve(UnifiedNeuralModel *model)
+void UNMFunctions::spectrumDiversityEvolve(UnifiedNeuralModel *model, vector<ushortT> *lst)
 {
     UNMConfig &conf = model->config;
     NNoveltyMap &nmap = model->nmap;
     vector<UNMCell *> &cells = model->cells;
     
     noveltyMapParents(cells, &nmap);
-    noveltyPopulationModification(conf.unmStepMuts, nmap, cells);
+    noveltyPopulationModification(conf.unmStepMuts, nmap, cells, lst);
+    
+    for (UNMCell *cell : cells) {
+        cell->cellFitness = 0;
+    }
     
     for (NMStr &str : nmap.nmStrs) {
         // After finishing using the nmap, the stored pointer
@@ -419,11 +423,11 @@ void UNMFunctions::checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent,
     }
 }
 
-UnifiedNeuralModel UNMFunctions::configureModel(ushortT obserrvations, ushortT actions, PConfig *pConf, const char *prefix)
+UnifiedNeuralModel UNMFunctions::configureModel(ushortT observations, ushortT actions, PConfig *pConf, const char *prefix)
 {
     ushortT population = pConf->populationSize();
     
-    UNMConfig conf = UNMConfig(obserrvations, actions, population, pConf->stepMutations());
+    UNMConfig conf = UNMConfig(observations, actions, population, pConf->stepMutations());
     UnifiedNeuralModel agent = UnifiedNeuralModel(pConf->initialMutations(), conf);
 
     // This function will load a SUNA structured file into the first cell un the UNM

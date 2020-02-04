@@ -88,6 +88,8 @@ using namespace std;
     #define REMAINING_NEURON_THRESHOLD 15
 #endif
 
+using ParameterVector = vector<ParameterType>;
+
 // This constant helps to keep track of the ushortT indexing values if for some
 // rason another type is used, it should be changed accordingly, for example, if
 // it changes to "int", OUT_INDEX should be considered to be "-1"

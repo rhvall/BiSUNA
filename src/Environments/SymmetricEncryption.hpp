@@ -29,8 +29,6 @@
 #include "ReinforcementEnvironment.hpp"
 #include "RLAgent/UnifiedNeuralModel.hpp"
 
-using ParameterVector = vector<ParameterType>;
-
 struct SymmetricEncryption: public ReinforcementEnvironment
 {
     SymmetricEncryption(ushortT eID, const char *fileName);
@@ -39,10 +37,6 @@ struct SymmetricEncryption: public ReinforcementEnvironment
     ParameterVector payload;
     ParameterVector symEncKey;
     uintT maxAdversarialAdvantage; // Up to how many generations the adversary can evolve 
-    
-    // Maximum reward that a configuration is expected to have, this helps to know when
-    // to stop executing the environment
-    int maxExpectedReward;
     
     // Number of generations it should remain in Max Expected Reward to finalize the environment
     uintT numGensMaxER;
@@ -53,16 +47,16 @@ struct SymmetricEncryption: public ReinforcementEnvironment
     float restart();
     
     void updateWithKey(ParameterType *arr, int size, ParameterType *key, int keySize);
-    ParameterVector randomArray(const ushortT arrSize);
     ParameterVector keyedPayload(const ParameterVector &data);
-    int distanceInputOutput(ParameterVector input, ParameterVector output);
+    static ParameterVector randomArray(const ushortT arrSize);
+    static float distanceInputOutput(ParameterVector input, ParameterVector output);
 };
 
 struct SymEncFunctions
 {
     static float symEncNetwork(PConfig *pconf);
     static vector<SymmetricEncryption *> symEncVector(const ushortT numEnv, PConfig *pConf);
-    static void spectrumEvolve(UnifiedNeuralModel *activeModel, UnifiedNeuralModel *passiveModel);
+    static void arrangeRelatedModel(const vector<ushortT> &lst, UnifiedNeuralModel *relatedUNM);
 };
 
 #endif /* SymmetricEncryption_hpp */

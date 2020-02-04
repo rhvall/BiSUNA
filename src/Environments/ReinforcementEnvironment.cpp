@@ -30,6 +30,7 @@
 #include "Multiplexer.hpp"
 #include "SingleCartPole.hpp"
 #include "SymmetricEncryption.hpp"
+#include "SymmetricEncryptionCPA.hpp"
 
 ReinforcementEnvironment::ReinforcementEnvironment(ushortT eID, const char *fileName):
     envID(eID), ini(fileName)
@@ -59,6 +60,7 @@ ReinforcementEnvironment *RLFunctions::createEnvFromStr(const ushortT &envID, co
         case PCEMultiplexer: return new Multiplexer(envID, eCC); // SUNA: -755 (gen 182), this stuck at -832 (gen 278)
         case PCESingleCartPole: return new SingleCartPole(envID, eCC); // TODO!! Check again, solved BiSUNA (10000), here was longer.
         case PCESymmetricEncryption: return new SymmetricEncryption(envID, eCC);
+        case PCESymmetricEncryptionCPA: return new SymmetricEncryptionCPA(envID, eCC);
         default:
             printf("Environment %s not supported.\n", eCC);
             exit(1);
