@@ -42,6 +42,7 @@ enum PCEnvironmentSupported: ushortT {
     PCEMultiplexer,
     PCESingleCartPole,
     PCESymmetricEncryption,
+    PCESymmetricEncryptionCPA,
     PCEnvironmentSupportedNumber
 };
 

@@ -197,7 +197,7 @@ const char *PCEnvironmentStr[] = {"EpisodesPerAgent", "BiSUNAFile", "LoadFromFil
 };
 
 const char *PCEnvironmentNames[] = {"MountainCar", "DoubleCartPole", "FunctionApproximation",
-    "GymEnv", "Multiplexer", "SingleCartPole", "SymmetricEncryption"
+    "GymEnv", "Multiplexer", "SingleCartPole", "SymmetricEncryption", "SymmetricEncryptionCPA"
 };
 
 ushortT PConfig::episodesPerAgent()

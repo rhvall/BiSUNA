@@ -11,3 +11,5 @@ make
 
 # Execute
 nohup ./bisuna resources/BiSUNAConf.ini > log.txt
+
+# nohup ./bisuna BiSUNAConf.ini > log.txt &
