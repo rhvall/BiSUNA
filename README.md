@@ -87,6 +87,8 @@ Generation: 0
 From all threads, best was: 25.506468
 ----------------------------------------
 Generation: 1
+```
+
 If you would like to reference this work, you can use the following bibtex:
 
 ```
