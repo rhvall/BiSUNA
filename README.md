@@ -89,7 +89,7 @@ From all threads, best was: 25.506468
 Generation: 1
 ```
 
-If you would like to reference this work, you can use the following bibtex:
+If you would like to reference this work, you can use the following [bibtex](papers/APCCAS2019.bib):
 
 ```
 @inproceedings{8953134,
@@ -108,9 +108,9 @@ If you would like to reference this work, you can use the following bibtex:
 	Bdsk-Url-1 = {https://doi.org/10.1109/APCCAS47518.2019.8953134}}
 
 ```
-Of course, if you would like to get the paper, it is located here: [APCCAS 2019 Paper](papers/Using Neuroevolved Binary Neural Networks to solve reinforcement learning environments.pdf)
+Of course, if you would like to get the paper, it is located here: [APCCAS 2019 Paper](papers/APCCAS2019.pdf)
 
-Second paper, this makes reference to the FPGA execution of BiSUNA [FPT 2019 Paper](papers/Evolved binary neural networks through harnessing FPGA capabilities.pdf):
+Second paper, this makes [reference](papers/FPT2019.bib) to the FPGA execution of BiSUNA [FPT 2019 Paper](papers/FPT2019.pdf):
 ```
 @inproceedings{8977877,
 	Abstract = {The exponential progress of semiconductor tech-nologies has enabled the proliferation of deep learning as a prominent area of research, where neural networks have demon-strated its effectiveness to solve very hard multi dimensional problems. This paper focuses on one in particular, Binary Neural Networks (BNN), which use fixed length bits in its connections and logic functions to perform excitation operations. Exploiting those characteristics, hardware accelerators that integrate field-programmable gate arrays (FPGAs) have been adopted to hasten inference of deep learning networks, given its proficiency to maximize parallelism and energy efficiency. This work will show how the algorithm Binary Spectrum-diverse Unified Neuroevolution Architecture (BiSUNA) can perform training and inference on FPGA without the need of gradient descent. Source code can be found in github.com/rval735/bisunaocl},
