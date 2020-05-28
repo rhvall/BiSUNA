@@ -14,10 +14,6 @@ capabilities of shown with this implementation:
 • Neuroevolution is employed to drive the space search
 • BNN do not have a fixed network topology, which adapt and optimize for the problem at hand.
 
-This code is the open source release of the project AP004 in the InnovateFPGA
-competition. Check http://www.innovatefpga.com/cgi-bin/innovate/teams.pl?Id=AP004
-for more details. The video presentation of this project can be found in the
-following link: https://youtu.be/eX2jxLuIqj8
 
 ![Float - Binary neural network](resources/Float-BinaryNetwork.png)
 
