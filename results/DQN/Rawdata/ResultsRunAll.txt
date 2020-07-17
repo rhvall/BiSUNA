@@ -1,0 +1,355 @@
+Running: MountainCar-v0 , 1
+2020-07-16 10:14:17.676455: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 10:14:17.676525: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 10:14:17.676584: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 10:14:17.691648: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 10:14:17.692022: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7feed4000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 10:14:17.692058: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	8m2.037s
+user	8m9.011s
+sys	0m6.631s
+Running: MountainCar-v0 , 2
+2020-07-16 10:22:19.674097: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 10:22:19.674174: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 10:22:19.674243: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 10:22:19.686586: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 10:22:19.686995: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f1e9c000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 10:22:19.687033: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	8m15.297s
+user	8m22.470s
+sys	0m6.336s
+Running: MountainCar-v0 , 3
+2020-07-16 10:30:34.905931: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 10:30:34.906005: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 10:30:34.906069: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 10:30:34.920498: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 10:30:34.920832: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f6044000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 10:30:34.920866: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	7m54.995s
+user	8m2.299s
+sys	0m5.917s
+Running: MountainCar-v0 , 4
+2020-07-16 10:38:29.732937: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 10:38:29.732994: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 10:38:29.733054: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 10:38:29.744673: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 10:38:29.744968: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f1380000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 10:38:29.745002: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	8m2.260s
+user	8m9.566s
+sys	0m6.453s
+Running: MountainCar-v0 , 5
+2020-07-16 10:46:32.069450: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 10:46:32.069519: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 10:46:32.069561: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 10:46:32.082407: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 10:46:32.082713: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f6a0c000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 10:46:32.082746: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	7m57.149s
+user	8m4.441s
+sys	0m6.325s
+Running: Roulette-v0 , 1
+2020-07-16 10:54:30.423274: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 10:54:30.423336: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 10:54:30.423434: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 10:54:30.440119: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 10:54:30.440492: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f60ac000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 10:54:30.440525: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	6m0.709s
+user	6m7.645s
+sys	0m6.988s
+Running: Roulette-v0 , 2
+2020-07-16 11:00:30.190071: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 11:00:30.190135: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 11:00:30.190197: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 11:00:30.202646: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 11:00:30.202985: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f659c000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 11:00:30.203034: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	5m59.241s
+user	6m7.527s
+sys	0m5.881s
+Running: Roulette-v0 , 3
+2020-07-16 11:06:29.387254: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 11:06:29.387336: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 11:06:29.387423: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 11:06:29.398408: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 11:06:29.398680: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fbfe4000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 11:06:29.398728: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	6m4.796s
+user	6m13.186s
+sys	0m6.659s
+Running: Roulette-v0 , 4
+2020-07-16 11:12:34.164224: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 11:12:34.164291: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 11:12:34.164355: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 11:12:34.177389: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 11:12:34.177749: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f6764000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 11:12:34.177786: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	6m2.745s
+user	6m10.823s
+sys	0m6.539s
+Running: Roulette-v0 , 5
+2020-07-16 11:18:36.916227: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 11:18:36.916312: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 11:18:36.916376: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 11:18:36.927738: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 11:18:36.928018: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f7844000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 11:18:36.928051: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	6m14.607s
+user	6m23.282s
+sys	0m6.725s
+Running: NChain-v0 , 1
+2020-07-16 11:24:51.737408: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 11:24:51.737486: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 11:24:51.737550: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 11:24:51.751258: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 11:24:51.751609: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fce2c000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 11:24:51.751648: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	23m37.879s
+user	23m42.871s
+sys	0m8.289s
+Running: NChain-v0 , 2
+2020-07-16 11:48:29.463127: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 11:48:29.463208: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 11:48:29.463282: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 11:48:29.475935: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 11:48:29.476233: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f5670000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 11:48:29.476279: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	23m37.743s
+user	23m44.344s
+sys	0m7.972s
+Running: NChain-v0 , 3
+2020-07-16 12:12:07.259956: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 12:12:07.260039: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 12:12:07.260107: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 12:12:07.273456: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 12:12:07.273906: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f271c000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 12:12:07.273947: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	23m58.933s
+user	24m3.434s
+sys	0m8.415s
+Running: NChain-v0 , 4
+2020-07-16 12:36:06.170357: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 12:36:06.170440: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 12:36:06.170509: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 12:36:06.183878: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 12:36:06.184299: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f77a8000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 12:36:06.184333: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	23m41.449s
+user	23m46.349s
+sys	0m8.345s
+Running: NChain-v0 , 5
+2020-07-16 12:59:47.676678: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2020-07-16 12:59:47.676761: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: UNKNOWN ERROR (303)
+2020-07-16 12:59:47.676824: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (testtensor): /proc/driver/nvidia/version does not exist
+2020-07-16 12:59:47.690471: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2699990000 Hz
+2020-07-16 12:59:47.690801: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fee5c000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-16 12:59:47.690839: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+
+real	24m1.509s
+user	24m7.384s
+sys	0m8.875s
+Running: Copy-v0 , 1
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.455s
+user	0m2.867s
+sys	0m0.640s
+Running: Copy-v0 , 2
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.229s
+user	0m2.839s
+sys	0m0.461s
+Running: Copy-v0 , 3
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.232s
+user	0m2.827s
+sys	0m0.452s
+Running: Copy-v0 , 4
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.277s
+user	0m2.883s
+sys	0m0.438s
+Running: Copy-v0 , 5
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.266s
+user	0m2.877s
+sys	0m0.433s
+Running: DuplicatedInput-v0 , 1
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.221s
+user	0m2.812s
+sys	0m0.450s
+Running: DuplicatedInput-v0 , 2
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.279s
+user	0m2.819s
+sys	0m0.506s
+Running: DuplicatedInput-v0 , 3
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.271s
+user	0m2.816s
+sys	0m0.502s
+Running: DuplicatedInput-v0 , 4
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.276s
+user	0m2.839s
+sys	0m0.481s
+Running: DuplicatedInput-v0 , 5
+Traceback (most recent call last):
+  File "DeepQNet.py", line 73, in <module>
+    next_time_step = env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/wrappers.py", line 105, in _step
+    time_step = self._env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/py_environment.py", line 174, in step
+    self._current_time_step = self._step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/tf_agents/environments/gym_wrapper.py", line 202, in _step
+    observation, reward, self._done, self._info = self._gym_env.step(action)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/gym/envs/algorithmic/algorithmic_env.py", line 159, in step
+    assert self.action_space.contains(action)
+AssertionError
+
+real	0m3.278s
+user	0m2.859s
+sys	0m0.464s

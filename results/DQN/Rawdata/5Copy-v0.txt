@@ -1,0 +1,10 @@
+Environment to run:  Copy-v0
+2.2.0
+Observation Spec:
+BoundedArraySpec(shape=(), dtype=dtype('int64'), name='observation', minimum=0, maximum=5)
+Reward Spec:
+ArraySpec(shape=(), dtype=dtype('float32'), name='reward')
+Action Spec:
+(BoundedArraySpec(shape=(), dtype=dtype('int64'), name='action/tuple_0', minimum=0, maximum=1), BoundedArraySpec(shape=(), dtype=dtype('int64'), name='action/tuple_1', minimum=0, maximum=1), BoundedArraySpec(shape=(), dtype=dtype('int64'), name='action/tuple_2', minimum=0, maximum=4))
+Time step:
+TimeStep(step_type=array(0, dtype=int32), reward=array(0., dtype=float32), discount=array(1., dtype=float32), observation=array(4))
