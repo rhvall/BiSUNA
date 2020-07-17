@@ -23,7 +23,10 @@ requirement in order to be able to compile code from the makefile. Basically it 
 OpenCL development libraries. If running in a Debian/Ubuntu distribution it is as simple
 as running ```sudo apt install build-essential opencl-dev```
 
-In order to recreate that environment, check the file "[Install-Compile-Execute.sh](scripts/Install-Compile-Execute.sh)"
+- OpenCL runtime
+- gPRC & Protobuf: used for OpenAI Gym communication
+
+In order to recreate that environment, check the file "[RecreateEnvironment.sh](scripts/RecreateEnvironment.sh)"
 
 If FPGA is targeted, the Altera Offline Compiler is needed to compile the aocx, which is
 the bitstream used to reprogram it at time the binary executes.
@@ -48,21 +51,38 @@ have the path to another "ini" file with the correct environment details.
 - Function Approximation
 - Multiplexer
 - Single Cart Pole
-- SymmetricEncryption
+- OpenAI Gym Interface
+
 
 ## Original SUNA
 This project was based on the original [SUNA](https://github.com/zweifel/Physis-Shard) implementation.
 
-## Resource Utilization
 
-Below are shown three screenshots of the resource utilization when BiSUNA was compiled for the Cyclone V:
+## OpenAI Gym
 
-![FPGA Fitter](resources/utilization/FPGA-Fitter.png)
+If you are looking to execute the OpenAI Gym environments, you will need to run [gym-uds-server](https://github.com/rval735/gym-uds-api)
+on the background according to the number of threads/population size if the execution type is Thread
+or OpenCL. Also, you will need to change the "EnvironmentName" and "EnvironmentConf" to adapt for GymEnv.
 
-![FPGA Maximum Frequency](resources/utilization/FPGA-FMax.png)
+In case, running multiple gym environments with different sockets each is quite annoying, check file
+[RunGymEnvs.sh](scripts/RunGymEnvs.sh) to do something like this:
 
-![FPGA Power Dissipation](resources/utilization/FPGA-Power.png)
+```
+Terminal 1 - scripts/RunGymEnvs.sh MountainCar-v0 100
+Terminal 2 - ./bisuna resources/BiSUNAConf.ini
 
+OUTPUT:
+
+Config file: BiSUNAConf.ini
+Environment: MountainCar-v0-v1
+Environment: MountainCar-v0-v1
+Environment: MountainCar-v0-v1
+Environment: MountainCar-v0-v1
+Generation: 0
+From all threads, best was: 25.506468
+----------------------------------------
+Generation: 1
+```
 
 If you would like to reference this work, you can use the following [bibtex](papers/APCCAS2019.bib):
 
