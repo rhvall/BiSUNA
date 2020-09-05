@@ -9,3 +9,7 @@ for j in ${ENVS[@]}; do
     done
 done
 echo "Finished"
+
+# j=DuplicatedInput-v0
+# i=0
+# time python3 gym_solver.py --environment $j --configFile Envs/$j/config --max-steps=1000 --episodes=1 --generations=1000 --num-cores 12 > Envs/$j/Exe-$i.txt

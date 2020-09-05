@@ -1,0 +1,126 @@
+Running: MountainCar-v0 , 1
+
+real	3m32.357s
+user	14m4.935s
+sys	0m3.797s
+Running: MountainCar-v0 , 2
+
+real	3m7.044s
+user	13m27.195s
+sys	0m3.656s
+Running: MountainCar-v0 , 3
+
+real	3m10.632s 
+user	14m31.998s
+sys	0m3.464s
+Running: MountainCar-v0 , 4
+
+real	3m19.708s
+user	15m8.408s
+sys	0m3.620s
+Running: MountainCar-v0 , 5
+
+real	2m48.152s
+user	13m18.601s
+sys	0m4.098s
+Running: Roulette-v0 , 1
+
+real	3m13.029s
+user	6m58.640s
+sys	0m4.464s
+Running: Roulette-v0 , 2
+
+real	3m22.806s
+user	7m9.036s
+sys	0m4.095s
+Running: Roulette-v0 , 3
+
+real	3m42.345s
+user	7m36.148s
+sys	0m4.680s
+Running: Roulette-v0 , 4
+
+real	3m39.664s
+user	7m17.456s
+sys	0m4.496s
+Running: Roulette-v0 , 5
+
+real	3m7.451s
+user	6m42.625s
+sys	0m4.263s
+Running: NChain-v0 , 1
+
+real	6m19.363s
+user	34m18.896s
+sys	0m6.349s
+Running: NChain-v0 , 2
+
+real	6m32.639s
+user	35m29.417s
+sys	0m4.432s
+Running: NChain-v0 , 3
+
+real	6m14.756s
+user	35m14.916s
+sys	0m6.046s
+Running: NChain-v0 , 4
+
+real	6m11.496s
+user	34m19.321s
+sys	0m4.559s
+Running: NChain-v0 , 5
+
+real	6m10.897s
+user	39m49.238s
+sys	0m4.386s
+Running: Copy-v0 , 1
+
+real	2m7.856s
+user	2m58.541s
+sys	0m3.518s
+Running: Copy-v0 , 2
+
+real	2m14.274s
+user	3m0.549s
+sys	0m3.681s
+Running: Copy-v0 , 3
+
+real	2m31.611s
+user	3m31.611s
+sys	0m3.846s
+Running: Copy-v0 , 4
+
+real	2m24.224s
+user	3m15.745s
+sys	0m3.462s
+Running: Copy-v0 , 5
+
+real	2m27.303s
+user	3m23.940s
+sys	0m3.573s
+Running: DuplicatedInput-v0 , 1
+
+real	1m18.807s
+user	2m2.338s
+sys	0m3.186s
+Running: DuplicatedInput-v0 , 2
+
+real	1m23.052s
+user	2m10.765s
+sys	0m3.528s
+Running: DuplicatedInput-v0 , 3
+
+real	1m25.157s
+user	2m15.462s
+sys	0m3.332s
+Running: DuplicatedInput-v0 , 4
+
+real	1m7.712s
+user	1m49.417s
+sys	0m3.373s
+Running: DuplicatedInput-v0 , 5
+
+real	1m42.400s
+user	2m42.032s
+sys	0m3.643s
+Finished

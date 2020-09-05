@@ -1,6 +1,7 @@
 # Base code:
 # https://github.com/HackerShackOfficial/OpenAI-NEAT
 # pip3 install scipy neat-python==0.8 argparse
+# pip3 install --upgrade 'gym==0.17.2'
 # python3 gym_solver.py --max-steps=1000 --episodes=10 --generations=50 --num-cores 1 --environment Roulette-v0
 
 import argparse
