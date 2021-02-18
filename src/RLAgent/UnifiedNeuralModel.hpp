@@ -6,22 +6,19 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #ifndef UnifiedNeuralModel_hpp
 #define UnifiedNeuralModel_hpp
@@ -42,18 +39,6 @@ struct UNMCell
         netMod(module), netSt(state), cellFitness(fit), cellStep(step) { };
     UNMCell(ushortT nID, ushortT obs, ushortT actions, ushortT mutations);
     ~UNMCell();
-};
-
-struct UNMFitness
-{
-    float unmFitness;
-    ushortT unmIdx;
-    ushortT unmNeurons;
-    
-    UNMFitness(float fit = EXTREME_NEGATIVE_REWARD,
-               ushortT idx = OUT_INDEX,
-               ushortT numNeurons = 0):
-        unmFitness(fit), unmIdx(idx), unmNeurons(numNeurons) {};
 };
 
 struct UNMConfig
@@ -92,13 +77,14 @@ struct UNMFunctions
     static vector<ParameterType> step(const float reward, const vector<ParameterType> observation, UNMCell *cell);
     static ulongT calculateSpectrum(const vector<NNeuron> &neurons);
     static bool compareTwoCells(const UNMCell &a, const UNMCell &b);
-    static UNMFitness calculateBestAgent(const vector<UNMCell> agents);
     static void modifyCellModule(const ushortT netID, const ushortT stepMut, const NNetworkModule *mod, UNMCell *cell);
     static void noveltyMapParents(const vector<UNMCell *> &agents, NNoveltyMap *nmap);
-    static void noveltyPopulationModification(const ushortT stepMut, const NNoveltyMap &nmap, vector<UNMCell *> &cells);
-    static void spectrumDiversityEvolve(UnifiedNeuralModel *model);
+    static void noveltyPopulationModification(const ushortT stepMut, const NNoveltyMap &nmap, vector<UNMCell *> &cells, vector<ushortT> *prevID = NULL);
+    static void spectrumDiversityEvolve(UnifiedNeuralModel *model, vector<ushortT> *lst = NULL);
     static void endCellEpisode(const float reward, const ushortT maxEpisodes, UNMCell *cell);
     static void loadAgent(const char *filename, UnifiedNeuralModel *model);
+    static void checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix = NULL, bool encourageSave = false);
+    static UnifiedNeuralModel configureModel(ushortT observations, ushortT actions, PConfig *pConf, const char *prefix = NULL);
 };
 
 #endif /* UnifiedNeuralModel_hpp */

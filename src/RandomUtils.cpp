@@ -6,22 +6,19 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #include "RandomUtils.hpp"
 #include <ctime>
@@ -48,14 +45,12 @@ void RandomUtils::deleteRand()
     }
 }
 
-#ifdef DEBUG
 mt19937 *RandomUtils::changeRandomSeed(const unsigned int seed)
 {
     deleteRand();
     randEng = new mt19937(seed);
     return randEng;
 }
-#endif
 
 NFiringRate RandomUtils::randomFiringRate()
 {
@@ -80,31 +75,52 @@ NNeuronType RandomUtils::randomNeuronType()
 
 ushortT RandomUtils::randomPositive(ushortT maxVal)
 {
-    return randomUShortT(0, maxVal);
+    return randomRangeUShort(0, maxVal);
 }
 
-ushortT RandomUtils::randomUShortT(ushortT minVal, ushortT maxVal)
+template <typename T>
+T randomRange(mt19937 *re, T minVal, T maxVal, bool normalDist)
 {
-    mt19937 *re = getEngine();
-    uniform_int_distribution<ushortT> unii(minVal, maxVal);
-    return unii(*re);
+    if constexpr (std::is_integral<T>::value) {
+        uniform_int_distribution<T> unii(minVal, maxVal);
+        return unii(*re);
+    }
+    else if constexpr (std::is_floating_point<T>::value) {
+        if (normalDist == true) {
+            normal_distribution<T> ndist(minVal, maxVal);
+            return ndist(*re);
+        }
+        else {
+            uniform_real_distribution<T> unif(minVal, maxVal);
+            return unif(*re);
+        }
+    }
+    else {
+        static_assert(std::is_integral<T>::value, "This function requires integral or floating point");
+    }
+}
+
+ushortT RandomUtils::randomRangeUShort(ushortT minVal, ushortT maxVal, bool normalDist)
+{
+    return randomRange<ushortT>(getEngine(), minVal, maxVal, normalDist);
+}
+
+floatT RandomUtils::randomRangeFloat(floatT minVal, floatT maxVal, bool normalDist)
+{
+    return randomRange<floatT>(getEngine(), minVal, maxVal, normalDist);
 }
 
 float RandomUtils::randomPositiveFloat(floatT maxVal)
 {
-    return randomFloat(0.0, maxVal);
-}
-
-float RandomUtils::randomFloat(floatT minVal, floatT maxVal)
-{
-    mt19937 *re = getEngine();
-    uniform_real_distribution<floatT> unif(minVal, maxVal);
-    return unif(*re);
+    return randomRangeFloat(0.0, maxVal);
 }
 
 float RandomUtils::randomNormal(float mean, float stdDev)
 {
-    mt19937 *re = getEngine();
-    normal_distribution<floatT> ndist(mean, stdDev);
-    return ndist(*re);
+    return randomRangeFloat(mean, stdDev, true);
+}
+
+uintT RandomUtils::randomUInt(uintT maxVal)
+{
+    return randomRange<uintT>(getEngine(), 0, maxVal, false);
 }

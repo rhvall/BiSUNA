@@ -6,166 +6,166 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #include "OpenCLUtils.hpp"
 #include <cstdarg>
+#include <fstream>
 
 OCLRuntime::OCLRuntime(cl_device_type devType, const string &folder, const vector<string> &clFiles, string extraFlags, bool profileDevice)
 {
-    cl_int err;
-    cl_uint platformCount;
-    cl_platform_id *platforms;
-    cl_uint deviceCount;
-    cl_device_id *devices;
-    cl_device_id device = NULL;
-    cl_device_type rtDevType;
-    /* Identify all platforms */
-    err = clGetPlatformIDs(0, NULL, &platformCount);
-    oclCheckError(err, "Couldn't read platform count");
-    platforms = (cl_platform_id *)malloc(sizeof(cl_platform_id) * platformCount);
-    clGetPlatformIDs(platformCount, platforms, NULL);
-    oclCheckError(err, "Couldn't find any platforms");
-    
-    for (ushortT i = 0; i < platformCount; i++) {
+	cl_int err = CL_SUCCESS;
+    vector<cl::Platform> platforms;
+    vector<cl::Device> pltDevices, ctxDevices;
+    string deviceName;
+    err = cl::Platform::get(&platforms);
+    oclCheckError(err, "Couldn't read platform from OCL");
+    int devIdx = 0;
+    int pltIdx = 0;
+    bool found = false;
+    for (cl::Platform plt : platforms) {
         /* Access all devices within a platform */
-        clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, 0, NULL, &deviceCount);
-        devices = (cl_device_id *)malloc(sizeof(cl_device_id) * deviceCount);
-        err = clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, deviceCount, devices, NULL);
-        oclCheckError(err, "Couldn't find any devices");
-        for (ushortT j = 0; j < deviceCount; j++) {
-            clGetDeviceInfo(devices[j], CL_DEVICE_TYPE, sizeof(cl_device_type), &rtDevType, NULL);
-            profileDevice ? OpenCLUtils::displayCLDevice(devices[j]) : void();
+    	err = plt.getDevices(CL_DEVICE_TYPE_ALL, &pltDevices);
+    	cl::Context ctx(pltDevices);
+    	ctxDevices = ctx.getInfo<CL_CONTEXT_DEVICES>();
+
+        for (cl::Device ctxDev : ctxDevices) {
+        	deviceName = ctxDev.getInfo<CL_DEVICE_NAME>();
+        	cl_device_type deviceType = ctxDev.getInfo<CL_DEVICE_TYPE>();
+            profileDevice ? OpenCLUtils::displayCLDevice(ctxDev) : void();
             
-            if (devType == rtDevType) {
-                device = devices[j];
-                free(devices);
-                i = platformCount + 1;
+            if (devType == deviceType) {
+//            	OpenCLUtils::displayCLDevice(ctxDev);
+            	device = ctxDev;
+                found = true;
                 break;
             }
+
+            devIdx++;
         }
+
+        if (found == true) {
+            break;
+        }
+        
+        devIdx = 0;
+        pltIdx++;
     }
     
-    if (device == NULL) {
+    if (devIdx == -1) {
         printf("No OpenCL device of the requested type could be found in this system. Change configuration and run again\n");
         exit(1);
     }
     
     /* Create the context */
-    ctx = clCreateContext(NULL, 1, &device, NULL, NULL, &err);
+    cl_context_properties props[3] = {CL_CONTEXT_PLATFORM, (cl_context_properties)(platforms[pltIdx])(), 0};
+    ctx = cl::Context(device, props, NULL, NULL, &err);
     oclCheckError(err, "Couldn't create a context");
     
     /* Create a CL command queue for the device*/
     uint enableProfiling = profileDevice ? CL_QUEUE_PROFILING_ENABLE : 0;
-    queue = clCreateCommandQueue(ctx, device, enableProfiling, &err);
-    oclCheckError(err, "Couldn't create the command queue");
     
     if (devType == CL_DEVICE_TYPE_ACCELERATOR) {
+    	queue = cl::CommandQueue(ctx, device, enableProfiling | CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE, &err);
+        oclCheckError(err, "Couldn't create the command queue");
         prg = OpenCLUtils::readBinProgram(folder, clFiles, ctx, device);
     }
     else {
-        prg = OpenCLUtils::compileProgram(folder, clFiles, ctx, extraFlags);
+    	queue = cl::CommandQueue(ctx, device, enableProfiling, &err);
+        oclCheckError(err, "Couldn't create the command queue");
+        prg = OpenCLUtils::compileProgram(folder, clFiles, ctx, device, extraFlags);
     }
-    
-    free(platforms);
 }
 
 OCLRuntime::~OCLRuntime()
 {
-    clReleaseProgram(prg);
-    clReleaseCommandQueue(queue);
-    clReleaseContext(ctx);
 }
 
 // Interesting example: https://gist.github.com/tzutalin/51a821f15a735024f16b
-void OpenCLUtils::displayCLDevice(cl_device_id device)
+void OpenCLUtils::displayCLDevice(cl::Device device)
 {
     printf(" ----------------------------------\n");
     
-    char deviceName[256];
-    clGetDeviceInfo(device, CL_DEVICE_NAME, sizeof(deviceName), &deviceName, NULL);
-    printf("  CL_DEVICE_NAME:\t\t\t\t\t%s\n", deviceName);
+    string deviceName = device.getInfo<CL_DEVICE_NAME>();
+    printf("  CL_DEVICE_NAME:\t\t\t\t\t%s\n", deviceName.c_str());
     
-    char version[128];
-    clGetDeviceInfo(device, CL_DEVICE_VERSION, sizeof(char) * 128, version, NULL);
-    printf("  CL_DEVICE_VERSION:\t\t\t\t%s\n", version);
+    string version = device.getInfo<CL_DEVICE_VERSION>();
+    printf("  CL_DEVICE_VERSION:\t\t\t\t%s\n", version.c_str());
     
-    cl_uint compute_units;
-    clGetDeviceInfo(device, CL_DEVICE_MAX_COMPUTE_UNITS, sizeof(compute_units), &compute_units, NULL);
-    printf("  CL_DEVICE_MAX_COMPUTE_UNITS:\t\t%u\n", compute_units);
+    cl_uint cu = device.getInfo<CL_DEVICE_MAX_COMPUTE_UNITS>();
+    printf("  CL_DEVICE_MAX_COMPUTE_UNITS:\t\t%u\n", cu);
     
-    size_t workitem_dims;
-    clGetDeviceInfo(device, CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS, sizeof(workitem_dims), &workitem_dims, NULL);
+    size_t workitem_dims = device.getInfo<CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS>();
     printf("  CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS:%ld\n", workitem_dims);
     
-    size_t workitem_size[3];
-    clGetDeviceInfo(device, CL_DEVICE_MAX_WORK_ITEM_SIZES, sizeof(workitem_size), &workitem_size, NULL);
+    vector<size_t> workitem_size = device.getInfo<CL_DEVICE_MAX_WORK_ITEM_SIZES>();
     printf("  CL_DEVICE_MAX_WORK_ITEM_SIZES:\t%ld / %ld / %ld \n", workitem_size[0], workitem_size[1], workitem_size[2]);
 
-    size_t workgroupSize;
-    clGetDeviceInfo(device, CL_DEVICE_MAX_WORK_GROUP_SIZE, sizeof(workgroupSize), &workgroupSize, NULL);
+    size_t workgroupSize = device.getInfo<CL_DEVICE_MAX_WORK_GROUP_SIZE>();
     printf("  CL_DEVICE_MAX_WORK_GROUP_SIZE:\t%ld\n", workgroupSize);
 
-    cl_ulong max_mem_alloc_size;
-    clGetDeviceInfo(device, CL_DEVICE_MAX_MEM_ALLOC_SIZE, sizeof(max_mem_alloc_size), &max_mem_alloc_size, NULL);
+    cl_ulong max_mem_alloc_size = device.getInfo<CL_DEVICE_MAX_MEM_ALLOC_SIZE>();
     printf("  CL_DEVICE_MAX_MEM_ALLOC_SIZE:\t\t%u MByte\n", (unsigned int)(max_mem_alloc_size / (1024 * 1024)));
 
-    cl_ulong memSize;
-    clGetDeviceInfo(device, CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(memSize), &memSize, NULL);
+    cl_ulong memSize = device.getInfo<CL_DEVICE_GLOBAL_MEM_SIZE>();
     printf("  CL_DEVICE_GLOBAL_MEM_SIZE:\t\t%u MByte\n", (unsigned int)(memSize / (1024 * 1024)));
 
-    clGetDeviceInfo(device, CL_DEVICE_LOCAL_MEM_SIZE, sizeof(memSize), &memSize, NULL);
+    memSize = device.getInfo<CL_DEVICE_LOCAL_MEM_SIZE>();
     printf("  CL_DEVICE_LOCAL_MEM_SIZE:\t\t\t%u KByte\n", (unsigned int)(memSize / 1024));
     
-    size_t timeRes;
-    clGetDeviceInfo(device, CL_DEVICE_PROFILING_TIMER_RESOLUTION, sizeof(timeRes), &timeRes, NULL);
+    memSize = device.getInfo<CL_DEVICE_MEM_BASE_ADDR_ALIGN>();
+    printf("  CL_DEVICE_MEM_BASE_ADDR_ALIGN:\t%u KByte\n", (unsigned int)(memSize / 1024));
+    
+    size_t timeRes = device.getInfo<CL_DEVICE_PROFILING_TIMER_RESOLUTION>();
     printf("  CL_DEVICE_PROFILING_TIMER_RESOLUTION:\t%lu ns\n", timeRes);
     
     printf(" ----------------------------------\n");
 }
 
-void OpenCLUtils::displayKernelInfo(cl_kernel kernel, cl_context ctx)
+void OpenCLUtils::displayKernelInfo(cl::Kernel kernel, cl::Device device)
 {
     printf(" ----------------------------------\n");
     
-    cl_device_id device;
-    clGetContextInfo(ctx, CL_CONTEXT_DEVICES, sizeof(device), &device, NULL);
+    string name = kernel.getInfo<CL_KERNEL_FUNCTION_NAME>();
+    printf("  CL_KERNEL_FUNCTION_NAME:\t\t\t%s\n", name.c_str());
     
-    size_t wgSize;
-    clGetKernelWorkGroupInfo(kernel, device, CL_KERNEL_WORK_GROUP_SIZE, sizeof(wgSize), &wgSize, NULL);
+    size_t numArgs = kernel.getInfo<CL_KERNEL_NUM_ARGS>();
+    printf("  CL_KERNEL_NUM_ARGS:\t\t\t\t%ld\n", numArgs);
+        
+    size_t wgSize = kernel.getWorkGroupInfo<CL_KERNEL_WORK_GROUP_SIZE>(device);
     printf("  CL_KERNEL_WORK_GROUP_SIZE:\t\t%ld\n", wgSize);
     
-    size_t wgMultiple;
-    clGetKernelWorkGroupInfo(kernel, device, CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE, sizeof(wgMultiple), &wgMultiple, NULL);
+    auto cwgSize = kernel.getWorkGroupInfo<CL_KERNEL_COMPILE_WORK_GROUP_SIZE>(device);
+    printf("  CL_KERNEL_COMPILE_WORK_GROUP_SIZE:%ld, %ld, %ld\n", cwgSize[0], cwgSize[1], cwgSize[2]);
+    
+    size_t wgMultiple = kernel.getWorkGroupInfo<CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE>(device);
     printf("  CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE:%ld\n", wgMultiple);
     
-    cl_ulong localUsage;
-    clGetKernelWorkGroupInfo(kernel, device, CL_KERNEL_LOCAL_MEM_SIZE, sizeof(localUsage), &localUsage, NULL);
+//    auto globalUsage = kernel.getWorkGroupInfo<CL_KERNEL_GLOBAL_WORK_SIZE>(device);
+//    printf("  CL_KERNEL_GLOBAL_WORK_SIZE:\t\t\t%lld\n", globalUsage);
+    
+    cl_ulong localUsage = kernel.getWorkGroupInfo<CL_KERNEL_LOCAL_MEM_SIZE>(device);
     printf("  CL_KERNEL_LOCAL_MEM_SIZE:\t\t\t%lld\n", localUsage);
     
-    cl_ulong privUsage;
-    clGetKernelWorkGroupInfo(kernel, device, CL_KERNEL_PRIVATE_MEM_SIZE, sizeof(privUsage), &privUsage, NULL);
+    cl_ulong privUsage = kernel.getWorkGroupInfo<CL_KERNEL_PRIVATE_MEM_SIZE>(device);
     printf("  CL_KERNEL_PRIVATE_MEM_SIZE:\t\t%lld\n", privUsage);
     
     printf(" ----------------------------------\n");
 }
 
-cl_program OpenCLUtils::readBinProgram(const string &folder, vector<string>clFiles, cl_context ctx, cl_device_id device)
+cl::Program OpenCLUtils::readBinProgram(const string &folder, vector<string>clFiles, cl::Context ctx, cl::Device device)
 {
     if (clFiles.size() > 1) {
         printf("Only one binary file is supported. Finishing execution");
@@ -175,57 +175,37 @@ cl_program OpenCLUtils::readBinProgram(const string &folder, vector<string>clFil
     string fwn = folder;
     fwn.append(clFiles[0]);
     auto res = loadFile(fwn.c_str(), true);
-    cl_int err;
-    cl_int binSt;
-    cl_program pgr = clCreateProgramWithBinary(ctx, 1, &device, &(res.second),
-                                                (const unsigned char **)&(res.first), &binSt, &err);
+    cl_int err = CL_SUCCESS;
+    vector<cl_int> binSt;
+    cl::Program::Binaries binFile = {{(void *)res.first, res.second}};
+    cl::Program pgr(ctx, {device}, binFile, &binSt, &err);
 
     oclCheckError(err, "Failed to create program with binary file");
-    oclCheckError(binSt, "Failed to load binary for device");
+    oclCheckError(binSt[0], "Failed to load binary for device");
     
     delete [] res.first;
     
-    err = clBuildProgram(pgr, 0, NULL, "", NULL, NULL);
-    oclCheckError(err, "Failed to build binary program");
+//    err = prg.build()
+//    err = clBuildProgram(pgr, 0, NULL, "", NULL, NULL);
+//    oclCheckError(err, "Failed to build binary program");
     
     return pgr;
 }
 
 /* Read program file and place content into buffer */
-cl_program OpenCLUtils::compileProgram(const string &folder, vector<string>clFiles, cl_context ctx, string extraFlags)
+cl::Program OpenCLUtils::compileProgram(const string &folder, vector<string>clFiles, cl::Context ctx, cl::Device device, string extraFlags)
 {
-    cl_uint filesSize = static_cast<cl_uint>(clFiles.size());
-    vector<char *>vecBuffer;
-    vector<size_t>vecSizes;
     cl_int err;
+    string programString;
     for (string clName : clFiles) {
-        string fwn = folder;
-        fwn.append(clName);
-        FILE *program_handle = fopen(fwn.c_str(), "r");;
-        if(program_handle == NULL) {
-            printf("Couldn't find the program file: %s \n", fwn.c_str());
-            exit(1);
-        }
-    
-        fseek(program_handle, 0, SEEK_END);
-        size_t program_size = ftell(program_handle);
-        rewind(program_handle);
-        char *program_buffer = (char *)malloc(program_size + 1);
-        program_buffer[program_size] = '\0';
-        fread(program_buffer, sizeof(char), program_size, program_handle);
-        fclose(program_handle);
-        vecBuffer.push_back(program_buffer);
-        vecSizes.push_back(program_size);
+        ifstream programFile(folder + clName);
+        string source(std::istreambuf_iterator<char>(programFile), (std::istreambuf_iterator<char>()));
+        programString += source;
     }
     
     /* Create program from file */
-    cl_program program = clCreateProgramWithSource(ctx, filesSize,
-                            (const char**)vecBuffer.data(), vecSizes.data(), &err);
+    cl::Program program(ctx, programString, false, &err);
     oclCheckError(err, "Couldn't create the program");
-    
-    for (char *pgrBuff : vecBuffer) {
-        free(pgrBuff);
-    }
     
     /* Build program */
     string folderFlag = "-I" + folder + " ";
@@ -240,45 +220,35 @@ cl_program OpenCLUtils::compileProgram(const string &folder, vector<string>clFil
 #endif
     
     string options = flags + folderFlag + extraFlags;
-    cl_device_id device[1];
-    clGetContextInfo(ctx, CL_CONTEXT_DEVICES, sizeof(device), device, NULL);
-    err = clBuildProgram(program, 1, device, options.c_str(), NULL, NULL);
-    
-    if(err < 0) {
-        size_t log_size;
-        /* Find size of log and print to std output */
-        clGetProgramBuildInfo(program, device[0], CL_PROGRAM_BUILD_LOG,
-                              0, NULL, &log_size);
-        char *program_log = (char *)malloc(log_size + 1);
-        program_log[log_size] = '\0';
-        clGetProgramBuildInfo(program, device[0], CL_PROGRAM_BUILD_LOG,
-                              log_size + 1, program_log, NULL);
-        printf("%s\n", program_log);
-        free(program_log);
+    program.build({device}, options.c_str());
+    cl_build_status status = program.getBuildInfo<CL_PROGRAM_BUILD_STATUS>(device);
+    if (status == CL_BUILD_ERROR) {
+        // Get the build log
+        string name = device.getInfo<CL_DEVICE_NAME>();
+        string buildlog = program.getBuildInfo<CL_PROGRAM_BUILD_LOG>(device);
+        printf("Build log for %s:\n%s\n", name.c_str(), buildlog.c_str());
         exit(1);
     }
     
     return program;
 }
 
-cl_kernel OpenCLUtils::loadKernel(cl_program prg, const char *krlName)
+cl::Kernel OpenCLUtils::loadKernel(cl::Program prg, const char *krlName)
 {
     cl_int err;
-    /* Create kernel for the mat_vec_mult function */
-    cl_kernel kernel = clCreateKernel(prg, krlName, &err);
+    cl::Kernel kernel(prg, krlName, &err);
     oclCheckError(err, krlName);
-    
     return kernel;
 }
 
-void OpenCLUtils::loadArgs(const vector<cl_mem> &elements, cl_kernel kernel)
+void OpenCLUtils::loadArgs(const vector<cl::Buffer> &elements, cl::Kernel kernel)
 {
     cl_int err;
     size_t elemSize = elements.size();
     string errMsg = "Couldn't set the kernel argument #";
+    
     for (cl_uint i = 0; i < elemSize; i++) {
-        /* Create kernel arguments from the CL buffers */
-        err = clSetKernelArg(kernel, i, sizeof(cl_mem), &(elements[i]));
+        err = kernel.setArg(i, elements[i]);
         oclCheckError(err, (errMsg + to_string(i)).c_str());
     }
 }
@@ -494,11 +464,10 @@ pair<unsigned char *, size_t> OpenCLUtils::loadFile(const char *filePath, bool b
     return make_pair(buffer, fSize);
 }
 
-cl_ulong OpenCLUtils::printProfiling(const char *name, cl_event profEvent)
+cl_ulong OpenCLUtils::printProfiling(const char *name, cl::Event profEvent)
 {
-    cl_ulong timeStart, timeEnd;
-    clGetEventProfilingInfo(profEvent, CL_PROFILING_COMMAND_START, sizeof(timeStart), &timeStart, NULL);
-    clGetEventProfilingInfo(profEvent, CL_PROFILING_COMMAND_END, sizeof(timeEnd), &timeEnd, NULL);
+    cl_ulong timeStart = profEvent.getProfilingInfo<CL_PROFILING_COMMAND_START>();
+    cl_ulong timeEnd = profEvent.getProfilingInfo<CL_PROFILING_COMMAND_END>();
     cl_ulong diffTime = (timeEnd - timeStart);
     
     if (name != NULL) {
@@ -506,4 +475,30 @@ cl_ulong OpenCLUtils::printProfiling(const char *name, cl_event profEvent)
     }
     
     return diffTime;
+}
+
+cl::Buffer OpenCLUtils::clBufferCreation(cl::Context ctx, size_t memSize, cl_mem_flags flags, void *dta)
+{
+    cl_int err;
+    cl::Buffer res(ctx, flags, memSize, dta, &err);
+    oclCheckError(err, "Couldn't create a buffer object");
+    return res;
+}
+
+cl::Buffer OpenCLUtils::clSubBufferCreation(cl::Buffer mainBff, size_t memOrigin, size_t memSize, cl_mem_flags flags)
+{
+    cl_int err;
+    size_t config[2] = {memOrigin, memSize};
+    cl::Buffer res = mainBff.createSubBuffer(flags, CL_BUFFER_CREATE_TYPE_REGION, (void *)config, &err);
+    oclCheckError(err, "Couldn't create a sub buffer object");
+    return res;
+}
+
+void *OpenCLUtils::clBufferMap(cl::CommandQueue clQ, cl::Buffer memPtr, size_t memSize, cl_map_flags flags)
+{
+    cl_int err;
+    return clQ.enqueueMapBuffer(memPtr, CL_TRUE, flags, 0, memSize, NULL, NULL, &err);
+    oclCheckError(err, "Couldn't create a map buffer object");
+//    queue.enqueueMapBuffer(bufferB, CL_TRUE, CL_MAP_READ, 0, sizeof(dataB));
+
 }

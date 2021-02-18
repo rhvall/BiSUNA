@@ -6,22 +6,19 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #ifndef OCLBridge_hpp
 #define OCLBridge_hpp
@@ -29,36 +26,19 @@
 #include <stdio.h>
 #include <array>
 #include "RLAgent/UnifiedNeuralModel.hpp"
-#include "Kernels/CLNetworkStruct.h"
+#include "OCL/Kernels/CLNetworkStruct.h"
 #include "OpenCLUtils.hpp"
-
-struct CLUNM
-{
-    UNMConfig conf;
-    NNoveltyMap nmap;
-    vector<CLNeuron> clNeurons; // Neurons
-    vector<CLConnection> clConns; // Connections
-    vector<ushortT> clNetSt; // NetworkState
-    static const ushortT clNetStSize = 8;
-};
-
-struct CLUNMMem
-{
-    cl_mem memNeurons;
-    cl_mem memConns;
-    cl_mem memSt;
-    
-    CLUNMMem(cl_context ctx, CLUNM &clUNM);
-    ~CLUNMMem();
-};
 
 struct OCLBridge
 {
+    static ushortT toFRNT(const NFiringRate &fr, const NNeuronType &nt);
+    static pair<NFiringRate, NNeuronType> fromFRNT(const ushortT &frNT);
     static CLNeuron toCLNeuron(const NNeuron &n, const NNeuronState &nSt);
     static pair<NNeuron, NNeuronState> fromCLNeuron(const CLNeuron &clN);
     static CLConnection toCLConnection(const NConnection &c, const NConnState &cst);
     static pair<NConnection, NConnState> fromCLConnection(const ushortT &cID, const CLConnection &clC);
-    static CLUNM toCLUNM(const UnifiedNeuralModel &unm);
-    static UnifiedNeuralModel fromCLUNM(const CLUNM &clUNM);
+    static CLUnifiedNeuralModel toCLUNM(const UnifiedNeuralModel &unm);
+    static UnifiedNeuralModel fromCLUNM(const CLUnifiedNeuralModel &clUNM);
+    static void checkConstantsMatch(const UnifiedNeuralModel &unm);
 };
 #endif /* OCLBridge_hpp */

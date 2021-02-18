@@ -6,22 +6,19 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #include "NNetworkModule.hpp"
 #include "RandomUtils.hpp"
@@ -52,7 +49,7 @@ NNetworkModule::~NNetworkModule()
 ///////////////////////////////////////////////////////////////
 void NNetworkModule::structuralMutation()
 {
-    CLMutationType mt = NNMFunction::getMutationType();
+    NMutationType mt = NNMFunction::getMutationType();
     switch (mt) {
         case mtAddNeuron:
         {
@@ -63,7 +60,7 @@ void NNetworkModule::structuralMutation()
         {
             ushortT inoutNeurons = nParams.nInputs + nParams.nOutputs;
             ushortT neuronsSize = nNeurons.size();
-            ushortT removeNeuronIdx = RandomUtils::randomUShortT(inoutNeurons - 1, neuronsSize - 1);
+            ushortT removeNeuronIdx = RandomUtils::randomRangeUShort(inoutNeurons - 1, neuronsSize - 1);
             NNeuron n = NNMFunction::deleteNeuron(removeNeuronIdx, nNeurons);
             NNMFunction::deleteNeuronConnections(n.nID, nConns);
             break;
@@ -108,10 +105,10 @@ vector<NNeuron> NNMFunction::interfaceNeurons(const ushortT numInputs, const ush
 
 // Using RandomUtils, it will return a possible mutation type value
 // by the probabilities established in the parameter "MutationProbability"
-// within the enum elements inside "CLMutationType".
-CLMutationType NNMFunction::getMutationType()
+// within the enum elements inside "NMutationType".
+NMutationType NNMFunction::getMutationType()
 {
-    CLMutationType mutationType = mtRemoveConnection;
+    NMutationType mutationType = mtRemoveConnection;
     auto mutationChance = PConfig::globalProgramConfiguration()->mutationProb();
     float roulette = RandomUtils::randomPositiveFloat(1);
     float sum = 0;
@@ -119,7 +116,7 @@ CLMutationType NNMFunction::getMutationType()
     for (int i = 0; i < mtNumberMutationType; i++) {
         sum += mutationChance[i];
         if (roulette < sum) {
-            mutationType = CLMutationType(i);
+            mutationType = NMutationType(i);
             break;
         }
     }
@@ -192,7 +189,7 @@ NConnection NNMFunction::randomConnection(const vector<NNeuron> neurons)
 inline float perturbationContinuous(const float &minMaxWeight, const float &weightPercentage, const float &cw)
 {
     float variance = weightPercentage * cw;
-    float perturbation = RandomUtils::randomFloat(-variance, variance);
+    float perturbation = RandomUtils::randomRangeFloat(-variance, variance);
     float weight = cw + perturbation;
     
     // Verify that weights are within the boundaries of possible values
@@ -206,7 +203,7 @@ inline ushortT pertubationBinary(const ushortT &weightPercentage, const ushortT 
 {
     ushortT varianceP = cw << weightPercentage;
     ushortT varianceN = cw >> weightPercentage;
-    ushortT perturbation = RandomUtils::randomUShortT(varianceN, varianceP);
+    ushortT perturbation = RandomUtils::randomRangeUShort(varianceN, varianceP);
     // TODO!! Find the best perturbation operator for this case
     //    ParameterType weight = perturbation & cw;
     ushortT weight = perturbation | cw;
@@ -232,7 +229,7 @@ void NNMFunction::weightMutation(NConnection *conn)
     }
     
     ParameterType cw = conn->weight;
-#ifdef CONTINOUS_PARAM
+#ifdef CONTINUOUS_PARAM
     conn->weight = perturbationContinuous(MAXIMUM_WEIGHT, WEIGHT_MUTATION_CHANGE_PERCENTAGE, cw);
 #else
     conn->weight = pertubationBinary(WEIGHT_MUTATION_CHANGE_PERCENTAGE, cw);
@@ -352,22 +349,6 @@ void NNMFunction::deleteConnection(const ushortT connPos, vector<NConnection> *c
 ////////////////////////////////////
 // Neuron Filtering
 ////////////////////////////////////
-
-// This function receives a neuron vector and a function conditional, then returns a
-// neuronID vector of those elements that fill the conditional requirements.
-vector<ushortT> NNMFunction::filterNeurons(const vector<NNeuron> &neurons, function<bool(const NNeuron &)> conditional)
-{
-    vector<ushortT> filteredID;
-    
-    for (size_t i = 0; i < neurons.size(); i++) {
-        const NNeuron &n = neurons[i];
-        if (conditional(n)) {
-            filteredID.push_back(n.nID);
-        }
-    };
-    
-    return filteredID;
-}
 
 // This function will check every ntControl/ntCPrimer neuron to verify if there are any
 // connections to them from any ntControl/ntCPrimer, if there are not, then, it becomes a ntCPrimer.

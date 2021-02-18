@@ -6,27 +6,27 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #include "NNetworkExtra.hpp"
 #include "Parameters.hpp"
 #include <cstdio>
 #include <glob.h>
+#include <sstream>
+#include <iostream>
+#include <fstream>
 
 void NNExFunction::checkRemove(const char *fName)
 {
@@ -302,5 +302,200 @@ vector<string> NNExFunction::allFilesInFolder(string folder)
     }
     
     return result;
+}
+
+void NNExFunction::removeOrphans(UNMCell *cell)
+{
+    set<ushortT> nIDs;
+    
+    for (NConnection c : cell->netMod->nConns) {
+        if (c.fromNID == c.toNID) {
+            continue; // Self connections do not count.
+        }
+        
+        nIDs.insert(c.fromNID);
+        nIDs.insert(c.toNID);
+        if (c.neuroMod != OUT_INDEX) {
+            nIDs.insert(c.neuroMod);
+        }
+    }
+    
+    ushort nrsSize = cell->netMod->nNeurons.size();
+    ushort ioNrs = cell->netMod->nParams.nInputs + cell->netMod->nParams.nOutputs;
+    ushort offset = 0;
+    vector<ushortT> removedNeurons;
+    
+    if (nIDs.size() == nrsSize) {
+        return; // There is no need to check orphans because all of them have at
+        // least one in/out connection
+    }
+    
+    for (ushortT i = ioNrs; i < nrsSize; i++) {
+        NNeuron n = cell->netMod->nNeurons[i];
+        ushort offNID = n.nID + offset;
+        auto pos = nIDs.find(offNID);
+        
+        if (pos == nIDs.end()) {
+            NNeuron removed = NNMFunction::deleteNeuron(n.nID, cell->netMod->nNeurons);
+            NNMFunction::deleteNeuronConnections(n.nID, cell->netMod->nConns);
+            removedNeurons.push_back(removed.nID);
+            offset++;
+            i--;
+            nrsSize--;
+        }
+    }
+    
+    cell->netSt->nNSt.resize(cell->netMod->nNeurons.size());
+    cell->netSt->nCSt.resize(cell->netMod->nConns.size());
+}
+
+void NNExFunction::printGraph(const char *filename, NNetworkModule *module)
+{
+    ushort inputs = module->nParams.nInputs;
+    ushort outputs = module->nParams.nOutputs;
+    vector<NNeuron> neurons = module->nNeurons;
+    vector<NConnection> conns = module->nConns;
+    size_t nSize = neurons.size();
+    size_t cSize = conns.size();
+    string sstring = "";
+    stringstream ss;
+    ss << "digraph G {\nnode[shape = circle]" << endl;
+    ss << "rankInputs [style = invisible]\nrankOutputs [style = invisible]" << endl;
+    ss << "rankInputs -> rankOutputs [color=invis]" << endl;
+        
+    for (uintT i = 0; i < nSize; i++)
+    {
+        NNeuron n = neurons[i];
+
+        switch(n.nType)
+        {
+//ntID, ntActivation, ntThreshold, ntRandom, ntControl, ntCPrimer, ntInput, ntOutput
+            case ntID: {
+                sstring = "style = filled, fillcolor = gold";
+                break;
+            }
+            case ntActivation: {
+                sstring = "style = filled, fillcolor = lightskyblue";
+                break;
+            }
+            case ntThreshold: {
+                sstring = "style = filled, fillcolor=limegreen";
+                break;
+            }
+            case ntRandom: {
+                sstring = "style = filled, fillcolor = coral";
+                break;
+            }
+            case ntControl: {
+                sstring = "shape = octagon";
+                break;
+            }
+            case ntCPrimer: {
+                sstring = "shape = doubleoctagon";
+                break;
+            }
+            case ntRoll: {
+                sstring = "shape = trapezium";
+                break;
+            }
+            case ntInput: {
+                sstring = "style = filled, shape = invhouse, color=lightblue";
+                break;
+            }
+            case ntOutput: {
+                sstring = "style = filled, shape = house, color=tan";
+                break;
+            }
+            default: {
+                printf("No neuron should be in this part. Finishing execution\n");
+                exit(1);
+            }
+            break;
+        }
+
+        ss << i << " [label=\"#" << i << ":" << (ushortT)n.firingRate;
+        ss << "\", " << sstring << "]" << endl;
+        sstring = "";
+    }
+
+    size_t counter = 1;
+    
+    for(uintT i = 0; i < cSize; i++) {
+        NConnection c = conns[i];
+
+        if(c.neuroMod == OUT_INDEX) {//no neuro modulation
+            ss << c.fromNID << " -> " << c.toNID << " [label = \"" << c.weight << "\"]" << endl;
+        }
+        else { // With NeuroModulation
+            uintT nModPoint = (uintT)(nSize + counter);
+            ss << nModPoint << " [shape = point]" << endl;
+            ss << c.neuroMod << " -> " << nModPoint << " [style = dashed]" << endl;
+            ss << c.fromNID << " -> " << nModPoint << " [dir = none]" << endl;
+            ss << nModPoint << " -> " << c.toNID << endl;
+            counter++;
+        }
+    }
+    
+    auto addRank = [](string name, vector<ushortT> ids) {
+        stringstream ss;
+        ss << "{\n\trank = same\n\trankdir = TB\n\trank" << name;
+        for (ushortT i : ids) {
+            ss << " -> " << i;
+        }
+        ss << " [style = invis]" << endl;
+        ss << "}" << endl;
+        return ss.str();
+    };
+    
+    auto vecSection = [](size_t first, size_t last, vector<NNeuron> vec) {
+        vector<ushortT> res;
+        for (size_t i = first; i < last; i++) {
+            res.push_back(vec[i].nID);
+        }
+        return res;
+    };
+
+    ss << addRank("Inputs", vecSection(0, inputs, module->nNeurons));
+    ss << addRank("Outputs", vecSection(inputs, inputs + outputs, module->nNeurons));
+    ss << "}" << endl;
+    
+    ofstream fp;
+    fp.open(filename, ios::out | ios::binary);
+    fp << ss.str();
+    fp.close();
+}
+
+bool NNExFunction::writeToBinFile(const string &filePath, const ParameterVector &payload)
+{
+    ofstream wf(filePath, ios::out | ios::binary);
+    size_t dataSize = payload.size() * sizeof(ParameterType);
+    char *ptr = (char *)(payload.data());
+    wf.write(ptr, dataSize);
+    wf.close();
+    return wf.good();
+}
+
+ParameterVector NNExFunction::readFromBinFile(const string &filePath)
+{
+    ifstream rf(filePath, ios::in | ios::binary);
+    rf.seekg(0, std::ios_base::end);
+    size_t dataSize = rf.tellg();
+    rf.seekg(0, std::ios_base::beg);
+
+    size_t numElems = dataSize / sizeof(ParameterType);
+    ParameterVector elems(numElems);
+    
+    char *ptr = (char *)elems.data();
+    if (rf.good()) {
+        rf.read(ptr, dataSize);
+        rf.close();
+    }
+    else {
+        printf("File %s could not be read correctly, finishing execution", filePath.c_str());
+        rf.close();
+        exit(1);
+    }
+    
+    return elems;
 }
 

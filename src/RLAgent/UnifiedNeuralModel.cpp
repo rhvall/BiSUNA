@@ -6,22 +6,19 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #include "UnifiedNeuralModel.hpp"
 #include "NN/NNetworkModule.hpp"
@@ -154,6 +151,7 @@ inline ulongT UNMFunctions::calculateSpectrum(const vector<NNeuron> &neurons)
                 tAc++;
                 break;
             case ntCPrimer:
+            case ntRoll:
                 tCP++;
                 break;
             default:
@@ -173,7 +171,7 @@ inline ulongT UNMFunctions::calculateSpectrum(const vector<NNeuron> &neurons)
     tFR = tFR < 1023 ? (tFR << 50) & 1151795604700004352 : 1151795604700004352;
     // Primer neurons could only be counted up to 15
     ulongT maxtCP = 0xF000000000000000;
-    tCP = tCP < 15   ? (tCP << 60) & maxtCP : maxtCP;
+    tCP = tCP < 15 ? (tCP << 60) & maxtCP : maxtCP;
     
     return tID | tTh | tRa | tCo | tAc | tFR | tCP;
 }
@@ -189,34 +187,6 @@ bool UNMFunctions::compareTwoCells(const UNMCell &a, const UNMCell &b)
     bool sameFitness = a.cellFitness == b.cellFitness;
     
     return betterFitness || (sameFitness && lessEqNeurons);
-}
-
-UNMFitness UNMFunctions::calculateBestAgent(const vector<UNMCell> agents)
-{
-    if (agents.size() <= 0) {
-        return UNMFitness();
-    }
-    
-    UNMFitness result;
-    
-    for (auto i = agents.begin(); i != agents.end(); i++) {
-        float fitness = (*i).cellFitness;
-        ushortT neuronSize = (*i).netMod->nNeurons.size();
-        ushortT idx = distance(agents.begin(), i);
-        
-        bool biggerFitness = fitness > result.unmFitness;
-        bool lessNeurons = neuronSize < result.unmNeurons;
-        bool sameFitness = fitness == result.unmFitness;
-        bool condition = biggerFitness || (sameFitness && lessNeurons);
-        
-        // Only when the agent has greater fitness or less neurons while keeping
-        // the same fitness, the result will be replaced.
-        if (condition) {
-            result = UNMFitness(fitness, idx, neuronSize);
-        }
-    }
-    
-    return  result;
 }
 
 void UNMFunctions::noveltyMapParents(const vector<UNMCell *> &agents, NNoveltyMap *nmap)
@@ -285,7 +255,7 @@ void UNMFunctions::modifyCellModule(const ushortT netID, const ushortT stepMut, 
     };
 }
 
-void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NNoveltyMap &nmap, vector<UNMCell *> &cells)
+void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NNoveltyMap &nmap, vector<UNMCell *> &cells, vector<ushortT> *prevID)
 {
     ushortT cellsSize = cells.size();
 
@@ -302,7 +272,7 @@ void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NN
         
         ushortT nID = nmapCell->netMod->nParams.networkID;
         
-        if (nID > nmap.popSize && cells[i]->netMod->nParams.networkID != nID) {
+        if (cells[i]->netMod->nParams.networkID != nID) {
             UNMCell *ptr = cells[i];
             cells[i] = cells[nID];
             cells[nID] = ptr;
@@ -312,6 +282,11 @@ void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NN
         // agent, it needs to reset the fitness value
         cells[i]->cellFitness = 0;
         cells[i]->cellStep = 0;
+        
+        if (prevID != NULL) {
+            prevID->push_back(nID);
+        }
+        
         cells[i]->netMod->nParams.networkID = i;
         NNSFunction::resetState(cells[i]->netSt);
     }
@@ -332,14 +307,14 @@ void UNMFunctions::noveltyPopulationModification(const ushortT stepMut, const NN
     }
 }
 
-void UNMFunctions::spectrumDiversityEvolve(UnifiedNeuralModel *model)
+void UNMFunctions::spectrumDiversityEvolve(UnifiedNeuralModel *model, vector<ushortT> *lst)
 {
     UNMConfig &conf = model->config;
     NNoveltyMap &nmap = model->nmap;
     vector<UNMCell *> &cells = model->cells;
     
     noveltyMapParents(cells, &nmap);
-    noveltyPopulationModification(conf.unmStepMuts, nmap, cells);
+    noveltyPopulationModification(conf.unmStepMuts, nmap, cells, lst);
     
     for (NMStr &str : nmap.nmStrs) {
         // After finishing using the nmap, the stored pointer
@@ -347,6 +322,8 @@ void UNMFunctions::spectrumDiversityEvolve(UnifiedNeuralModel *model)
         // stored in the nmap
         str.ptr = NULL;
     }
+    
+    for_each(cells.begin(), cells.end(), NNExFunction::removeOrphans);
     
     conf.unmGeneration++;
     conf.unmSteps = 0;
@@ -393,3 +370,48 @@ void UNMFunctions::loadAgent(const char *filename, UnifiedNeuralModel *model)
     vector<ulongT> specs(model->config.unmMapSize, w);
     model->nmap = NNoveltyMap(specs);
 }
+
+void UNMFunctions::checkSaveGen(PConfig *pConf, const UnifiedNeuralModel *agent, const char *prefix, bool encourageSave)
+{
+    bool saveToFile = pConf->saveToFile();
+    
+    if (saveToFile == false) {
+        return;
+    }
+    
+    ushortT everyNGens = pConf->saveEveryNGenerations();
+    bool saveByGens = agent->config.unmGeneration % everyNGens == 0 ;
+    bool shouldSave = encourageSave || saveByGens;
+    if (shouldSave == true) {
+        string bisunaName = pConf->bisunaFile();
+        size_t indexPoint = bisunaName.find_last_of(".");
+        string genTag = "Gen" + to_string(agent->config.unmGeneration) + "Time";
+        bisunaName.insert(indexPoint, genTag);
+        if (prefix != NULL) {
+            bisunaName.insert(0, prefix);
+        }
+        
+        string timeStamped = NNExFunction::appendTimeStamp(bisunaName);
+        NNExFunction::writeBiSUNAModel(agent, timeStamped.c_str());
+    }
+}
+
+UnifiedNeuralModel UNMFunctions::configureModel(ushortT observations, ushortT actions, PConfig *pConf, const char *prefix)
+{
+    ushortT population = pConf->populationSize();
+    
+    UNMConfig conf = UNMConfig(observations, actions, population, pConf->stepMutations());
+    UnifiedNeuralModel agent = UnifiedNeuralModel(pConf->initialMutations(), conf);
+
+    // This function will load a SUNA structured file into the first cell un the UNM
+    if (pConf->loadFromFile()) {
+        string fileName = pConf->bisunaFile();
+        if (prefix != NULL) {
+            fileName.insert(0, prefix);
+        }
+        NNExFunction::readBiSUNAModel(fileName.c_str(), &agent);
+    }
+    
+    return agent;
+}
+

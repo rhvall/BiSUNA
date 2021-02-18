@@ -6,22 +6,19 @@
 //  Copyright © 2019 R. All rights reserved.
 //
 
-// Licensed to the Apache Software Foundation (ASF) under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  The ASF licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
 //
-//   http://www.apache.org/licenses/LICENSE-2.0
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
 //
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
 
 #include "PConfig.hpp"
 #include "PConfDefaultValues.hpp"
@@ -74,7 +71,7 @@ enum PCGeneralVal: ushortT
 };
 
 const char *PCGeneralStr[] = {"Binary", "OutIndex", "ExecutionType", "Generations"};
-const char *PCGExecutionStr[] = {"Thread", "OpenCL"};
+const char *PCGExecutionStr[] = {"Thread", "OpenCL", "OpenCLFull"};
 
 bool PConfig::binaryNeurons()
 {
@@ -101,10 +98,10 @@ PCGExecutionVal PConfig::exeType()
     return PCGExecutionVal(isPos.second);
 }
 
-ushortT PConfig::generations()
+uintT PConfig::generations()
 {
     auto defaultValue = PCDefaultValues::PCDVGeneral::generations;
-    return ini.GetInteger(PCSectionStr[PCSGeneral], PCGeneralStr[PCGGenerations], defaultValue);
+    return (uintT)ini.GetInteger(PCSectionStr[PCSGeneral], PCGeneralStr[PCGGenerations], defaultValue);
 }
 
 //-------------- Population ------------
@@ -197,7 +194,8 @@ const char *PCEnvironmentStr[] = {"EpisodesPerAgent", "BiSUNAFile", "LoadFromFil
 };
 
 const char *PCEnvironmentNames[] = {"MountainCar", "DoubleCartPole", "FunctionApproximation",
-    "GymEnv", "Multiplexer", "SingleCartPole"
+    "GymEnv", "Multiplexer", "SingleCartPole", "SymmetricEncryption", "SymmetricEncryptionCPA",
+    "DecEncryptorCPA", "RandomWalk", "ExtraEncodeDecode"
 };
 
 ushortT PConfig::episodesPerAgent()
@@ -254,33 +252,53 @@ string PConfig::environmentConf()
 enum PCOpenCLVal: ushortT
 {
     PCOKernelFolder,
-    PCOKernelName,
-    PCOSingleTask,
+    PCOKernelStateName,
+    PCOKernelStateUseLocalVars,
+    PCOKernelEndEpisodeName,
+    PCOKernelEvolveName,
     PCODeviceType,
     PCOOCLFiles,
-    PCOOCLProfiling
+    PCOOCLProfiling,
+    PCOComputeUnits
 };
 
-const char *PCOpenCLStr[] = {"KernelFolder", "KernelName", "SingleTask", "DeviceType", "OCLFiles", "OCLProfiling"};
+const char *PCOpenCLStr[] = {"KernelFolder", "KernelStateName", "KernelStateUseLocalVars", "KernelEndEpisodeName", "KernelEvolveName",
+                             "DeviceType", "OCLFiles", "OCLProfiling", "ComputeUnits"};
 
 string PConfig::kernelFolder()
 {
-    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelFolder], "OCL/Kernels/");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::kernelFolder;
+    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelFolder], defaultValue);
 }
 
-string PConfig::kernelName()
+string PConfig::kernelStateName()
 {
-    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelName], "process");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::kernelStateName;
+    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelStateName], defaultValue);
 }
 
-bool PConfig::singleTask()
+bool PConfig::kernelStateUseLocalVars()
 {
-    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOSingleTask], false);
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::kernelStateUseLocalVars;
+    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelStateUseLocalVars], defaultValue);
+}
+
+string PConfig::kernelEndEpisodeName()
+{
+    auto defaultValue = ""; // PCDefaultValues::PCDVOpenCL::kernelEndEpisodeName;
+    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelEndEpisodeName], defaultValue);
+}
+
+string PConfig::kernelEvolveName()
+{
+    auto defaultValue = ""; // PCDefaultValues::PCDVOpenCL::kernelEvolveName;
+    return ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOKernelEvolveName], defaultValue);
 }
 
 uintT PConfig::deviceType()
 {
-    string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCODeviceType], "CPU");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::deviceType;
+    string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCODeviceType], defaultValue);
     
     if (dt.compare("CPU") == 0) {
         return 2;
@@ -299,13 +317,21 @@ uintT PConfig::deviceType()
 
 vector<string> PConfig::oclFiles()
 {
-    const string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLFiles], "nsk.aocx");
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::oclFiles;
+    const string dt = ini.Get(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLFiles], defaultValue);
     return split(dt, ',');
 }
 
 bool PConfig::oclProfiling()
 {
-    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLProfiling], false);
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::oclProfiling;
+    return ini.GetBoolean(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOOCLProfiling], defaultValue);
+}
+
+long PConfig::computeUnits()
+{
+    auto defaultValue = PCDefaultValues::PCDVOpenCL::computeUnits;
+    return ini.GetInteger(PCSectionStr[PCSOpenCL], PCOpenCLStr[PCOComputeUnits], defaultValue);
 }
 
 //-------------- Thread ------------
@@ -474,7 +500,7 @@ void PConfig::discardConfiguration()
 pair<bool, ushortT> findElem(const char *toFind, const ushortT elemsSize, const char *elems[])
 {
     ushortT pos = 0;
-    for (; pos < elemsSize; pos++ ) {
+    for (; pos < elemsSize; pos++) {
         auto res = strcmp(toFind, elems[pos]);
         if (res == 0) {
             return {true, pos};
@@ -485,7 +511,7 @@ pair<bool, ushortT> findElem(const char *toFind, const ushortT elemsSize, const 
 }
 
 // https://www.fluentcpp.com/2017/04/21/how-to-split-a-string-in-c/
-vector<string> split(const string &s, char delimiter)
+vector<string> PConfig::split(const string &s, char delimiter)
 {
     vector<string> tokens;
     string token;
