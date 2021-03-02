@@ -97,7 +97,7 @@ float SymmetricEncryption::restart()
 /// SymEncFunctions
 //////////////////////////////////////////////////////////////////////
 
-ParameterVector SymEncFunctions::randomArray(const ushortT arrSize)
+ParameterVector SymEncFunctions::randomArray(const uintT arrSize)
 {
     ParameterVector vec(arrSize);
     for_each(vec.begin(), vec.end(), [](ParameterType &val) {

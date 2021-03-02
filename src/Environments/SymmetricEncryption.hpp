@@ -56,7 +56,7 @@ struct SymmetricEncryption: public ReinforcementEnvironment
 struct SymEncFunctions
 {
     static float distanceInputOutput(ParameterVector input, ParameterVector output);
-    static ParameterVector randomArray(const ushortT arrSize);
+    static ParameterVector randomArray(const uintT arrSize);
     static vector<ParameterVector> randomPayload(const uintT &vecSize, const uintT &payloadSize);
     static ParameterVector keyedPayload(const ParameterVector &symEncKey, const ParameterVector &data);
     static float symEncNetwork(PConfig *pconf);
