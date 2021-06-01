@@ -1,5 +1,5 @@
 //
-//  CLNetState.cl
+//  ProcessStateGlobal.cl
 //  BiSUNAOpenCLTests
 //
 //  Created by RHVT on 19/6/20.
